@@ -109,13 +109,15 @@ public class Room {
 		
 		@Override
 		public void mousePressed(MouseEvent e) {
-			msPressed = true;
-			me.canShoot = true;
+			if (e.getButton() == 1) {
+				msPressed = true;
+				me.canShoot = true;
+			}
 		}
 		
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			msPressed = false;
+			if (e.getButton() == 1) msPressed = false;
 		}
 		
 		@Override

@@ -35,6 +35,7 @@ import fr.SamuelVedel.Play.Play;
  * <ul>
  * <strong>To do list :</strong>
  * <br>---- facile  ----
+ * <li>gerer la diff de fps pour le snakeBoss</li>
  * <li>ajouter un pouvoir sur les dégats</li>
  * <li>mettre un pouvoir de dash</li>
  * <li>mettre un timer de non mouvement pour les énemies</li>
