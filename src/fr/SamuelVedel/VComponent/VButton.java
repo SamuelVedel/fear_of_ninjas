@@ -17,7 +17,7 @@ public class VButton extends VAbstractButton {
 //	private Color foreground = new Color(255, 255, 255, 200);
 //	private Color border = new Color(255, 255, 255, 200);
 	
-//	// Couleur du boutton quand il est survolé.
+//	// Couleur du boutton quand il est survolÃ©.
 //	private Color survolBackground = new Color(255, 255, 255, 200);
 //	private Color survolForeground = new Color(0, 0, 0, 200);
 //	private Color survolBorder = new Color(255, 255, 255, 200);

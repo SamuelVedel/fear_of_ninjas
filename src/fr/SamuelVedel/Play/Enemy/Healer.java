@@ -7,10 +7,10 @@ import fr.SamuelVedel.Play.Entity;
 import fr.SamuelVedel.Play.Room;
 
 /**
- * énemie qui heal trois énemies à côté si il y en à
- * et te vole ta vie si t'est trop près
+ * Ã©nemie qui heal trois Ã©nemies Ã  cÃ´tÃ© si il y en Ã 
+ * et te vole ta vie si t'est trop prÃ¨s
  * <p>
- * class créée le 18/08/2023 vers 0h40
+ * class crÃ©Ã©e le 18/08/2023 vers 0h40
  * 
  * @author Samuel Vedel
  *
@@ -36,13 +36,13 @@ public class Healer extends Enemy {
 	private final int lifeSteal = 1;
 	private final int distOfLifeSteal = 7*UsefulTh.cubeW;
 	
-	/** allié le plus proche */
+	/** alliÃ© le plus proche */
 	private Entity nearestMe = null;
 	
 	public Healer(Room room) {
 		super(room);
 		type = HEALER_TYPE;
-		name = "esprit de la forêt";
+		name = "esprit de la forÃªt";
 		initVar();
 		takeEnemiesPowers();
 		spawnToWalk();
@@ -82,7 +82,7 @@ public class Healer extends Enemy {
 		}
 		actionToWalk(delta);
 		
-		// gère l'animation de marche
+		// gÃ¨re l'animation de marche
 		if (tTex >= vTex) {
 			if (direction > 0) {
 				iTex++;
@@ -109,7 +109,7 @@ public class Healer extends Enemy {
 	}
 	
 	private void heal(double delta) {
-		// recherche des tois énmeies les plus proches
+		// recherche des tois Ã©nmeies les plus proches
 		nearest = new Enemy[maxNearest];
 		double minDist = 0;
 		for (int j = 0; j < nearest.length; j++) {
@@ -140,7 +140,7 @@ public class Healer extends Enemy {
 	}
 	
 	private void lifeSteal(double delta) {
-		// recherche l'allié le plus proche
+		// recherche l'alliÃ© le plus proche
 		nearestMe = room.me;
 		double dist = Math.sqrt(Math.pow(x+w/2-room.me.x-room.me.w/2, 2)+Math.pow(y+h/2-room.me.y-room.me.h/2, 2));
 		if (dist > distOfLifeSteal) {

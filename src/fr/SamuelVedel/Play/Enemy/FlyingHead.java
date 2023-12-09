@@ -6,17 +6,17 @@ import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.Room;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  */
 
 /**
- * C'est un énemie, et enfaite, c'est
- * une tête qui vole, enfin comme dans
+ * C'est un Ã©nemie, et enfaite, c'est
+ * une tÃªte qui vole, enfin comme dans
  * son nom quoi
  * <p>
- * Class créée le 28/06/2022 (mais pas à 2h cette fois)
+ * Class crÃ©Ã©e le 28/06/2022 (mais pas Ã  2h cette fois)
  * 
  * @author Samuel Vedel
  *
@@ -29,7 +29,7 @@ public class FlyingHead extends Enemy {
 	public FlyingHead(Room room) {
 		super(room);
 		type = FLYING_HEAD_TYPE;
-		name  = "tête volante";
+		name  = "tÃªte volante";
 		initVar();
 		spawnToFly();
 		takeEnemiesPowers();
@@ -56,7 +56,7 @@ public class FlyingHead extends Enemy {
 	public void actions(double delta) {
 		super.actions(delta);
 		
-		// gère le sens de la texture
+		// gÃ¨re le sens de la texture
 		if (v*Math.cos(alpha) >= 0) iTex = 0;
 		else iTex = 1;
 		actionToFly(delta);

@@ -7,15 +7,15 @@ import java.awt.Graphics2D;
 import fr.SamuelVedel.FOD.UsefulTh;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  */
 
 /**
- * represente l'entièreté des power up du jeux
+ * represente l'entiÃ¨retÃ© des power up du jeux
  * <p>
- * Class créée le 21/08/2022
+ * Class crÃ©Ã©e le 21/08/2022
  * 
  * @author Samuel Vedel
  *
@@ -26,24 +26,24 @@ public enum Power {
 	speed(0, "speed.txt", "Lapin Rapide", "Booste la vitesse"),
 	
 	/** augmente de 10% les chance de crit */
-	crit(1, "crit.txt", "Balles Vénères", "Augmente de 10%\nles chances de critique"),
+	crit(1, "crit.txt", "Balles VÃ©nÃ¨res", "Augmente de 10%\nles chances de critique"),
 	
 	/** augmente de 1 la vitese des balles */
 	bulletSpeed(2, "bulletSpeed.txt", "Balles Rapides", "Augmente la\nvitesse des balles"),
 	
-	/** multiplie par 0.8 chaque dégat pris */
-	shield(3, "shield.txt", "Bouclier un peu Stylé", "Diminue les dégâts subis"),
+	/** multiplie par 0.8 chaque dÃ©gat pris */
+	shield(3, "shield.txt", "Bouclier un peu StylÃ©", "Diminue les dÃ©gÃ¢ts subis"),
 	
 	/** 
 	 * multiplie par 0.8 regen
-	 * ou la met à 80 si elle est à 0
+	 * ou la met Ã  80 si elle est Ã  0
 	 */
-	regen(4, "regen.txt", "Coeur Puissant", "Augmente la régénération"),
+	regen(4, "regen.txt", "Coeur Puissant", "Augmente la rÃ©gÃ©nÃ©ration"),
 	/**
-	 * ajoute ça de vie à une entité {@code e} qui fait des dégats :<br>
+	 * ajoute Ã§a de vie Ã  une entitÃ© {@code e} qui fait des dÃ©gats :<br>
 	 * {@code dammage*(1-1/((double)e.powers[Power.vampire.num]/2+1))}
 	 */
-	vampire(5, "vampire.txt", "Vampire Cruel", "Recupère une partie\nde chaque dégât infligé"),
+	vampire(5, "vampire.txt", "Vampire Cruel", "RecupÃ¨re une partie\nde chaque dÃ©gÃ¢t infligÃ©"),
 	
 	/**
 	 * tire 5 balles quand on tue quelqu'un<br>
@@ -51,16 +51,16 @@ public enum Power {
 	 * <p>
 	 * ne marche pas sur les {@code Blob}
 	 */
-	deadsBullets(6, "deadsBullets.txt", "Balles de la Mort", "Des balles partent à\nl'execution d'un ennemi"),
+	deadsBullets(6, "deadsBullets.txt", "Balles de la Mort", "Des balles partent Ã \nl'execution d'un ennemi"),
 	
 	/** ajoute 10 pts de vie */
-	moreLife(7, "moreLife.txt", "Grande Vitalité", "Ajoute 10 points de vie"),
+	moreLife(7, "moreLife.txt", "Grande VitalitÃ©", "Ajoute 10 points de vie"),
 	
 	/** ajoute un rebond aux balles*/
-	bouncingBall(8, "bounce.txt", "Balle Rebondissante", "Ajoute un rebond à\nchaque balle"),
+	bouncingBall(8, "bounce.txt", "Balle Rebondissante", "Ajoute un rebond Ã \nchaque balle"),
 	/**
 	 * selon une chance de 100*(1-1/((double)killer.powers[Power.drinkingDuck.num]/8+1))
-	 * quand un énemie meurt il fait apparaitre un canard potable
+	 * quand un Ã©nemie meurt il fait apparaitre un canard potable
 	 * et quand on boit ce canard on regagne 15 pts de vie
 	 */
 	drinkingDuck(9, "drinkingDuck.txt", "Canard Potable", "On peut le boire", true),
@@ -68,32 +68,32 @@ public enum Power {
 	multipleJump(10, "multipleJump.txt", "Pas de Lune", "Ajoute un saut", true),
 	
 	stone2Birds(11, "1stone2birds.txt", "D'une Pierre deux Coup",
-				"Les balles ont +20% de\nchance de partir sur\nl'énemie le plus proche\naprès en avoir touché\nun", true),
+				"Les balles ont +20% de\nchance de partir sur\nl'Ã©nemie le plus proche\naprÃ¨s en avoir touchÃ©\nun", true),
 	
 	/** ne fait rien */
 	nothing(12, "nothing.txt", "Rien", "Ne fait rien"),
 	
 	/**
-	 * améliore la cadence comme ceci :
+	 * amÃ©liore la cadence comme ceci :
 	 * <br> {@code cadence = (int)(1+(cadence-1)*0.9);}
 	 * <br> {@code punchCadence = (int)(1+(punchCadence-1)*0.9);}
 	 */
 	cadence(13, "cadence.txt", "Cadence", "Augmente la cadence"),
 	
 	/** ajoute une tourelle */
-	turret(14, "turret.txt", "Tourelle Fidèle", "Ajoute une tourelle\nà ton armée", true),
+	turret(14, "turret.txt", "Tourelle FidÃ¨le", "Ajoute une tourelle\nÃ  ton armÃ©e", true),
 	
-	poison(15, "poison.txt", "Fiole Empoisonné", "Mieux vaux la faire boire\nque la boire"),
+	poison(15, "poison.txt", "Fiole EmpoisonnÃ©", "Mieux vaux la faire boire\nque la boire"),
 	
-	bomb(16, "bomb.txt", "Bomb PI/4", "Hey tu peut envoyer des\nbombes\n(ça me rappelle quelqu'un)", true),
+	bomb(16, "bomb.txt", "Bomb PI/4", "Hey tu peut envoyer des\nbombes\n(Ã§a me rappelle quelqu'un)", true),
 	
-	snakesOfPain(17, "snakesOfPain.txt", "Seprents de la douleure", "La douleure se matérialise\nen seprent", true, true),
+	snakesOfPain(17, "snakesOfPain.txt", "Seprents de la douleure", "La douleure se matÃ©rialise\nen seprent", true, true),
 	
-	petrification(18, "petrification.txt", "Petrification", "+10% de chance de\npétrifier un énemies à\nchaque attaques");
+	petrification(18, "petrification.txt", "Petrification", "+10% de chance de\npÃ©trifier un Ã©nemies Ã \nchaque attaques");
 	
 	
 	
-	//strength(, "strength.txt", "Biceps Impressionant", "Agmente les dégats")
+	//strength(, "strength.txt", "Biceps Impressionant", "Agmente les dÃ©gats")
 	
 	public final int id;
 	public final int[][] texture;
@@ -151,10 +151,10 @@ public enum Power {
 	 * affiche l'icone du pouvoir dans un rectangle noir
 	 * 
 	 * @param x abscisses du rectangle
-	 * @param y ordonnées du rectangle
+	 * @param y ordonnÃ©es du rectangle
 	 * @param w largeur du rectangle
 	 * @param h hauteur du rectangle
-	 * @param c2 deuxième couleur
+	 * @param c2 deuxiÃ¨me couleur
 	 * @param g2d
 	 */
 	public void display(int x, int y, int w, int h, Color c2, Graphics2D g2d) {
@@ -186,10 +186,10 @@ public enum Power {
 	 * avec le nom et la description
 	 * 
 	 * @param x abscisses du rectangle
-	 * @param y ordonnées du rectangle
+	 * @param y ordonnÃ©es du rectangle
 	 * @param w largeur du rectangle
 	 * @param h hauteur du rectangle
-	 * @param c2 deuxième couleur
+	 * @param c2 deuxiÃ¨me couleur
 	 * @param g2d
 	 */
 	public void detailDisplay(int x, int y, int w, int h, Color c2, Graphics2D g2d) {

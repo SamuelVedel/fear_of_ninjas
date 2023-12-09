@@ -8,7 +8,7 @@ import fr.SamuelVedel.Play.Room;
  * Bunri, l'Ombre Pourpre
  * c'est un grand ninja
  * <p>
- * Class créée le 17/02/2023
+ * Class crÃ©Ã©e le 17/02/2023
  * 
  * @author Samuel Vedel
  *
@@ -56,7 +56,7 @@ public class Bunri extends Enemy {
 		
 		actionToWalk(delta);
 		
-		// gère l'animation de marche
+		// gÃ¨re l'animation de marche
 		if (tTex >= vTex) {
 			if (direction > 0) {
 				iTex++;

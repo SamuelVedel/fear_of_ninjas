@@ -8,7 +8,7 @@ import fr.SamuelVedel.Play.Enemy.Enemy;
 import fr.SamuelVedel.Play.Particle.ClassicParticle;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  */
@@ -17,7 +17,7 @@ import fr.SamuelVedel.Play.Particle.ClassicParticle;
  * Class qui correspond au balles qui vollerons normalement
  * dans les quatres coins des salles. les collsisions
  * <p>
- * Class créée le 24/06/2022
+ * Class crÃ©Ã©e le 24/06/2022
  * 
  * @author Samuel Vedel
  *
@@ -28,7 +28,7 @@ public class Bullet {
 	private Room room;
 	public Entity shooter;
 	/** 
-	 * cet énemies de crain pas cette balle,
+	 * cet Ã©nemies de crain pas cette balle,
 	 * c'est important pour coder le pouvoir
 	 * stone2Birds
 	 */
@@ -50,7 +50,7 @@ public class Bullet {
 	 * Bah initialise l'objet quoi
 	 * 
 	 * @param x abscisses
-	 * @param y ordonnées
+	 * @param y ordonnÃ©es
 	 * @param w largeur
 	 * @param h hauteur
 	 * @param alpha angle en radian
@@ -87,13 +87,13 @@ public class Bullet {
 	 * Effectue les actions de la balle
 	 */
 	public void actions(double delta) {
-		// gère l'avancé
+		// gÃ¨re l'avancÃ©
 		oldX = x;
 		oldY = y;
 		x += vX*delta;
 		y += vY*delta;
 		
-		// gère les collisions avec les cubes
+		// gÃ¨re les collisions avec les cubes
 		if (room.isXInCubes((int) (x/UsefulTh.cubeW)) && room.isYInCubes((int) (y/UsefulTh.cubeH))) {
 			if (room.cubes[(int) (y/UsefulTh.cubeH)][(int) (x/UsefulTh.cubeW)] != null) {
 				room.cubes[(int) (y/UsefulTh.cubeH)][(int) (x/UsefulTh.cubeW)].contact(this);
@@ -102,14 +102,14 @@ public class Bullet {
 			noMoreReasonToBe = true;
 		}
 		
-		// gère le fait de transpercer des gens
+		// gÃ¨re le fait de transpercer des gens
 		contact(shooter.room.me);
 		for (int i = 0; i < room.enemies.size(); i++) {
 			contact(room.enemies.get(i));
 			if (noMoreReasonToBe) break;
 		}
 		
-		// gère l'émision de particules en cas de coup critique
+		// gÃ¨re l'Ã©mision de particules en cas de coup critique
 		//if (crit && UsefulTh.rand.nextInt(3) == 0) {
 		if (crit && UsefulTh.rand.nextDouble() < ((double)1/3)*delta) {
 			double pX = x;
@@ -121,15 +121,15 @@ public class Bullet {
 	}
 	
 	/**
-	 * check si il y à collision avec {@code e}, si oui
+	 * check si il y Ã  collision avec {@code e}, si oui
 	 * {@code de} prend des dommage et la balle disparait
 	 * 
-	 * @param e l'entité ou on check si y'a collision
+	 * @param e l'entitÃ© ou on check si y'a collision
 	 */
 	public void contact(Entity e) {
 		if (e.clan != shooter.clan && e != safeEnemy) {
 			if (e.x+e.w > x && e.x < x
-				&& e.y+e.h > y && e.y < y) { // touché
+				&& e.y+e.h > y && e.y < y) { // touchÃ©
 				boolean canHit = true; // ce boolean sert pour les shieldMan
 				if (e.type == Entity.SHIELD_MAN_TYPE) {
 					Enemy en = (Enemy) e;
@@ -190,20 +190,20 @@ public class Bullet {
 	}
 	
 	/**
-	 * check si il y à collisison avec {@code b}, si oui
+	 * check si il y Ã  collisison avec {@code b}, si oui
 	 * les deux balles disparaissent
 	 * 
 	 * @param b balle ou on check si y'a collisison
 	 */
 	public void contact(Bullet b) {
 		if (b.shooter != shooter) {
-			// on récupère la plus pettite dimension
+			// on rÃ©cupÃ¨re la plus pettite dimension
 			// des balle entre width et height
 			int w1 = (w<h? w : h);
 			int w2 = (b.w<b.h? b.w : b.h);
 			
 			if (x+w1/2 > b.x-w2/2 && x-w1/2 < b.x+w2/2
-				&& y+w1/2 > b.y-w2/2 && y-w1/2 < b.y+w2) { // touché
+				&& y+w1/2 > b.y-w2/2 && y-w1/2 < b.y+w2) { // touchÃ©
 				destroy();
 				b.destroy();
 			}

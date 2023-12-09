@@ -6,16 +6,16 @@ import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.Room;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  */
 
 /**
- * code une créature noir que te frappe et tire
- * à petite cadance
+ * code une crÃ©ature noir que te frappe et tire
+ * Ã  petite cadance
  * <p>
- * Classe créée le 16/08/2022
+ * Classe crÃ©Ã©e le 16/08/2022
  * 
  * @author Samuel Vedel
  *
@@ -63,7 +63,7 @@ public class DarkGuy extends Enemy {
 		
 		actionToWalk(delta);
 		
-		// gère l'animation de marche
+		// gÃ¨re l'animation de marche
 		if (tTex >= vTex) {
 			if (direction > 0) {
 				iTex++;

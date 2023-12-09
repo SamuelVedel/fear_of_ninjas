@@ -10,7 +10,7 @@ import fr.SamuelVedel.Play.Room;
  */
 
 /**
- * Class créée le 17/08/2023
+ * Class crÃ©Ã©e le 17/08/2023
  * 
  * @author samue
  *

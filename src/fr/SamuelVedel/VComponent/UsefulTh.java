@@ -11,7 +11,7 @@ public abstract class UsefulTh {
 	 * Retourne la largeur d'un texte
 	 * 
 	 * @param text texte en question
-	 * @param g2d <code>Graphics2D</code> qui sert à connaitre le <code>Font</code> à étudier
+	 * @param g2d <code>Graphics2D</code> qui sert Ã  connaitre le <code>Font</code> Ã  Ã©tudier
 	 * @return la largeur du texte
 	 */
 	protected static int getTextW(String text, Graphics2D g2d) {
@@ -21,14 +21,14 @@ public abstract class UsefulTh {
 	}
 	
 	/**
-	 * <p>Retourne la hauteur d'un texte, mais à un décalge par rapport à la réalité <br>
-	 * il faut avec la police Arial enlevé la taille de la police*20/50.</p>
+	 * <p>Retourne la hauteur d'un texte, mais Ã  un dÃ©calge par rapport Ã  la rÃ©alitÃ© <br>
+	 * il faut avec la police Arial enlevÃ© la taille de la police*20/50.</p>
 	 * 
 	 * <p>J'aimerais bien faire des test pour plein de police histoie de tout avoir
 	 * facilement</p>
 	 * 
 	 * @param text texte en question
-	 * @param g2d <code>Graphics2D</code> qui sert à connaitre le <code>Font</code> à étudier
+	 * @param g2d <code>Graphics2D</code> qui sert Ã  connaitre le <code>Font</code> Ã  Ã©tudier
 	 * @return la hauteur du texte
 	 */
 	protected static int getTextH(String text, Graphics2D g2d) {

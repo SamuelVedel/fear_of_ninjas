@@ -19,7 +19,7 @@ public class VNumberWriter extends VComponent {
 	
 	private int t = 0;
 	/**
-	 * temps entre l'apparition et la dispatition de la barre d'écriture
+	 * temps entre l'apparition et la dispatition de la barre d'Ã©criture
 	 */
 	private int dt = 15;
 	

@@ -9,16 +9,16 @@ import fr.SamuelVedel.Play.Room;
 import fr.SamuelVedel.Play.Particle.ClassicParticle;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  * 
  */
 
 /**
- * Bombes utilisé par le bombardier
+ * Bombes utilisÃ© par le bombardier
  * <p>
- * Class créée le 16/01/2023
+ * Class crÃ©Ã©e le 16/01/2023
  * 
  * @author Samuel Vedel
  * @see Bomber
@@ -83,7 +83,7 @@ public class Bomb extends Enemy {
 			}
 		}
 		
-		// collision avec les énemies
+		// collision avec les Ã©nemies
 		for (int i = room.enemies.size()-1; i >= 0; i--) {
 			Enemy en = room.enemies.get(i);
 			if (x+w > en.x && x < en.x+en.w

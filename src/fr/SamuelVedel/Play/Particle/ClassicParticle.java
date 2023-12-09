@@ -22,11 +22,11 @@ public class ClassicParticle extends Particle {
 	 * Initialise la particule
 	 * 
 	 * @param x abscisses de la particule
-	 * @param y ordoonées de la particule
+	 * @param y ordoonÃ©es de la particule
 	 * @param w largeur de la particule
 	 * @param h hauteur de la particule
 	 * @param vX vitesse des abscisses de la particule
-	 * @param vY vitesse des ordonnées de la particule
+	 * @param vY vitesse des ordonnÃ©es de la particule
 	 * @param chTex
 	 */
 	public ClassicParticle(double x, double y, int w, int h, double vX, double vY, String chTex) {
@@ -50,12 +50,12 @@ public class ClassicParticle extends Particle {
 	 */
 	@Override
 	public void action(double delta) {
-		// gère le déplacement
+		// gÃ¨re le dÃ©placement
 		x += vX*delta;
 		y += vY*delta;
 		vY += aY*delta;
 		
-		// gère le rétrécissement
+		// gÃ¨re le rÃ©trÃ©cissement
 //		if (tNarrowing >= narrowing) {
 			w *= Math.pow(0.75, 0.1*delta);
 			h *= Math.pow(0.75, 0.1*delta);

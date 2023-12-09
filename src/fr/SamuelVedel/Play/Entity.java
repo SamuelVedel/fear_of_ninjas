@@ -14,19 +14,19 @@ import fr.SamuelVedel.Play.Enemy.Turret;
 import fr.SamuelVedel.Play.Particle.ClassicParticle;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  */
 
 /**
- * Class mère de toute les entité vivante du jeux.
+ * Class mÃ¨re de toute les entitÃ© vivante du jeux.
  * <p>
- * {@code regeneration()} doit être appeler avec les action
- * des Class qui en hérite, {@code collisionWithCube()} aussi,
+ * {@code regeneration()} doit Ãªtre appeler avec les action
+ * des Class qui en hÃ©rite, {@code collisionWithCube()} aussi,
  * et aussi un petit {@code if (life <= 0) die();}
  * <p>
- * Class créée le 17/06/2022
+ * Class crÃ©Ã©e le 17/06/2022
  * 
  * @author Samuel Vedel
  *
@@ -34,7 +34,7 @@ import fr.SamuelVedel.Play.Particle.ClassicParticle;
 public abstract class Entity {
 	
 	public boolean alive = true;
-	/** indique si l'entité a fait pop une âme en mourrant */
+	/** indique si l'entitÃ© a fait pop une Ã¢me en mourrant */
 	public boolean diedWithASoul = false;
 	
 	protected boolean canDieWithASoul = true;
@@ -85,8 +85,8 @@ public abstract class Entity {
 	public int maxLife = 1;
 	public double tRegen = 0;
 	/**
-	 * temps necessaire pour regagner un pv en 60ème de seconde <br>
-	 * si{@code  = 0} : pas de régén.
+	 * temps necessaire pour regagner un pv en 60Ã¨me de seconde <br>
+	 * si{@code  = 0} : pas de rÃ©gÃ©n.
 	 */
 	protected int regen = 0;
 	
@@ -94,9 +94,9 @@ public abstract class Entity {
 	protected int bulletH = UsefulTh.pixelH;
 	protected int bulletV = 7;
 	protected int bulletDamage = 10;
-	/** décompte de temps qui sert pour tirer */
+	/** dÃ©compte de temps qui sert pour tirer */
 	protected double tShoot;
-	/** temps entre deux tire en 60ème de seconde */
+	/** temps entre deux tire en 60Ã¨me de seconde */
 	protected int cadence;
 	public int bounce = 0;
 	
@@ -108,7 +108,7 @@ public abstract class Entity {
 	public int critChance = 1;
 	
 	/**
-	 * sert à savoir si on viens de toucher
+	 * sert Ã  savoir si on viens de toucher
 	 * un trampoline ou si avant on a toucher
 	 * un autre sol pour savoir comment faire
 	 * rebondir
@@ -142,11 +142,11 @@ public abstract class Entity {
 	}
 	
 	/**
-	 * Gère les collisions avec les bords et les cubes
+	 * GÃ¨re les collisions avec les bords et les cubes
 	 * <p>
 	 * A appeller avec les actions
 	 * 
-	 * @return si il y à un contact avec un cube
+	 * @return si il y Ã  un contact avec un cube
 	 */
 	protected boolean collision() {
 		// collision avec les bords
@@ -169,12 +169,12 @@ public abstract class Entity {
 	}
 	
 	/**
-	 * Gère la régénération
+	 * GÃ¨re la rÃ©gÃ©nÃ©ration
 	 * <p>
 	 * A appeller avec les actions
 	 */
 	protected void regeneration(double delta) {
-		// gère la régénération
+		// gÃ¨re la rÃ©gÃ©nÃ©ration
 		if (regen != 0 && tRegen >= regen) {
 			life++;
 			if (life > maxLife) life = maxLife;
@@ -195,7 +195,7 @@ public abstract class Entity {
 	 */
 	public void takeDammage(int dammage, Entity e) {
 		if (life > 0) { // evite de mourir plusieurs fois
-			// fait les dégats
+			// fait les dÃ©gats
 			int x = powers[Power.shield.id]/*-e.powers[Power.strength.num]*/;
 			if(x >= 0) {
 				dammage *= Math.pow(0.8, x);
@@ -258,7 +258,7 @@ public abstract class Entity {
 			}
 		}
 		
-		// il y à seulement l'ajout de pouvoir au tourelle
+		// il y Ã  seulement l'ajout de pouvoir au tourelle
 		// pour moi dans la classe Me
 		// et de bombe aussi
 		// et normalement de bulletV sur bombe
@@ -273,7 +273,7 @@ public abstract class Entity {
 //		} else if (pow == Power.bulletSpeed) {
 //			bulletV -= 1;
 //		} else if (pow == Power.regen) {
-//			// doit pas très bien marché
+//			// doit pas trÃ¨s bien marchÃ©
 //			regen /= 0.8;
 //			if (regen >= 60) regen = 0;
 //		} else if (pow == Power.moreLife) {
@@ -340,11 +340,11 @@ public abstract class Entity {
 //	public abstract boolean lookToTheRight();
 	
 	/**
-	 * Affiche la barre de vie, centré au dessus
-	 * de la tête de l'entité et placé à 30% de 
+	 * Affiche la barre de vie, centrÃ© au dessus
+	 * de la tÃªte de l'entitÃ© et placÃ© Ã  30% de 
 	 * la hauteur de la barre au dessus de la
-	 * tête de l'entité, et une bordure d'un pixel.
-	 * Avec une largeur supérieur de 2 pixels à
+	 * tÃªte de l'entitÃ©, et une bordure d'un pixel.
+	 * Avec une largeur supÃ©rieur de 2 pixels Ã 
 	 * celle d'un cube et une hauteur de 3 pixels.
 	 * 
 	 * @param g2d {@code Graphics2D} sur lequel il dessine
@@ -354,10 +354,10 @@ public abstract class Entity {
 	}
 	
 	/**
-	 * Affiche la barre de vie, centré au dessus
-	 * de la tête de l'entité et placé à 30% de 
+	 * Affiche la barre de vie, centrÃ© au dessus
+	 * de la tÃªte de l'entitÃ© et placÃ© Ã  30% de 
 	 * la hauteur de la barre au dessus de la
-	 * tête de l'entité, et une bordure d'un pixel.
+	 * tÃªte de l'entitÃ©, et une bordure d'un pixel.
 	 * 
 	 * @param lW largeur de la barre de vie
 	 * @param lH hauteur de la barre de vie
@@ -371,7 +371,7 @@ public abstract class Entity {
 	 * Affiche la barre de vie.
 	 * 
 	 * @param lX abscisses de la barre de vie
-	 * @param lY ordonnées de la barre de vie
+	 * @param lY ordonnÃ©es de la barre de vie
 	 * @param lW largeur de la barre de vie
 	 * @param lH hauteur de la barre de vie
 	 * @param border taille de la bordure

@@ -8,7 +8,7 @@ import fr.SamuelVedel.Play.Particle.ClassicParticle;
 
 /**
  * 
- * Class créée le 11/02/2023
+ * Class crÃ©Ã©e le 11/02/2023
  * 
  * @author Samuel Vedel
  *
@@ -16,8 +16,8 @@ import fr.SamuelVedel.Play.Particle.ClassicParticle;
 public class Poison extends Debuff{
 	
 	/** 
-	 * pourcentage de la vie max de l'énemie
-	 * que le poinson lui enlève
+	 * pourcentage de la vie max de l'Ã©nemie
+	 * que le poinson lui enlÃ¨ve
 	 */
 //	private int perDammage;
 	

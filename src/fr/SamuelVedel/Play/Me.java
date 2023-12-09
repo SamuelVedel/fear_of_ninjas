@@ -10,7 +10,7 @@ import fr.SamuelVedel.Play.AddSkill.BombSkill;
 import fr.SamuelVedel.Play.Enemy.Enemy;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  */
@@ -18,7 +18,7 @@ import fr.SamuelVedel.Play.Enemy.Enemy;
 /**
  * Class du personnage jouable
  * <p>
- * Class créée le 17/06/2022
+ * Class crÃ©Ã©e le 17/06/2022
  * 
  * @author Samuel Vedel
  *
@@ -88,15 +88,15 @@ public class Me extends Entity {
 	}
 	
 	/**
-	 * initialise les différente textures qui servirons à animer
-	 * le preso en remplissant {@code textures} des différentes textures
+	 * initialise les diffÃ©rente textures qui servirons Ã  animer
+	 * le preso en remplissant {@code textures} des diffÃ©rentes textures
 	 * que peut prendre le personnage
 	 * <p>
 	 * <ul>
 	 * en fonction des indices :
-	 * <li>0 : bouge pas regarde à droite</li>
+	 * <li>0 : bouge pas regarde Ã  droite</li>
 	 * <li>1-2 : marche vers la droite</li>
-	 * <li>3 : bouge pas regarde à gauche</li>
+	 * <li>3 : bouge pas regarde Ã  gauche</li>
 	 * <li>4-5 : marche vers la gauche</li>
 	 * </ul>
 	 */
@@ -117,23 +117,23 @@ public class Me extends Entity {
 		
 		regeneration(delta);
 		
-		// enregistre les ancienne coordonnées
+		// enregistre les ancienne coordonnÃ©es
 		oldX = x;
 		oldY = y;
 		
-		// gère la marche
-		if (rightPress && !leftPress) { // doit aller à droite
+		// gÃ¨re la marche
+		if (rightPress && !leftPress) { // doit aller Ã  droite
 			x += v*delta;
-			// gère l'animation
+			// gÃ¨re l'animation
 			if (tTex > vTex) {
 				iTex++;
 				if (iTex >= textures.length/2) iTex = 1;
 				tTex -= vTex;
 			}
 			tTex += 1*delta;
-		} else if (leftPress && !rightPress) { // doit aller à gauche
+		} else if (leftPress && !rightPress) { // doit aller Ã  gauche
 			x -= v*delta;
-			// gère l'animation
+			// gÃ¨re l'animation
 			if (tTex >= vTex) {
 				iTex++;
 				if (iTex < textures.length/2 || iTex >= textures.length) {
@@ -144,7 +144,7 @@ public class Me extends Entity {
 			tTex += 1*delta;
 		}
 		
-		// gère le saut et la chute
+		// gÃ¨re le saut et la chute
 //		if (vFall == 0) numJump = maxNumJump;
 		if (jumpPress) {
 			if (numJump > 0) {
@@ -156,17 +156,17 @@ public class Me extends Entity {
 		y += vFall*delta;
 		vFall += aFall*delta;
 		
-		// gère les possibles collisions
+		// gÃ¨re les possibles collisions
 		collision();
 		
-		// gère la chute dans le vide
-		if (y > room.height) { // tombé hors de la carte
+		// gÃ¨re la chute dans le vide
+		if (y > room.height) { // tombÃ© hors de la carte
 			life /= 2;
 			x = spawnX;
 			y = spawnY;
 		}
 		
-		// gère le tire
+		// gÃ¨re le tire
 //		canShoot = true;
 		if (canShoot) {
 			if (tShoot >= cadence) {
@@ -225,9 +225,9 @@ public class Me extends Entity {
 	}
 	
 	/**
-	 * gère l'activation des boolean nessesaire au mouvement
+	 * gÃ¨re l'activation des boolean nessesaire au mouvement
 	 * <p>
-	 * à mettre dans le {@code keyPressed(...)} d'un {@code KeyListener}
+	 * Ã  mettre dans le {@code keyPressed(...)} d'un {@code KeyListener}
 	 * 
 	 * @param keyCode touche appuyer
 	 */
@@ -238,11 +238,11 @@ public class Me extends Entity {
 	}
 	
 	/**
-	 * gère la désactivation des boolean nessesaire au mouvement
+	 * gÃ¨re la dÃ©sactivation des boolean nessesaire au mouvement
 	 * <p>
-	 * à mettre dans le {@code keyReleased(...)} d'un {@code KeyListener}
+	 * Ã  mettre dans le {@code keyReleased(...)} d'un {@code KeyListener}
 	 * 
-	 * @param keyCode touche relaché
+	 * @param keyCode touche relachÃ©
 	 */
 	public void stopMove(int keyCode) {
 		if (keyCode == 68) {

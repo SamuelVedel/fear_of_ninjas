@@ -8,7 +8,7 @@ import fr.SamuelVedel.Play.Room;
 import fr.SamuelVedel.Play.Particle.ClassicParticle;
 
 /**
- * Class créée le 14/01/2023
+ * Class crÃ©Ã©e le 14/01/2023
  * 
  * @author Samuel Vedel
  *
@@ -24,7 +24,7 @@ public class Soul extends Enemy {
 	public Soul(double x, double y, Room room) {
 		super(room);
 		type = SOUL_TYPE;
-		name = "âme";
+		name = "Ã¢me";
 		canDieWithASoul = false;
 		initVar();
 		takeEnemiesPowers();
@@ -66,7 +66,7 @@ public class Soul extends Enemy {
 		super.actions(delta);
 		if (y >= room.height) tp();
 		
-		// gère l'animation de marche
+		// gÃ¨re l'animation de marche
 		if (tTex >= vTex) {
 			if (v*Math.cos(alpha) >= 0) {
 				iTex++;
@@ -105,7 +105,7 @@ public class Soul extends Enemy {
 				room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
 			}
 			
-			//téléportation
+			//tÃ©lÃ©portation
 			double theta = 0;
 			double r = 0;
 			for (boolean boo = true; boo;) {

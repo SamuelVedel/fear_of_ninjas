@@ -6,15 +6,15 @@ import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.Room;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  */
 
 /**
- * Ennemie qui invoque des petite tête
+ * Ennemie qui invoque des petite tÃªte
  * <p>
- * Class créée le 24/12/2022 (Veille de Noel) vers 00h20
+ * Class crÃ©Ã©e le 24/12/2022 (Veille de Noel) vers 00h20
  * 
  * @author Samuel Vedel
  *
@@ -68,7 +68,7 @@ public class Summoner extends Enemy {
 		followMe = false;
 		actionToWalk(delta);
 		
-		// gère l'animation de marche
+		// gÃ¨re l'animation de marche
 		if (tTex >= vTex) {
 			if (direction > 0) {
 				iTex++;
@@ -86,7 +86,7 @@ public class Summoner extends Enemy {
 		
 		// attaque
 		punch(delta);
-		// gère l'invocation
+		// gÃ¨re l'invocation
 		if (tShoot >= cadence) {
 			if (CurrentNumOfHead < maxNumOfHead) {
 				double x2;

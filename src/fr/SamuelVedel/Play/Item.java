@@ -6,15 +6,15 @@ import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.Cube.Cube;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  */
 
 /**
- * Code des itemes qui pourrons tombé des énimies dead
+ * Code des itemes qui pourrons tombÃ© des Ã©nimies dead
  * <p>
- * Class créer le 02/12/2022, elle avait était créer plus tôt
+ * Class crÃ©er le 02/12/2022, elle avait Ã©tait crÃ©er plus tÃ´t
  * avec genre 3-5 variable mais vol d'ordi enfaite
  * 
  * @author Samuel Vedel

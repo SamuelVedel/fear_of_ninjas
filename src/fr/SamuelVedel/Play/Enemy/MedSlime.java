@@ -12,7 +12,7 @@ public class MedSlime extends Enemy {
 	private int iTex;
 	
 	/**
-	 * indique si il à déjà était en contact avec
+	 * indique si il Ã  dÃ©jÃ  Ã©tait en contact avec
 	 * un sol dans sa vie
 	 */
 	private boolean groundTouched = false;
@@ -99,7 +99,7 @@ public class MedSlime extends Enemy {
 			}
 		}
 		
-		// gère l'animation de marche
+		// gÃ¨re l'animation de marche
 		if (direction > 0) iTex = 0;
 		else if (direction < 0) iTex = 1;
 		
@@ -115,7 +115,7 @@ public class MedSlime extends Enemy {
 		
 		/* 
 		 * dimension d'un petit slime
-		 * à changer si cette dimension
+		 * Ã  changer si cette dimension
 		 * est modifier
 		 */
 		int lilSW = 8*UsefulTh.pixelW;

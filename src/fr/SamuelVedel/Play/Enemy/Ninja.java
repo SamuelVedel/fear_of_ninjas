@@ -6,7 +6,7 @@ import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.Room;
 
 /**
- * Class créée le 28/08/2022 (très tôt)
+ * Class crÃ©Ã©e le 28/08/2022 (trÃ¨s tÃ´t)
  * 
  * @author Samuel Vedel
  *
@@ -53,7 +53,7 @@ public class Ninja extends Enemy {
 		
 		actionToWalk(delta);
 		
-		// gère l'animation de marche
+		// gÃ¨re l'animation de marche
 		if (tTex >= vTex) {
 			if (direction > 0) {
 				iTex++;
@@ -69,9 +69,9 @@ public class Ninja extends Enemy {
 		}
 		tTex += delta;
 		
-		// gère le suicide
+		// gÃ¨re le suicide
 		if (room.me.x+room.me.w > x && room.me.x < x+w
-			&& room.me.y+room.me.h > y && room.me.y < y+h) { // touché
+			&& room.me.y+room.me.h > y && room.me.y < y+h) { // touchÃ©
 			if (UsefulTh.rand.nextInt(100) < critChance) {
 				room.me.takeDammage(punchDamage*2, this);
 			} else {

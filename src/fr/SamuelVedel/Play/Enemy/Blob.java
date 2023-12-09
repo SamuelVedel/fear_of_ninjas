@@ -8,7 +8,7 @@ import fr.SamuelVedel.Play.Entity;
 import fr.SamuelVedel.Play.Room;
 
 /**
- * Class créée le 28/06/2022 (aussi très tôt)
+ * Class crÃ©Ã©e le 28/06/2022 (aussi trÃ¨s tÃ´t)
  * 
  * @author Samuel Vedel
  *
@@ -51,14 +51,14 @@ public class Blob extends Enemy {
 		actionToFly(delta);
 		
 		if (room.me.x+room.me.w > x && room.me.x < x+w
-			&& room.me.y+room.me.h > y && room.me.y < y+h) { // touché
+			&& room.me.y+room.me.h > y && room.me.y < y+h) { // touchÃ©
 			if (tContact >= maxTContact) die(this);
 			tContact += delta;
 		} else {
 			tContact = 0;
 		}
 		
-		// tire dans une de ses 8 direction aléatoirement
+		// tire dans une de ses 8 direction alÃ©atoirement
 		if (tShoot >= cadence) {
 			double alpha = Math.PI/2+UsefulTh.rand.nextInt(8)*2*Math.PI/8;
 			room.bullets.add(new Bullet(x+w/2-bulletW/2, y+h/2-bulletH/2, alpha, this));
@@ -77,7 +77,7 @@ public class Blob extends Enemy {
 		int nBullet = 8;
 		if (/*room.me.x+room.me.w > x && room.me.x < x+w
 			&& room.me.y+room.me.h > y && room.me.y < y+h*/
-			killer == this) { // touché
+			killer == this) { // touchÃ©
 			nBullet = 4;
 		}
 		

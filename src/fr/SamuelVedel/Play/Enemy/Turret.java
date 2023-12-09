@@ -12,16 +12,16 @@ import fr.SamuelVedel.Play.Room;
 import fr.SamuelVedel.Play.Cube.Cube;
 
 /*  ___
- * (° °)  <(hey, ceci est une tourelle)
+ * (Â° Â°)  <(hey, ceci est une tourelle)
  *  ) (
  * (( ))
  */
 
 /**
- * tourelle qui correspond à la tourelle du pouvoir
- * tourelle fidèle
+ * tourelle qui correspond Ã  la tourelle du pouvoir
+ * tourelle fidÃ¨le
  * <p>
- * Class créée le 21/01/2023 
+ * Class crÃ©Ã©e le 21/01/2023 
  * 
  * @author Samuel Vedel
  *
@@ -32,17 +32,17 @@ public class Turret extends Enemy {
 	private int[][] feetTex = UsefulTh.readTex("textures/enemies/turret/turretFeet.txt");
 	
 	/**
-	 * pourcentage qui définit la façon dont le canon
-	 * est enfoncé dans la tête de la tourelle pour l'animation
+	 * pourcentage qui dÃ©finit la faÃ§on dont le canon
+	 * est enfoncÃ© dans la tÃªte de la tourelle pour l'animation
 	 * de tire :
 	 * <ul>
-	 * <li>si {@code cannonIn = 0} le canon n'est pas dans la tête</li>
+	 * <li>si {@code cannonIn = 0} le canon n'est pas dans la tÃªte</li>
 	 * <li>si {@code cannonIn = 100} la cannon est enfoncer de un pixel dans la tourelle</li>
 	 */
 	private double cannonIn = 0;
 	/** vitesse du canon pour l'animation */
 	private double vCannon = 0;
-	/** accélération du canon pour l'animation */
+	/** accÃ©lÃ©ration du canon pour l'animation */
 	private int aCannon = -15;
 	
 	public Turret(Entity owner, Room room) {
@@ -70,7 +70,7 @@ public class Turret extends Enemy {
 	}
 	
 	protected void spawnToWalk() {
-		// modifié pour qu'il puisse apparaitre près de moi
+		// modifiÃ© pour qu'il puisse apparaitre prÃ¨s de moi
 		for (int iX = 0, iY = 0;; iX = UsefulTh.rand.nextInt(room.cubes[0].length), iY = UsefulTh.rand.nextInt(room.cubes.length)) {
 			if(room.cubes[iY][iX] != null) {
 				Cube c = room.cubes[iY][iX];
@@ -92,7 +92,7 @@ public class Turret extends Enemy {
 //		if (y >= room.height) die(this);
 //		collision();
 		
-		// trouve l'énemies le plus proche
+		// trouve l'Ã©nemies le plus proche
 		Enemy closer = null;
 		double d = -1;
 		for (int i = 0; i < room.enemies.size(); i++) {
@@ -115,13 +115,13 @@ public class Turret extends Enemy {
 			}
 		}
 		
-		// gère l'animation de tire
+		// gÃ¨re l'animation de tire
 		if (cannonIn > 0) {
 			cannonIn += vCannon*delta;
 			vCannon += aCannon*delta;
 		} else if (cannonIn < 0) cannonIn = 0;
 		
-		// tir sur cette énemie
+		// tir sur cette Ã©nemie
 		if (closer != null  && d <= viewDistance) {
 			if (tShoot >= cadence) {
 				room.bullets.add(new Bullet(x+w/2-bulletW/2, y-bulletH/2, alpha, this));
@@ -138,7 +138,7 @@ public class Turret extends Enemy {
 	
 	public void die(Entity killer) {
 		super.die(killer);
-		room.cht.addText("Une tourelle à était cassé par un(e) "+killer.name);
+		room.cht.addText("Une tourelle Ã  Ã©tait cassÃ© par un(e) "+killer.name);
 	}
 	
 	public void display(Graphics2D g2d) {
@@ -150,7 +150,7 @@ public class Turret extends Enemy {
 		// affiche les pieds
 		UsefulTh.displayTex(feetTex, (int)x, (int)y, w, h, play.color, g2d);
 		
-		// affiche la tête
+		// affiche la tÃªte
 		Graphics2D g2d2 = (Graphics2D) g2d.create();
 		g2d2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d2.rotate(alpha, x+w/2, y);

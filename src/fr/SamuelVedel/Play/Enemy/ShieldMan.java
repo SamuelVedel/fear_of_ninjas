@@ -54,7 +54,7 @@ public class ShieldMan extends Enemy {
 		followMe = false;
 		actionToWalk(delta);
 		
-		// gère l'animation de marche
+		// gÃ¨re l'animation de marche
 		if (tTex >= vTex) {
 			if (direction > 0) {
 				iTex++;

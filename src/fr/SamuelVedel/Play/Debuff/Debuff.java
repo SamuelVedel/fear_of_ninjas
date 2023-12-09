@@ -7,9 +7,9 @@ public abstract class Debuff {
 	
 	protected Room room;
 	
-	/** entité qui à donner le débuff */
+	/** entitÃ© qui Ã  donner le dÃ©buff */
 	protected Entity giver;
-	/** entité qui subit le débuff */
+	/** entitÃ© qui subit le dÃ©buff */
 	protected Entity victim;
 	
 	protected double t = 0;

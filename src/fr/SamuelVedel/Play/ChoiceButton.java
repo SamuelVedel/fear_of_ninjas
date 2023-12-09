@@ -7,7 +7,7 @@ import fr.SamuelVedel.VComponent.VButton;
 
 /**
  * 
- * Class créée le 22/08/2022
+ * Class crÃ©Ã©e le 22/08/2022
  * 
  * @author Samuel Vedel
  *

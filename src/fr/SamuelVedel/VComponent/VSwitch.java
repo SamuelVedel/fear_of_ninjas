@@ -17,8 +17,8 @@ public class VSwitch extends VAbstractButton {
 	
 	private double roundD = 0.7;
 	/**
-	 * Pourcentage entre la position le rond est à gauche
-	 * et le rond est à droite
+	 * Pourcentage entre la position le rond est Ã  gauche
+	 * et le rond est Ã  droite
 	 */
 	private int perOfRoundX = 0;
 	private int roundV = 15;

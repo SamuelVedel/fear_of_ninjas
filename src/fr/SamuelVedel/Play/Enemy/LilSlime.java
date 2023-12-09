@@ -6,14 +6,14 @@ import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.Room;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  * 
  */
 
 /**
- * class créée le 24/02/2023
+ * class crÃ©Ã©e le 24/02/2023
  * 
  * @author Samuel Vedel
  *
@@ -24,7 +24,7 @@ public class LilSlime extends Enemy {
 	private int iTex;
 	
 	/**
-	 * indique si il à déjà était en contact avec
+	 * indique si il Ã  dÃ©jÃ  Ã©tait en contact avec
 	 * un sol dans sa vie
 	 */
 	private boolean groundTouched = false;
@@ -105,7 +105,7 @@ public class LilSlime extends Enemy {
 			}
 		}
 		
-		// gère l'animation de marche
+		// gÃ¨re l'animation de marche
 		if (direction > 0) iTex = 0;
 		else if (direction < 0) iTex = 1;
 		

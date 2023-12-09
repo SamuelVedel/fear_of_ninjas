@@ -9,24 +9,24 @@ import fr.SamuelVedel.Play.Entity;
 import fr.SamuelVedel.Play.Item;
 
 /*  ___
- * (° °)
+ * (Â° Â°)
  *  ) (
  * (( ))
  */
 
 /**
- * Class correspondant à tout les cube qui servirons à constuire les salles.
+ * Class correspondant Ã  tout les cube qui servirons Ã  constuire les salles.
  * <p>
- * Class créée le 17/06/2022
+ * Class crÃ©Ã©e le 17/06/2022
  * 
  * @author Samuel Vedel
  *
  */
 public class Cube {
 	/*
-	 * on définit les différent type de capacité.
-	 * bordn est pour les différnet type de bordure
-	 * le numéro correspond si on regarde le pavé numérique
+	 * on dÃ©finit les diffÃ©rent type de capacitÃ©.
+	 * bordn est pour les diffÃ©rnet type de bordure
+	 * le numÃ©ro correspond si on regarde le pavÃ© numÃ©rique
 	 * au type de collision que cela implique.
 	 */
 	public static final int NOTHING = 0;
@@ -62,10 +62,10 @@ public class Cube {
 	 * initialise le cube
 	 * 
 	 * @param x les abscisses
-	 * @param y les ordonnées
+	 * @param y les ordonnÃ©es
 	 * @param w la longeur
 	 * @param h la hauteur
-	 * @param chTex le chemin de la texture à partir de textures\cube\
+	 * @param chTex le chemin de la texture Ã  partir de textures\cube\
 	 */
 	public Cube(int x, int y, int w, int h, String chTex) {
 		this(x, y, w, h, NOTHING, chTex);
@@ -75,8 +75,8 @@ public class Cube {
 	 * initialise le cube
 	 * 
 	 * @param x les abscisses
-	 * @param y les ordonnées
-	 * @param chTex le chemin de la texture à partir de textures\cube\
+	 * @param y les ordonnÃ©es
+	 * @param chTex le chemin de la texture Ã  partir de textures\cube\
 	 */
 	public Cube(int x, int y, String chTex) {
 		this(x, y, UsefulTh.cubeW, UsefulTh.cubeH, chTex);
@@ -86,11 +86,11 @@ public class Cube {
 	 * initialise le cube
 	 * 
 	 * @param x les abscisses
-	 * @param y les ordonnées
+	 * @param y les ordonnÃ©es
 	 * @param w la longeur
 	 * @param h la hauteur
-	 * @param capacity la capacité du cube
-	 * @param chTex le chemin de la texture à partir de textures\cube\
+	 * @param capacity la capacitÃ© du cube
+	 * @param chTex le chemin de la texture Ã  partir de textures\cube\
 	 */
 	protected Cube(int x, int y, int w, int h, int type, String chTex) {
 		this.x = x;
@@ -114,13 +114,13 @@ public class Cube {
 	}
 	
 	/**
-	 * Gère les collision avec les objet de class {@code Entity}
+	 * GÃ¨re les collision avec les objet de class {@code Entity}
 	 * 
-	 * @param e entité sur laquel on check les collision
+	 * @param e entitÃ© sur laquel on check les collision
 	 */
 	public int contact(Entity e) {
 		if (e.x+e.w > x && e.x < x+w
-			&& e.y+e.h > y && e.y < y+h) { // touché
+			&& e.y+e.h > y && e.y < y+h) { // touchÃ©
 			return touched(e);
 		}
 		return NO_CONTACT;
@@ -131,21 +131,21 @@ public class Cube {
 	}
 	
 	/**
-	 * Gère les collisiosn avec les objet de class {@Bullet}
+	 * GÃ¨re les collisiosn avec les objet de class {@Bullet}
 	 * 
 	 * @param b balle sur laquel on check les collision
 	 */
 	public void contact(Bullet b) {
 		if (b.x > x && b.x < x+w
-			&& b.y > y && b.y < y+h) { // touché
+			&& b.y > y && b.y < y+h) { // touchÃ©
 			touched(b);
 		}
 	}
 	
 	protected void touched(Bullet b) {
-		// avant quand les balles pouvait passer à travers cetain blocs comme le prso
+		// avant quand les balles pouvait passer Ã  travers cetain blocs comme le prso
 //		if ((capacity == Cube.BORD1 || capacity == Cube.BORD4 || capacity == Cube.BORD7)
-//			 && b.oldX <= x) { // choc à gauche
+//			 && b.oldX <= x) { // choc Ã  gauche
 //			if (b.bounce <= 0) b.destroy();
 //			else b.vX *= -1;
 //			b.bounce --;
@@ -155,7 +155,7 @@ public class Cube {
 //			else b.vY *= -1;
 //			b.bounce --;
 //		} else if ((capacity == Cube.BORD9 || capacity == Cube.BORD6 || capacity == Cube.BORD3)
-//					&& b.oldX >= x+w) { // choc à droite
+//					&& b.oldX >= x+w) { // choc Ã  droite
 //			if (b.bounce <= 0) b.destroy();
 //			else b.vX *= -1;
 //			b.bounce --;
@@ -166,7 +166,7 @@ public class Cube {
 //			b.bounce --;
 //		}
 		
-		// maintenant les balles ne passent à travers aucun blocs (ou presque)
+		// maintenant les balles ne passent Ã  travers aucun blocs (ou presque)
 		// sauf les switch off
 		if (b.bounce <= 0) b.destroy();
 		else {
@@ -182,7 +182,7 @@ public class Cube {
 	public int contact(Item it) {
 		if (type != Cube.NOTHING
 			&& it.x+it.w > x && it.x < x+w
-			&& it.y+it.h > y && it.y < y+h) { // touché
+			&& it.y+it.h > y && it.y < y+h) { // touchÃ©
 			return touched(it);
 		}
 		return NO_CONTACT;

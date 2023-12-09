@@ -4,7 +4,7 @@ import fr.SamuelVedel.Menu.Menu;
 import fr.SamuelVedel.Play.Play;
 
 /*  ___
- * (° °)
+ * (* *)
  *  ) (
  * (( ))
  */
@@ -26,32 +26,32 @@ import fr.SamuelVedel.Play.Play;
  * </style>
  * 
  * <p>
- * le rôle de cette class est de lancer le progamme
+ * le role de cette class est de lancer le progamme
  * </p>
  * <p>
- * code commencé le <strong>17/06/2022</strong>
+ * code commence le <strong>17/06/2022</strong>
  * </p>
  * 
  * <ul>
  * <strong>To do list :</strong>
  * <br>---- facile  ----
  * <li>gerer la diff de fps pour le snakeBoss</li>
- * <li>ajouter un pouvoir sur les dégats</li>
+ * <li>ajouter un pouvoir sur les degats</li>
  * <li>mettre un pouvoir de dash</li>
- * <li>mettre un timer de non mouvement pour les énemies</li>
+ * <li>mettre un timer de non mouvement pour les enemies</li>
  * <li>ajouter plein de commentaire</li>
- * ---- faudra attendre pour ça ----
- * <li>peut-être ajouter un timer</li>
- * <li>peut-être ajouter les stats en fin de partie</li>
+ * ---- faudra attendre pour ca ----
+ * <li>peut-etre ajouter un timer</li>
+ * <li>peut-etre ajouter les stats en fin de partie</li>
  * <li>pouvoir changer les touches</li>
- * <li>ajouter un mode où faut attendre</li>
+ * <li>ajouter un mode ou faut attendre</li>
  * <li>un mode pause qui soit un peu plus cali</li>
  * <li>option de la partie</li>
- * <li>ajouter des crédits</li>
+ * <li>ajouter des credits</li>
  * </ul>
  * 
  * <ul>
- * <strong>Ajout à essayer :</strong>
+ * <strong>Ajout a essayer :</strong>
  * <li>le pouvoir sur la cadence</li>
  * </ul>
  * 

@@ -74,7 +74,7 @@ public class BigSlime extends Enemy {
 		super.die(killer);
 		
 		// dimension d'un moyen slime
-		// à changer si cette dimension
+		// Ã  changer si cette dimension
 		// est modifier
 		int medSW = 8*UsefulTh.pixelW;
 		int medSH = 5*UsefulTh.pixelH;
