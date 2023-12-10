@@ -53,7 +53,7 @@ public class BigSlime extends Enemy {
 	}
 	
 	private void initTextures() {
-		textures = UsefulTh.readTex("textures/enemies/slime/bigSlime.txt");
+		textures = UsefulTh.readTex("textures/enemies/slime/bigSlime.texture");
 	}
 	
 	@Override

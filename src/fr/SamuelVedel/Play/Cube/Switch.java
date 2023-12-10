@@ -15,12 +15,12 @@ public class Switch extends Border {
 	private boolean active;
 	
 	private Switch(int x, int y, int w, int h, boolean on) {
-		super(x, y, w, h, BORD, "switchOn.txt");
+		super(x, y, w, h, BORD, "switchOn.texture");
 		type = SWITCH;
 		hasAction = true;
 		active = on;
 		
-		tex2 = UsefulTh.readTex("textures/cube/switchOff.txt");
+		tex2 = UsefulTh.readTex("textures/cube/switchOff.texture");
 	}
 	
 	public Switch(int x, int y, boolean on) {

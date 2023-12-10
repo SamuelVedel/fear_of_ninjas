@@ -48,7 +48,7 @@ public class FlyingHead extends Enemy {
 	}
 	
 	private void initTextures() {
-		textures[0] = UsefulTh.readTex("textures/enemies/flyingHead/flyingHead.txt");
+		textures[0] = UsefulTh.readTex("textures/enemies/flyingHead/flyingHead.texture");
 		textures[1] = UsefulTh.reverseXTex(textures[0]);
 	}
 	

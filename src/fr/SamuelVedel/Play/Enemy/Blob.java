@@ -41,7 +41,7 @@ public class Blob extends Enemy {
 	}
 	
 	private void initTexture() {
-		texture = UsefulTh.readTex("textures/enemies/blob/blob.txt");
+		texture = UsefulTh.readTex("textures/enemies/blob/blob.texture");
 	}
 	
 	@Override

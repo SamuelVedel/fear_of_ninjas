@@ -59,7 +59,7 @@ public class LilSnake extends Enemy {
 	
 	private void initTextures() {
 		for (int i = 0; i < textures.length/2; i++) {
-			textures[textures.length/2+i] = UsefulTh.readTex("textures/enemies/lilSnake/lilSnake"+i+".txt");
+			textures[textures.length/2+i] = UsefulTh.readTex("textures/enemies/lilSnake/lilSnake"+i+".texture");
 		}
 		for (int i = 0; i < textures.length/2; i++) {
 			textures[i] = UsefulTh.reverseXTex(textures[i+textures.length/2]);

@@ -56,7 +56,7 @@ public class LilHead extends Enemy {
 	}
 	
 	private void initTextures() {
-		textures[0] = UsefulTh.readTex("textures/enemies/lilHead/lilHead.txt");
+		textures[0] = UsefulTh.readTex("textures/enemies/lilHead/lilHead.texture");
 		textures[1] = UsefulTh.reverseXTex(textures[0]);
 	}
 	

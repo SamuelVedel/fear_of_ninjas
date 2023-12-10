@@ -27,7 +27,7 @@ import fr.SamuelVedel.Play.Particle.ClassicParticle;
 public class Bomb extends Enemy {
 	private Entity shooter;
 	
-	private int[][] tex = UsefulTh.readTex("textures/enemies/bomb/bomb.txt");
+	private int[][] tex = UsefulTh.readTex("textures/enemies/bomb/bomb.texture");
 	
 	private boolean crit = false;
 	

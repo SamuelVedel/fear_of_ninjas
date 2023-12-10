@@ -55,7 +55,7 @@ public abstract class UsefulTh {
 	/** hauteur d'écran pour laquelle le zoom est nul */
 	public static final int heightForNoScale = 19*cubeH;
 	
-	public static int[][] cursor = readMat("textures/cursor/cursor1.txt");
+	public static int[][] cursor = readMat("textures/cursor/cursor1.texture");
 	public static int cursorW = 3*pixelW;
 	public static int cursorH = 3*pixelH;
 	
@@ -65,7 +65,7 @@ public abstract class UsefulTh {
 	private static HashMap<int[][], int[][]> reverseXTexs = new HashMap<>();
 	
 	/**
-	 * lit des txt contenant des matrices
+	 * lit des fichiers contenant des matrices
 	 * et les renvoit sous forme de matrice
 	 * 
 	 * @param file le chemin de la matrice à partir

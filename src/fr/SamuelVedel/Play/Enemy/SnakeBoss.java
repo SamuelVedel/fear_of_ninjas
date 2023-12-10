@@ -15,7 +15,7 @@ import fr.SamuelVedel.Play.Particle.ClassicParticle;
 public class SnakeBoss extends Enemy {
 	
 	private int[][][] textures = new int[4][][];
-	private int[][] appleTex = UsefulTh.readMat("textures/enemies/snakeBoss/apple.txt");
+	private int[][] appleTex = UsefulTh.readMat("textures/enemies/snakeBoss/apple.texture");
 	
 	private final int leftDirection = 0;
 	private final int upDirection = 1;
@@ -48,7 +48,7 @@ public class SnakeBoss extends Enemy {
 	}
 	
 	private void initTex() {
-		textures[0] = UsefulTh.readMat("textures/enemies/snakeBoss/snakeHead.txt");
+		textures[0] = UsefulTh.readMat("textures/enemies/snakeBoss/snakeHead.texture");
 		for (int i = 1; i < textures.length; i++) {
 			textures[i] = UsefulTh.rotateMat(textures[i-1]);
 		}

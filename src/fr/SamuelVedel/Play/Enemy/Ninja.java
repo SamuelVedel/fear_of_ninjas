@@ -40,7 +40,7 @@ public class Ninja extends Enemy {
 	
 	private void initTextures() {
 		for (int i = 0; i < textures.length/2; i++) {
-			textures[i] = UsefulTh.readTex("textures/enemies/ninja/ninja"+i+".txt");
+			textures[i] = UsefulTh.readTex("textures/enemies/ninja/ninja"+i+".texture");
 		}
 		for (int i = textures.length/2; i < textures.length; i++) {
 			textures[i] = UsefulTh.reverseXTex(textures[i-3]);

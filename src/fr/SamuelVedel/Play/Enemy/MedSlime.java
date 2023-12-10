@@ -60,7 +60,7 @@ public class MedSlime extends Enemy {
 	}
 	
 	private void initTextures() {
-		textures[0] = UsefulTh.readTex("textures/enemies/slime/medSlime.txt");
+		textures[0] = UsefulTh.readTex("textures/enemies/slime/medSlime.texture");
 		textures[1] = UsefulTh.reverseXTex(textures[0]);
 	}
 	

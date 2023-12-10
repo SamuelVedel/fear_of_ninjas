@@ -13,9 +13,9 @@ public class Bump extends Cube {
 	private boolean active = true;;
 	
 	private Bump(int x, int y, int w, int h) {
-		super(x, y, w, h, BUMP, "bump0.txt");
+		super(x, y, w, h, BUMP, "bump0.texture");
 		hasAction = true;
-		tex2 = UsefulTh.readTex("textures/cube/bump1.txt");
+		tex2 = UsefulTh.readTex("textures/cube/bump1.texture");
 	}
 	
 	public Bump(int x, int y) {

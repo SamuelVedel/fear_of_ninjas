@@ -43,7 +43,7 @@ public class Bunri extends Enemy {
 	
 	private void initTextures() {
 		for (int i = 0; i < textures.length/2; i++) {
-			textures[i] = UsefulTh.readMat("textures/enemies/Bunri/Bunri"+i+".txt");
+			textures[i] = UsefulTh.readMat("textures/enemies/Bunri/Bunri"+i+".texture");
 		}
 		for (int i = textures.length/2; i < textures.length; i++) {
 			textures[i] = UsefulTh.reverseXMat(textures[i-3]);

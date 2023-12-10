@@ -54,7 +54,7 @@ public class Soul extends Enemy {
 	
 	private void initTextures() {
 		for (int i = 0; i < textures.length/2; i++) {
-			textures[i] = UsefulTh.readTex("textures/enemies/soul/soul"+i+".txt");
+			textures[i] = UsefulTh.readTex("textures/enemies/soul/soul"+i+".texture");
 		}
 		for (int i = textures.length/2; i < textures.length; i++) {
 			textures[i] = UsefulTh.reverseXTex(textures[3-(i-4)]);

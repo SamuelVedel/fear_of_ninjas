@@ -182,7 +182,7 @@ public class Room {
 	}
 	
 	/**
-	 * Construit la salle à partir d'un .txt
+	 * Construit la salle à partir d'un .room
 	 * qui contient les plans sous forme d'une matrice
 	 * 
 	 * @param fileName chemin de la salle à partir de rooms\
@@ -202,49 +202,49 @@ public class Room {
 					me.y = me.spawnY;
 					break;
 				case 2 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD7, "cube7.txt");
+					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD7, "cube7.texture");
 					break;
 				case 3 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD8, "cube8.txt");
+					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD8, "cube8.texture");
 					break;
 				case 4 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD9, "cube9.txt");
+					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD9, "cube9.texture");
 					break;
 				case 5 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD4, "cube4.txt");
+					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD4, "cube4.texture");
 					break;
 				case 6 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube5.txt");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube5.texture");
 					break;
 				case 7 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD6, "cube6.txt");
+					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD6, "cube6.texture");
 					break;
 				case 8 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD1, "cube1.txt");
+					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD1, "cube1.texture");
 					break;
 				case 9 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD2, "cube2.txt");
+					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD2, "cube2.texture");
 					break;
 				case 10 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD3, "cube3.txt");
+					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD3, "cube3.texture");
 					break;
 				case 11 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube48.txt");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube48.texture");
 					break;
 				case 12 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube24.txt");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube24.texture");
 					break;
 				case 13 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube26.txt");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube26.texture");
 					break;
 				case 14 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube68.txt");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube68.texture");
 					break;
 				case 15 :
 					cubes[iY][iX] = new Bump(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH);
 					break;
 				case 16 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD, "cube.txt");
+					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD, "cube.texture");
 					break;
 				case 17 :
 					cubes[iY][iX] = new Switch(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, true);

@@ -66,7 +66,7 @@ public class LilSlime extends Enemy {
 	}
 	
 	private void initTextures() {
-		textures[0] = UsefulTh.readTex("textures/enemies/slime/lilSlime.txt");
+		textures[0] = UsefulTh.readTex("textures/enemies/slime/lilSlime.texture");
 		textures[1] = UsefulTh.reverseXTex(textures[0]);
 	}
 	

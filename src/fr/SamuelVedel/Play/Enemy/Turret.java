@@ -28,8 +28,8 @@ import fr.SamuelVedel.Play.Cube.Cube;
  */
 public class Turret extends Enemy {
 	
-//	private int[][] headTex = UsefulTh.readTex("textures/enemies/turret/turretHead.txt");
-	private int[][] feetTex = UsefulTh.readTex("textures/enemies/turret/turretFeet.txt");
+//	private int[][] headTex = UsefulTh.readTex("textures/enemies/turret/turretHead.texture");
+	private int[][] feetTex = UsefulTh.readTex("textures/enemies/turret/turretFeet.texture");
 	
 	/**
 	 * pourcentage qui définit la façon dont le canon
