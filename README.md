@@ -112,6 +112,9 @@ cette maj :
  - amélioration du code pour supporter les différences et les fluctuations de fps
    (fps modifiable via la commande setFps)
  - les actions sourie ne marche plus qu'avec le clic gauche
+ - modification de l'extention pour les fichier des texutres et des salles.
+   .txt -> .texture pour les textures
+   .txt -> .room pour les salles
 
 
 si cela vous interesse vous êtes invité à me faire des retours
