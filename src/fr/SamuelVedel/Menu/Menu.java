@@ -121,8 +121,8 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 	}
 	
 	/**
-	 * initialise la deuxiÃ¨me couleur (1ere : noir) qui va composÃ© la salle,
-	 * la couleur ne peut pas Ãªtre trop sombre
+	 * initialise la deuxième couleur (1ere : noir) qui va composé la salle,
+	 * la couleur ne peut pas être trop sombre
 	 */
 	private void initColor() {
 		color = new Color(UsefulTh.rand.nextInt(256), UsefulTh.rand.nextInt(256), UsefulTh.rand.nextInt(256));

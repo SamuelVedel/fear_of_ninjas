@@ -11,15 +11,15 @@ import fr.SamuelVedel.Play.Room;
 import fr.SamuelVedel.Play.Cube.Cube;
 
 /*  ___
- * (Â° Â°)
+ * (° °)
  *  ) (
  * (( ))
  */
 
 /**
- * Class dont vont hÃ©riter tout les Ã©nemies
+ * Class dont vont hériter tout les énemies
  * <p>
- * Class crÃ©Ã©e le 28/06/2022 (vers 2h shhhh)
+ * Class créée le 28/06/2022 (vers 2h shhhh)
  * 
  * @author Samuel Vedel
  *
@@ -27,7 +27,7 @@ import fr.SamuelVedel.Play.Cube.Cube;
 public abstract class Enemy extends Entity {
 	
 	/**
-	 * indique la direction pour les Ã©nemies qui marchent
+	 * indique la direction pour les énemies qui marchent
 	 * <ul>
 	 * <li>{@code 1} : droite</li>
 	 * <li>{@code 0} : bouge pas</li>
@@ -75,7 +75,7 @@ public abstract class Enemy extends Entity {
 			}
 		}
 	}
-	/** prend les amÃ©lioration des Ã©nnemies */
+	/** prend les amélioration des énnemies */
 	protected void takeEnemiesPowers() {
 		for (int i = 0; i < room.enemiesPowers.length; i++) {
 			for (int j = 0; j < room.enemiesPowers[i]; j++) {
@@ -104,7 +104,7 @@ public abstract class Enemy extends Entity {
 	}
 	
 	/**
-	 * action Ã  effectuer Ã  la fin
+	 * action à effectuer à la fin
 	 */
 	protected void endOfActions(double delta) {
 		debuffsActions(delta);
@@ -113,10 +113,10 @@ public abstract class Enemy extends Entity {
 	/**
 	 * actions que vont executer les enemies volant pour voler
 	 * <p>
-	 * Ã  appeler avec les actions
+	 * à appeler avec les actions
 	 */
 	protected void actionToFly(double delta) {
-		// gÃ¨re le mouvement
+		// gère le mouvement
 		if (followMe) {
 			alpha = UsefulTh.getAlpha(x, y, room.me.x, room.me.y);
 		}
@@ -131,7 +131,7 @@ public abstract class Enemy extends Entity {
 		if (y < 0) y = 0;
 		else if (y+h > room.plan.length*UsefulTh.cubeH) y = room.plan.length*UsefulTh.cubeH-h;
 		
-		// revoie la trajectoire pour pas Ãªtre bloquÃ© si il ne me voit pas
+		// revoie la trajectoire pour pas être bloqué si il ne me voit pas
 		if (!followMe) {
 			if (oldX == x || oldY == y) alpha = 2*Math.PI*UsefulTh.rand.nextDouble();
 		} else if (x == oldX && y == oldY) {
@@ -141,24 +141,24 @@ public abstract class Enemy extends Entity {
 	}
 	
 	/**
-	 * actions que vont evectuer les Ã©nemies qui marchent pour marcher
+	 * actions que vont evectuer les énemies qui marchent pour marcher
 	 * <p>
-	 * Ã  appeler avec les actions
+	 * à appeler avec les actions
 	 */
 	protected void actionToWalk(double delta) {
 		walkFollowMe();
-		// gÃ¨re le mouvement
+		// gère le mouvement
 		walkAndFall(delta);
 		collision();
 		// evite les chutes dans le vide
 		avoidFalling();
-		// evite de rester bloquÃ© contre un mur
+		// evite de rester bloqué contre un mur
 		avoidBeingStuck();
 	}
 	
-	// ---- diffÃ©rente fonction pour la fonction actionToWalk ----
+	// ---- différente fonction pour la fonction actionToWalk ----
 	
-	/** gÃ¨re la faÃ§on dont l'Ã©nemie me suit */
+	/** gère la façon dont l'énemie me suit */
 	protected void walkFollowMe() {
 		if (followMe) {
 			if (room.me.x > x) direction = 1;
@@ -171,7 +171,7 @@ public abstract class Enemy extends Entity {
 		}
 	}
 	
-	/** fait marcher et tombÃ© l'Ã©nemie (gÃ¨re le mouvement quoi) */
+	/** fait marcher et tombé l'énemie (gère le mouvement quoi) */
 	protected void walkAndFall(double delta) {
 //		if (vFall == 0) numJump = maxNumJump;
 		x += direction*v*delta;
@@ -179,12 +179,12 @@ public abstract class Enemy extends Entity {
 		vFall += aFall*delta;
 	}
 	
-	/** Ã©vite qu'un Ã©nemie fonce dans le vide */
+	/** évite qu'un énemie fonce dans le vide */
 	protected void avoidFalling() {
 		int iX = (int)((x+(direction > 0? w : 0))/UsefulTh.cubeW);
 		int iY = (int)(y/UsefulTh.cubeH)+2;
-		if (room.isXInCubes(iX) && room.isYInCubes(iY) && room.cubes[iY][iX] == null) { // si il y Ã  le vide devant
-			// regarde si il peut se laisser tombÃ©
+		if (room.isXInCubes(iX) && room.isYInCubes(iY) && room.cubes[iY][iX] == null) { // si il y à le vide devant
+			// regarde si il peut se laisser tombé
 			boolean willFall = true;
 			for (int jX = 0; jX < 2 && room.isXInCubes(iX+(direction > 0? jX : -jX)); jX++) {
 				for (int jY = (jX == 1? 0 : 2); room.isYInCubes(iY+jY); jY++) {
@@ -208,9 +208,9 @@ public abstract class Enemy extends Entity {
 	}
 	
 	/**
-	 * Evite pour les Ã©nemies qui marchent de rester bloquÃ©
-	 * contre un mur, et du coup soit de sauter si il y Ã  quelque
-	 * chose au dessus, sinon de faire demi-tour et d'arrÃªter de
+	 * Evite pour les énemies qui marchent de rester bloqué
+	 * contre un mur, et du coup soit de sauter si il y à quelque
+	 * chose au dessus, sinon de faire demi-tour et d'arrêter de
 	 * me suivre
 	 */
 	protected void avoidBeingStuck() {
@@ -223,11 +223,11 @@ public abstract class Enemy extends Entity {
 		}
 	}
 	
-	// ---- voilÃ  ----
+	// ---- voilà ----
 	
 	/**
 	 * teste si la distance entre l'enemie et moi
-	 * est infÃ©rieur ou Ã©gal Ã  {@code viewDistance}
+	 * est inférieur ou égal à {@code viewDistance}
 	 * 
 	 * @return se il me voit
 	 */
@@ -237,8 +237,8 @@ public abstract class Enemy extends Entity {
 	
 	/**
 	 * appelle la fonction {@code punch(Entity e)} pour moi,
-	 * puis pour tout les Ã©nemies d'un clan diffÃ©rent,
-	 * c'est Ã  dire les tourelles (aussi les canard potable
+	 * puis pour tout les énemies d'un clan différent,
+	 * c'est à dire les tourelles (aussi les canard potable
 	 * mais leurs fonction {@code takeDammage} est vide donc
 	 * on s'en fout)
 	 */
@@ -252,14 +252,14 @@ public abstract class Enemy extends Entity {
 	}
 	
 	/**
-	 * Fait {@code punchDammage} dÃ©gat Ã  {@code e} si ils se
-	 * touchent toute les {@code punchCadence} 60Ã¨me de seconde
+	 * Fait {@code punchDammage} dégat à {@code e} si ils se
+	 * touchent toute les {@code punchCadence} 60ème de seconde
 	 * 
-	 * @param e entitÃ© Ã  laquel il veut foutre des gros pain
+	 * @param e entité à laquel il veut foutre des gros pain
 	 */
 	protected void punch(Entity e, double delta) {
 		if (e.x+e.w > x && e.x < x+w
-			&& e.y+e.h > y && e.y < y+h) { // touchÃ©
+			&& e.y+e.h > y && e.y < y+h) { // touché
 			if (tPunch >= punchCadence) {
 				if (UsefulTh.rand.nextInt(100) < critChance) {
 					e.takeDammage(punchDamage*2, this);
@@ -276,9 +276,9 @@ public abstract class Enemy extends Entity {
 	}
 	
 	/**
-	 * GÃ¨re le tir
+	 * Gère le tir
 	 * <p>
-	 * A appeler avec les actions pour les Ã©nemies qui tirent
+	 * A appeler avec les actions pour les énemies qui tirent
 	 */
 	protected void shoot(Entity e, double delta) {
 		if (Math.sqrt(Math.pow(e.x-x, 2)+Math.pow(e.y-y, 2)) <= viewDistance) {
@@ -301,7 +301,7 @@ public abstract class Enemy extends Entity {
 	}
 	
 	/**
-	 * retourne si l'enemie rÃ©-atteri sur quelque chose au-dessus
+	 * retourne si l'enemie ré-atteri sur quelque chose au-dessus
 	 * s'il saute
 	 * 
 	 * @return je viens de le dire enfaite !

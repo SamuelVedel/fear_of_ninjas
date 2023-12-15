@@ -25,7 +25,7 @@ public class Border extends Cube {
 	protected int touched(Entity e) {
 		if (capacity != NOTHING) {
 			if ((capacity == BORD1 || capacity == BORD4 || capacity == BORD7 || capacity == BORD)
-				&& e.oldX+e.w <= x) { // choc Ã  gauche
+				&& e.oldX+e.w <= x) { // choc à gauche
 				e.x = x-e.w;
 				return LEFT_CONTACT;
 			} 
@@ -36,7 +36,7 @@ public class Border extends Cube {
 				return DOWN_CONTACT;
 			}
 			if ((capacity == BORD9 || capacity == BORD6 || capacity == BORD3 || capacity == BORD)
-				&& e.oldX >= x+w) { // choc Ã  droite
+				&& e.oldX >= x+w) { // choc à droite
 				e.x = x+w;
 				return LEFT_CONTACT;
 			}

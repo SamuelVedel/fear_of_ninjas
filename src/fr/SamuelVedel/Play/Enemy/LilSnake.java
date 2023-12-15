@@ -73,7 +73,7 @@ public class LilSnake extends Enemy {
 		followMe = false;
 		actionToWalk(delta);
 		
-		// gÃ¨re l'animation de marche
+		// gère l'animation de marche
 		if (tTex >= vTex) {
 			if (direction > 0) {
 				iTex++;

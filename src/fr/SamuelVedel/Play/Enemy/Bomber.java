@@ -6,16 +6,16 @@ import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.Room;
 
 /*  ___
- * (Â° Â°)
+ * (° °)
  *  ) (
  * (( ))
  */
 
 /**
  * Bombardier qui balance des bombes qui font initilement
- * 30 de dÃ©gat avec un angle de PI/4, Enemie de classe 2
+ * 30 de dégat avec un angle de PI/4, Enemie de classe 2
  * <p>
- * Class crÃ©Ã©e le 16/01/2023
+ * Class créée le 16/01/2023
  * 
  * @author Samuel Vedel
  * @see Bomb
@@ -67,7 +67,7 @@ public class Bomber extends Enemy {
 		
 		actionToWalk(delta);
 		
-		// gÃ¨re l'animation de marche
+		// gère l'animation de marche
 		if (tTex >= vTex) {
 			if (direction > 0) {
 				iTex++;
@@ -85,7 +85,7 @@ public class Bomber extends Enemy {
 		
 		// attaque
 		punch(delta);
-		// gÃ¨re le lancer de bombe
+		// gère le lancer de bombe
 		if (Math.sqrt(Math.pow(room.me.x-x, 2)+Math.pow(room.me.y-y, 2)) <= viewDistance) {
 			if (tShoot >= cadence) {
 				if (room.me.x < x) {
@@ -106,7 +106,7 @@ public class Bomber extends Enemy {
 	@Override
 	protected void walkFollowMe() {
 		if (followMe) {
-			/** distance Ã  l'aquel il jette la bombe */;
+			/** distance à l'aquel il jette la bombe */;
 			int d = Math.abs((int)(bulletV*Math.cos(alpha)*(-bulletV*Math.sin(alpha)+Math.sqrt(Math.pow(bulletV*Math.sin(alpha), 2)+2*aFall*(h-4*UsefulTh.pixelH)))/aFall));
 			
 			if (room.me.x > x) direction = 1;

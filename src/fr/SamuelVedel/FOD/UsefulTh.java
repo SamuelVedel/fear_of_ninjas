@@ -18,7 +18,7 @@ import fr.SamuelVedel.Play.Power;
 import fr.SamuelVedel.Play.AddSkill.AddSkill;
 
 /*  ___
- * (Â° Â°)
+ * (° °)
  *  ) (
  * (( ))
  */
@@ -26,10 +26,10 @@ import fr.SamuelVedel.Play.AddSkill.AddSkill;
 /**
  * Class qui contient plein de variable
  * et de fonction utiles partout
- * d'oÃ¹ le nom UsefulTh qui dÃ©rive de
+ * d'où le nom UsefulTh qui dérive de
  * useful things
  * <p>
- * Class crÃ©Ã©e le 13/01/2023
+ * Class créée le 13/01/2023
  * 
  * @author Samuel Vedel
  *
@@ -52,23 +52,23 @@ public abstract class UsefulTh {
 	/** hauteur d'un pixel de base */
 	public static final int pixelH = cubeH/6;
 	
-	/** hauteur d'Ã©cran pour laquelle le zoom est nul */
+	/** hauteur d'écran pour laquelle le zoom est nul */
 	public static final int heightForNoScale = 19*cubeH;
 	
 	public static int[][] cursor = readMat("textures/cursor/cursor1.texture");
 	public static int cursorW = 3*pixelW;
 	public static int cursorH = 3*pixelH;
 	
-	/** contient toutes les textures dÃ©jÃ  ouvertes */
+	/** contient toutes les textures déjà ouvertes */
 	private static HashMap<String, int[][]> textures = new HashMap<>();
-	/** contient toutes les textures dÃ©jÃ  retournÃ©es */
+	/** contient toutes les textures déjà retournées */
 	private static HashMap<int[][], int[][]> reverseXTexs = new HashMap<>();
 	
 	/**
 	 * lit des fichiers contenant des matrices
 	 * et les renvoit sous forme de matrice
 	 * 
-	 * @param file le chemin de la matrice Ã  partir
+	 * @param file le chemin de la matrice à partir
 	 * @return la matrice sous forme de matrice d'entier
 	 */
 	public static int[][] readMat(String file) {
@@ -121,13 +121,13 @@ public abstract class UsefulTh {
 	}
 	
 	/**
-	 * retourne la texture qui correspond Ã  file,
-	 * mais si cette texture Ã  dÃ©jÃ  Ã©tait chargÃ© via cette fonction,
-	 * alors elle n'est pas recrÃ©Ã©e, on retourne juste le poiteur
+	 * retourne la texture qui correspond à file,
+	 * mais si cette texture à déjà était chargé via cette fonction,
+	 * alors elle n'est pas recréée, on retourne juste le poiteur
 	 * de la texture.
 	 * <br>
-	 * si la texture n'a jamais Ã©tait chargÃ© via cette fonction,
-	 * alors elle est chargÃ©
+	 * si la texture n'a jamais était chargé via cette fonction,
+	 * alors elle est chargé
 	 * 
 	 * @param file chemin de la texture
 	 * @return
@@ -150,10 +150,10 @@ public abstract class UsefulTh {
 	 * 
 	 * @param tex la texture a afficher (sous forme de matrice d'entier)
 	 * @param x les abscisses
-	 * @param y les ordonnÃ©es
+	 * @param y les ordonnées
 	 * @param w la longeur
 	 * @param h la hauteur
-	 * @param c2 la deuxiÃ¨me couleur
+	 * @param c2 la deuxième couleur
 	 * @param g le {@code Graphics2D} sur lequel don dessine
 	 */
 	public static void displayTex(int[][] tex, int x, int y, int w, int h, Color c2, Graphics2D g2d) {
@@ -226,13 +226,13 @@ public abstract class UsefulTh {
 	}
 	
 	/**
-	 * retourne une version de {@code mat} oÃ¹ les abscisses sont inversÃ©
-	 * mais si cette texture Ã  dÃ©jÃ  Ã©tait intersÃ© via cette fonction,
-	 * alors elle n'est pas recrÃ©Ã©e, on retourne juste le poiteur
+	 * retourne une version de {@code mat} où les abscisses sont inversé
+	 * mais si cette texture à déjà était intersé via cette fonction,
+	 * alors elle n'est pas recréée, on retourne juste le poiteur
 	 * de la texture.
 	 * <br>
-	 * si la texture n'a jamais Ã©tait inversÃ©, via cette fonction,
-	 * alors elle est inversÃ©.
+	 * si la texture n'a jamais était inversé, via cette fonction,
+	 * alors elle est inversé.
 	 * 
 	 * @param mat
 	 * @return
@@ -251,7 +251,7 @@ public abstract class UsefulTh {
 	}
 	
 	/**
-	 * supprime toutes les textures chargÃ© en mÃ©moire
+	 * supprime toutes les textures chargé en mémoire
 	 */
 	public static void clearTextures() {
 		for (int i = reverseXTexs.size()-1; i >= 0; i--) {
@@ -279,13 +279,13 @@ public abstract class UsefulTh {
 	}
 	
 	/**
-	 * retourne l'angle formÃ© par la droite passant par les deux point
+	 * retourne l'angle formé par la droite passant par les deux point
 	 * sur la droite horizontal passant par le point 1
 	 * 
 	 * @param x1 abscisses du point 1
-	 * @param y1 ordonnÃ©es du point 1
+	 * @param y1 ordonnées du point 1
 	 * @param x2 abscisses du point 2
-	 * @param y2 ordonnÃ©ss du point 2
+	 * @param y2 ordonnéss du point 2
 	 * @return l'angle en radian
 	 */
 	public static double getAlpha(double x1, double y1, double x2, double y2) {
@@ -299,7 +299,7 @@ public abstract class UsefulTh {
 //	/**
 //	 * Affiche une matrice dans la console
 //	 * 
-//	 * @param mat la matrice Ã  afficher
+//	 * @param mat la matrice à afficher
 //	 */
 //	static void printMat(int[][] mat) {
 //		for (int y = 0; y < mat.length; y++) {
@@ -314,7 +314,7 @@ public abstract class UsefulTh {
 	 * Retourne la largeur d'un texte
 	 * 
 	 * @param text texte en question
-	 * @param g2d <code>Graphics2D</code> qui sert Ã  connaitre le <code>Font</code> Ã  Ã©tudier
+	 * @param g2d <code>Graphics2D</code> qui sert à connaitre le <code>Font</code> à étudier
 	 * @return la largeur du texte
 	 */
 	public static int getTextW(String text, Graphics2D g2d) {
@@ -324,14 +324,14 @@ public abstract class UsefulTh {
 	}
 	
 	/**
-	 * <p>Retourne la hauteur d'un texte, mais Ã  un dÃ©calge par rapport Ã  la rÃ©alitÃ© <br>
-	 * il faut avec la police Arial enlevÃ© la taille de la police*20/50.</p>
+	 * <p>Retourne la hauteur d'un texte, mais à un décalge par rapport à la réalité <br>
+	 * il faut avec la police Arial enlevé la taille de la police*20/50.</p>
 	 * 
 	 * <p>J'aimerais bien faire des test pour plein de police histoie de tout avoir
 	 * facilement</p>
 	 * 
 	 * @param text texte en question
-	 * @param g2d <code>Graphics2D</code> qui sert Ã  connaitre le <code>Font</code> Ã  Ã©tudier
+	 * @param g2d <code>Graphics2D</code> qui sert à connaitre le <code>Font</code> à étudier
 	 * @return la hauteur du texte
 	 */
 	public static int getTextH(String text, Graphics2D g2d) {
@@ -341,11 +341,11 @@ public abstract class UsefulTh {
 	}
 	
 	/**
-	 * Affiche tout les pouvoirs et leurs quantitÃ©
+	 * Affiche tout les pouvoirs et leurs quantité
 	 * contenue dans une liste de pouvoir
 	 * 
-	 * @param powerList liste de pouvoir Ã  afficher
-	 * @param left si ou veut l'afficher Ã  gauche, sinon c'est Ã  droite
+	 * @param powerList liste de pouvoir à afficher
+	 * @param left si ou veut l'afficher à gauche, sinon c'est à droite
 	 * @param up si on veut l'afficher en haut, sinon c'est en bas
 	 * @param play
 	 * @param g2d

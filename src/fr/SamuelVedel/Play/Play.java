@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import fr.SamuelVedel.FOD.UsefulTh;
 
 /*  ___
- * (Â° Â°)
+ * (° °)
  *  ) (
  * (( ))
  */
@@ -24,7 +24,7 @@ import fr.SamuelVedel.FOD.UsefulTh;
  * Class qui lie toute les autre et fait le jeux quoi <br>
  * c'est une passerelle
  * <p>
- * Class crÃ©Ã©e le 17/06/2022
+ * Class créée le 17/06/2022
  * 
  * @author Samuel Vedel
  *
@@ -130,8 +130,8 @@ public class Play implements KeyListener, MouseMotionListener {
 	}
 	
 	/**
-	 * initialise la deuxiÃ¨me couleur (1ere : noir) qui va composÃ© la salle,
-	 * la couleur ne peut pas Ãªtre trop sombre
+	 * initialise la deuxième couleur (1ere : noir) qui va composé la salle,
+	 * la couleur ne peut pas être trop sombre
 	 */
 	private void initColor() {
 		int sum = 0;
@@ -150,8 +150,8 @@ public class Play implements KeyListener, MouseMotionListener {
 	}
 	
 	/**
-	 * on dÃ©finit la diffÃ©rence de temps entre deux appels de faÃ§on
-	 * Ã  ce que delta == 1 si il y Ã  eu exactement un 60Ã¨me de seconde
+	 * on définit la différence de temps entre deux appels de façon
+	 * à ce que delta == 1 si il y à eu exactement un 60ème de seconde
 	 * 
 	 * @return
 	 */
@@ -163,7 +163,7 @@ public class Play implements KeyListener, MouseMotionListener {
 	
 	private void actions() {
 		room.cht.addText("Bienvenu et bonne partie (^_^)");
-//		room.refresh(); // servait Ã  tester les niveaux de boss
+//		room.refresh(); // servait à tester les niveaux de boss
 		
 		getDelta();
 		while (phase != END_PHASE) {
@@ -204,6 +204,6 @@ public class Play implements KeyListener, MouseMotionListener {
 		jf.addKeyListener(room.kl);
 		playP.addMouseListener(room.ml);
 		phase = PLAY_PHASE;
-		room.cht.addText("Allez dÃ©fonce tout cette fois >:D");
+		room.cht.addText("Allez défonce tout cette fois >:D");
 	}
 }

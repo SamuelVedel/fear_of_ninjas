@@ -8,10 +8,10 @@ import javax.swing.JPanel;
 import fr.SamuelVedel.FOD.UsefulTh;
 
 /**
- * Class hÃ©ritant de {@code JPanel} servant Ã 
+ * Class héritant de {@code JPanel} servant à
  * dessiner sur le {@code JFrame} de {@ode Play}
  * <p>
- * Class crÃ©Ã©e le 17/06/2022
+ * Class créée le 17/06/2022
  * 
  * @author Samuel Vedel
  *

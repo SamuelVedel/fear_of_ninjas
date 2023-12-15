@@ -7,15 +7,15 @@ import fr.SamuelVedel.Play.Entity;
 import fr.SamuelVedel.Play.Room;
 
 /*  ___
- * (Â° Â°)
+ * (° °)
  *  ) (
  * (( ))
  */
 
 /**
- * Ennemie invoquÃ© par l'invocateur (summoner)
+ * Ennemie invoqué par l'invocateur (summoner)
  * <p>
- * Class crÃ©Ã©e le 24/12/2022 vers 00h20
+ * Class créée le 24/12/2022 vers 00h20
  * 
  * @author Samuel Vedel
  *
@@ -30,7 +30,7 @@ public class LilHead extends Enemy {
 	public LilHead(double x, double y, Summoner father, Room room) {
 		super(room);
 		type = LIL_HEAD_TYPE;
-		name = "petite tÃªte";
+		name = "petite tête";
 		dieWithAnIncrementationOfScore = false;
 		this.x = x;
 		this.y = y;
@@ -64,7 +64,7 @@ public class LilHead extends Enemy {
 	public void actions(double delta) {
 		super.actions(delta);
 		
-		// gÃ¨re le sens de la texture
+		// gère le sens de la texture
 		if (/*lookToTheRight()*/v*Math.cos(alpha) >= 0) iTex = 0;
 		else iTex = 1;
 		actionToFly(delta);

@@ -70,7 +70,7 @@ public class SnakeBoss extends Enemy {
 				ap.eat();
 			}
 			
-			// peut tourner alÃ©atoirement
+			// peut tourner aléatoirement
 			if (UsefulTh.rand.nextInt(5) == 0) {
 				int oldDirection = direction;
 				randomTurn();
@@ -234,7 +234,7 @@ public class SnakeBoss extends Enemy {
 			g2d.fillRect(body.get(i)[0], body.get(i)[1], w, h);
 		}
 		
-		// coordonnÃ©es et dimensions pour l'affichage
+		// coordonnées et dimensions pour l'affichage
 		int x2 = (int)x;
 		int y2 = (int)y;
 		int w2 = w;

@@ -23,13 +23,13 @@ import fr.SamuelVedel.Play.Enemy.Soul;
 import fr.SamuelVedel.Play.Enemy.Summoner;
 
 /*  /\_/\
- * (=Â°-Â°=) )
+ * (=°-°=) )
  *  )   ( (
  * (_____))
  */
 
 /**
- * Class crÃ©Ã©e le 10/02/2023
+ * Class créée le 10/02/2023
  * 
  * @author Samuel Vedel
  *
@@ -100,7 +100,7 @@ public class Chat {
 	}
 	
 	public void addText(String text, int fontStyle) {
-		// dÃ©cale tout les messages
+		// décale tout les messages
 		for (int i = msgs.length-1; i >= 1; i--) {
 			msgs[i] = msgs[i-1];
 		}
@@ -112,7 +112,7 @@ public class Chat {
 	public void doYouWantToWrite(int keyCode) {
 		if (play.phase == Play.PLAY_PHASE && keyCode == 84) { // touche 'T' appuyer
 			play.phase = Play.PAUSE_PHASE;
-			String s = JOptionPane.showInputDialog(null, "Ecit un truc", "Alors comme Ã§a tu veux Ã©crire", JOptionPane.QUESTION_MESSAGE);
+			String s = JOptionPane.showInputDialog(null, "Ecit un truc", "Alors comme ça tu veux écrire", JOptionPane.QUESTION_MESSAGE);
 			play.phase = Play.PLAY_PHASE;
 			
 			if (s != null && !s.matches("")) {
@@ -148,7 +148,7 @@ public class Chat {
 		} else if (part[0].matches("setFps")) {
 			setFps(part);
 		} else {
-			addText("Il n'y a pas de mÃ©thode "+part[0]);
+			addText("Il n'y a pas de méthode "+part[0]);
 		}
 	}
 	
@@ -200,7 +200,7 @@ public class Chat {
 				try {
 					num = Integer.parseInt(args[2]);
 				} catch (NumberFormatException e) {
-					addText(args[2]+" ne peut pas Ãªtre converti en entier");
+					addText(args[2]+" ne peut pas être converti en entier");
 				}
 				if (num != 0) addText("Vous avez pris \""+Power.values()[powI].name.toLowerCase()+"\" "+num+" fois");
 				for (int i = 0; i < num; i++) {
@@ -252,14 +252,14 @@ public class Chat {
 				try {
 					num = Integer.parseInt(args[2]);
 				} catch (NumberFormatException e) {
-					addText(args[2]+" ne peut pas Ãªtre converti en entier");
+					addText(args[2]+" ne peut pas être converti en entier");
 				}
-				if (num != 0) addText("Vous leur avez donnÃ© \""+Power.values()[powI].name.toLowerCase()+"\" "+num+" fois");
+				if (num != 0) addText("Vous leur avez donné \""+Power.values()[powI].name.toLowerCase()+"\" "+num+" fois");
 				for (int i = 0; i < num; i++) {
 					room.enemiesPowers[powI]++;
 				}
 			} else {
-				addText("Le pouvoir "+args[1]+" n'existe pas pour les Ã©nemies");
+				addText("Le pouvoir "+args[1]+" n'existe pas pour les énemies");
 			}
 		} else {
 			addText("Il n'y a pas assez d'arguments");
@@ -272,7 +272,7 @@ public class Chat {
 			try {
 				num = Integer.parseInt(args[2]);
 			} catch (NumberFormatException e) {
-				addText(args[2]+" ne peut pas Ãªtre converti en entier");
+				addText(args[2]+" ne peut pas être converti en entier");
 			}
 			for (int i = 0; i < num; i++) {
 				if (args[1].matches("blob")) {
@@ -331,7 +331,7 @@ public class Chat {
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
 				} else {
-					if (i == 0) addText("L'entity "+args[1]+" n'Ã©xiste pas ou ne peut pas Ãªtre invoquÃ©");
+					if (i == 0) addText("L'entity "+args[1]+" n'éxiste pas ou ne peut pas être invoqué");
 				}
 			}
 		} else {
@@ -345,11 +345,11 @@ public class Chat {
 			try {
 				life = Integer.parseInt(args[1]);
 			} catch (NumberFormatException e) {
-				addText(args[1]+" ne peut pas Ãªtre converti en entier");
+				addText(args[1]+" ne peut pas être converti en entier");
 			}
 			
 			if (life != room.me.life) {
-				addText("Vous mettez votre vie Ã  "+life);
+				addText("Vous mettez votre vie à "+life);
 				if (life > room.me.maxLife) life = room.me.maxLife;
 				room.me.life = life;
 				if (room.me.life <= 0) room.me.die(room.me);
@@ -361,7 +361,7 @@ public class Chat {
 	
 	private void cleanRoom() {
 		room.enemies.removeAll(room.enemies);
-		addText("Vous n'ettoyer cette piÃ¨ce de tout ses Ã©nemies");
+		addText("Vous n'ettoyer cette pièce de tout ses énemies");
 	}
 	
 	private void setColor(String[] args) {
@@ -377,7 +377,7 @@ public class Chat {
 				play.color = new Color(red, green, blue);
 				addText("Vous changez la couleur pour "+red+" "+green+" "+blue);
 			} catch (NumberFormatException e) {
-				addText("Tous les arguments ne peuvent Ãªtre convertis en entier");
+				addText("Tous les arguments ne peuvent être convertis en entier");
 			}
 		} else {
 			addText("Il n'y a pas assez d'arguments");
@@ -390,7 +390,7 @@ public class Chat {
 				int num = Integer.parseInt(args[1]);
 				room.numOfKills = num;
 			} catch (NumberFormatException e) {
-				addText(args[1]+" ne peut pas Ãªtre converti en entier");
+				addText(args[1]+" ne peut pas être converti en entier");
 			}
 		} else {
 			addText("Il n'y a pas assez d'arguments");
@@ -408,10 +408,10 @@ public class Chat {
 				int num = Integer.parseInt(args[1]);
 				if (num > 0) {
 					room.play.setFps(num);
-					addText("Vous mettez les fps Ã  "+num);
-				} else addText("Les fps doivent Ãªtre supÃ©rieur Ã  0");
+					addText("Vous mettez les fps à "+num);
+				} else addText("Les fps doivent être supérieur à 0");
 			} catch (NumberFormatException e) {
-				addText(args[1]+" ne peut pas Ãªtre converti en entier");
+				addText(args[1]+" ne peut pas être converti en entier");
 			}
 		} else {
 			addText("Il n'y a pas assez d'arguments");
@@ -451,7 +451,7 @@ public class Chat {
 	 * 
 	 * 
 	 * @param x abscisses bas du chat
-	 * @param y ordonnÃ©es haut du chat
+	 * @param y ordonnées haut du chat
 	 * @param g2d
 	 */
 	public void display(int x, int y, Graphics2D g2d) {
@@ -462,7 +462,7 @@ public class Chat {
 		}
 		gap = (int)(10*play.scaleW);
 		
-		// dessiner un carÃ©e non opaque pour qu'on puisse bien distinguer le texte
+		// dessiner un carée non opaque pour qu'on puisse bien distinguer le texte
 		g2d.setColor(new Color(0, 0, 0, 70));
 		initRectWH();
 		g2d.fillRect(x, y-rectH, rectW, rectH);

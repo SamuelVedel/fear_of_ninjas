@@ -11,7 +11,7 @@ import fr.SamuelVedel.VComponent.VPanel;
 
 /**
  * 
- * Class crÃ©Ã©e le 22/08/2022
+ * Class créée le 22/08/2022
  * 
  * @author Samuel Vedel
  *
@@ -91,7 +91,7 @@ public class ChoicePanel {
 	public void refresh() {
 		for (int i = 0; i < choices.length; i++) {
 			ChoiceButton cb = choices[i];
-			boolean isDoubled = true; // pour savoir si il y Ã  deux pouvoir pareil
+			boolean isDoubled = true; // pour savoir si il y à deux pouvoir pareil
 			while (isDoubled) {
 				cb.pow = Power.getRandPowerForMe();
 				isDoubled = false;

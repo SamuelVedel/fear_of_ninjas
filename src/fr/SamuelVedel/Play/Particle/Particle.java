@@ -4,9 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 /**
- * Particules qui tombe, rÃ©trÃ©cit, puis disparait
+ * Particules qui tombe, rétrécit, puis disparait
  * <p>
- * Class crÃ©Ã©e le 28/06/2022
+ * Class créée le 28/06/2022
  * 
  * @author Samuel Vedel
  *

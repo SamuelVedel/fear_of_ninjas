@@ -7,7 +7,7 @@ import fr.SamuelVedel.Play.Entity;
 import fr.SamuelVedel.Play.Room;
 
 /**
- * Class crÃ©Ã©e le 16/12/2022
+ * Class créée le 16/12/2022
  * 
  * @author Samuel Vedel
  *
@@ -56,7 +56,7 @@ public class DrinkingDuck extends Enemy {
 		
 		actionToWalk(delta);
 		
-		// gÃ¨re l'animation de marche
+		// gère l'animation de marche
 		if (tTex >= vTex) {
 			if (direction > 0) {
 				iTex++;
@@ -85,15 +85,15 @@ public class DrinkingDuck extends Enemy {
 	}
 	
 	/**
-	 * regarde si l'entitÃ© {@code e} n'a pas sa vie au maximum et si
-	 * elle est en contact avec le canard potable si oui l'entitÃ© le boi
+	 * regarde si l'entité {@code e} n'a pas sa vie au maximum et si
+	 * elle est en contact avec le canard potable si oui l'entité le boi
 	 * 
-	 * @param e EntitÃ© qui va peut Ãªtre boire le canard potable
+	 * @param e Entité qui va peut être boire le canard potable
 	 */
 	private void drink(Entity e) {
 		if (e.life != e.maxLife && e != this
 			&&x+w > e.x && x < e.x+e.w
-			&& y+h > e.y && y < e.y+e.h) { // touchÃ©
+			&& y+h > e.y && y < e.y+e.h) { // touché
 			e.life += 15;
 			if (e.life > e.maxLife) {
 				e.life = e.maxLife;

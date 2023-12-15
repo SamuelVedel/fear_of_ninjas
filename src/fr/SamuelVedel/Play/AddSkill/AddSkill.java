@@ -3,10 +3,10 @@ package fr.SamuelVedel.Play.AddSkill;
 
 /**
  * 
- * Correspond Ã  des compÃ©tence supplÃ©mentaire acquise avec
+ * Correspond à des compétence supplémentaire acquise avec
  * des pouvoirs
  * <p>
- * Class crÃ©Ã©e le 14/05/2023
+ * Class créée le 14/05/2023
  * 
  * @author Samuel Vedel
  *
@@ -16,7 +16,7 @@ public abstract class AddSkill {
 	public boolean active = false;
 	/**
 	 * Temps necessaire entre chaque utilisation
-	 * (en 60Ã¨me de seconde)
+	 * (en 60ème de seconde)
 	 */
 	private int cooldown;
 	/**

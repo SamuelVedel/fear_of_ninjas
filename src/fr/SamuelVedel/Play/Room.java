@@ -34,7 +34,7 @@ import fr.SamuelVedel.Play.Particle.LightParticle;
 import fr.SamuelVedel.Play.Particle.Particle;
 
 /*  ___
- * (Â° Â°)
+ * (° °)
  *  ) (
  * (( ))
  */
@@ -45,7 +45,7 @@ import fr.SamuelVedel.Play.Particle.Particle;
  * des instances de {@code Cube} pour construire la salle,
  * et des instance de {@code Bullet}.
  * <p>
- * Class crÃ©Ã©e le 20/06/2022
+ * Class créée le 20/06/2022
  * 
  * @author Samuel Vedel le boss
  *
@@ -57,7 +57,7 @@ public class Room {
 	public boolean isABossLevel = false;
 	
 	private int level = 0;
-	/** nombre de kill necessaire pour rÃ©ussir le niveau */
+	/** nombre de kill necessaire pour réussir le niveau */
 	public int goal = 4;
 	public int numOfKills;
 	
@@ -75,7 +75,7 @@ public class Room {
 	public int[] enemiesPowers = new int[Power.values().length];
 	
 	public Cube[][] cubes;
-	/** liste des cubes qui doivent Ã©xÃ©cuter des actions */
+	/** liste des cubes qui doivent éxécuter des actions */
 	public ArrayList<Cube> cubeWithActions = new ArrayList<>();
 	
 	public ArrayList<Bullet> bullets = new ArrayList<>();
@@ -152,7 +152,7 @@ public class Room {
 		File folder = new File("rooms/");
 		File[] listRooms = folder.listFiles();
 		
-		// trouve un dossier qui contient une salles et peut-Ãªtre des variantes de la salle
+		// trouve un dossier qui contient une salles et peut-être des variantes de la salle
 		// ou directement un fichier d'une salle
 		File file;
 		do {
@@ -182,10 +182,10 @@ public class Room {
 	}
 	
 	/**
-	 * Construit la salle Ã  partir d'un .room
+	 * Construit la salle à partir d'un .room
 	 * qui contient les plans sous forme d'une matrice
 	 * 
-	 * @param fileName chemin de la salle Ã  partir de rooms\
+	 * @param fileName chemin de la salle à partir de rooms\
 	 */
 	private void createRoom(String fileName) {
 		plan = UsefulTh.readMat("rooms/"+fileName);
@@ -292,7 +292,7 @@ public class Room {
 		// actions de moi
 		me.actions(delta);
 		
-		// actions des Ã©nemies
+		// actions des énemies
 		for (int i = enemies.size()-1; i >= 0; i--) {
 			Enemy en = enemies.get(i);
 			en.actions(delta);
@@ -317,7 +317,7 @@ public class Room {
 		// actions du chat
 		cht.actions(delta);
 		
-		// spawn des Ã©nemies
+		// spawn des énemies
 //		if (!isABossLevel && UsefulTh.rand.nextInt(500/(level/10+1)) == 0) {
 		if (!isABossLevel && UsefulTh.deltaRandom((500/(level/10+1)), delta)) {
 			spawnEnemy();
@@ -325,7 +325,7 @@ public class Room {
 	}
 	
 	private void spawnEnemy() {
-		// type choisis le type de carrure d'Ã©nemie
+		// type choisis le type de carrure d'énemie
 		int type = UsefulTh.rand.nextInt(20);
 		if (type < 15) {
 			int num = UsefulTh.rand.nextInt(4);
@@ -340,7 +340,7 @@ public class Room {
 				enemies.add(new Blob(this));
 				break;
 			case 3 :
-				// fait apparaÃ®tre un slime
+				// fait apparaître un slime
 				int typeOfSlime = UsefulTh.rand.nextInt(20);
 				if (typeOfSlime < 15) enemies.add(new LilSlime(this));
 				else if (typeOfSlime < 19) enemies.add(new MedSlime(this));
@@ -364,7 +364,7 @@ public class Room {
 			int num = UsefulTh.rand.nextInt(2);
 				if (num == 0) { // summoner
 					if (level >= 10) {
-					/*// on regarde si il n'y en Ã  pas dÃ©jÃ  un
+					/*// on regarde si il n'y en à pas déjà un
 					boolean canSpawn = true;
 					for (Enemy en : enemies) {
 						if (en.type == Entity.SUMMONER_TYPE) {
@@ -391,7 +391,7 @@ public class Room {
 	 * verifie si l'abscisse {@code x} est
 	 * compris dans {@code cubes}
 	 * 
-	 * @param x l'abscisse Ã  verifier
+	 * @param x l'abscisse à verifier
 	 * @return si c'est le cas
 	 */
 	public boolean isXInCubes(int x) {
@@ -399,10 +399,10 @@ public class Room {
 	}
 	
 	/**
-	 * verifie si l'ordonnÃ©e {@code x} est
+	 * verifie si l'ordonnée {@code x} est
 	 * compris dans {@code cubes}
 	 * 
-	 * @param y l'ordonnÃ©e Ã  verifier
+	 * @param y l'ordonnée à verifier
 	 * @return si c'est le cas
 	 */
 	public boolean isYInCubes(int y) {
@@ -439,7 +439,7 @@ public class Room {
 			enemies.add(new Turret(me, this));
 		}
 		
-		// ajout un pouvoir Ã  l'Ã©niemie si il le faut
+		// ajout un pouvoir à l'éniemie si il le faut
 		if (level%2 == 0) {
 			Power pow = Power.getRandPowerForEnemey();
 			enemiesPowers[pow.id]++;
@@ -447,7 +447,7 @@ public class Room {
 			pow.sayEffectInAChat(cht);
 		}
 		
-		// fait apparaitre trois Ã©nemies
+		// fait apparaitre trois énemies
 		if (!isABossLevel) {
 			for (int i = 0; i < 3; i++) {
 				spawnEnemy();
@@ -475,7 +475,7 @@ public class Room {
 			particles.get(i).display(play.color, g2d);
 		}
 		
-		// affichages des cubes qui sont prÃ©sent dans l'Ã©cran
+		// affichages des cubes qui sont présent dans l'écran
 		for (int iY = (int)(-transY/(UsefulTh.cubeH*play.scaleW)); iY < (int)((play.playP.getHeight()-transY)/(UsefulTh.cubeH*play.scaleW))+1; iY++) {
 			for (int iX = (int)(-transX/(UsefulTh.cubeW*play.scaleW)); iX < (int)((play.playP.getWidth()-transX)/(UsefulTh.cubeW*play.scaleW))+1; iX++) {
 				if (isXInCubes(iX) && isYInCubes(iY) && cubes[iY][iX] != null) {
@@ -504,7 +504,7 @@ public class Room {
 		me.displayMyLife(g2d);
 		
 		// affiche le quota de kill
-		// code pas trÃ¨s beau
+		// code pas très beau
 		int gap = (int)(7*play.scaleW);
 		g2d.setFont(new Font("ARIAL", Font.BOLD, (int)(25*play.scaleW)));
 		String text;
