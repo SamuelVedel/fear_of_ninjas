@@ -381,7 +381,7 @@ public abstract class UsefulTh {
 					// affichage de la touche
 					g2d.setColor(play.color);
 					g2d.setFont(new Font("ARIAL", Font.BOLD, (int)(12*play.scaleW)));
-					String text = as.getKeysName();
+					String text = as.getInputName();
 					int textH = getTextH(text, g2d);
 					drawString(text, x+num*(edge+powW)+(int)(4*play.scaleW), y+textH+(int)(4*play.scaleW), g2d);
 					

@@ -1,5 +1,6 @@
 package fr.SamuelVedel.Play.AddSkill;
 
+import fr.SamuelVedel.Play.Input;
 
 /**
  * 
@@ -24,8 +25,7 @@ public abstract class AddSkill {
 	 */
 	private double progressOfCooldown;
 	
-	private int keyOfActivation;
-	private String keysName;
+	private Input input;
 	
 	/**
 	 * type et indice dans la liste des addSkills
@@ -44,17 +44,12 @@ public abstract class AddSkill {
 		progressOfCooldown = cooldown;
 	}
 	
-	public int getKeyOfActivation() {
-		return keyOfActivation;
+	public String getInputName() {
+		return input.getName();
 	}
 	
-	public String getKeysName() {
-		return keysName;
-	}
-	
-	public void setKeyOfActivation(int keyOfActivation, String keysName) {
-		this.keyOfActivation = keyOfActivation;
-		this.keysName = keysName;
+	public void setInput(Input input) {
+		this.input = input;
 	}
 	
 	public boolean canBeUsed() {
@@ -69,7 +64,13 @@ public abstract class AddSkill {
 	}
 	
 	public void keyReaction(int keyCode) {
-		if (keyCode == keyOfActivation) {
+		if (input.isKeyInput() && input.getCode() == keyCode) {
+			use();
+		}
+	}
+	
+	public void mouseReaction(int button) {
+		if (input.isMouseInput() && input.getCode() == button) {
 			use();
 		}
 	}

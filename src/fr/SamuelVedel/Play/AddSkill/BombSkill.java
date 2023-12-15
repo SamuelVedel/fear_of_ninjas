@@ -1,5 +1,6 @@
 package fr.SamuelVedel.Play.AddSkill;
 
+import fr.SamuelVedel.Play.Input;
 import fr.SamuelVedel.Play.Me;
 import fr.SamuelVedel.Play.Room;
 import fr.SamuelVedel.Play.Enemy.Bomb;
@@ -19,7 +20,7 @@ public class BombSkill extends AddSkill {
 		this.room = room;
 		type = BOMB_TYPE;
 		setCooldown(30*60); // 30 sec
-		setKeyOfActivation(70, "F"); // F pour Bombe
+		setInput(new Input(Input.KEY_INPUT, 70, "F")); // F pour Bombe
 	}
 	
 	@Override
