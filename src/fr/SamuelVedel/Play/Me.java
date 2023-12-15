@@ -257,8 +257,14 @@ public class Me extends Entity {
 	}
 	
 	public void addSkillsKeyReac(int keyCode) {
-		for (AddSkill as : addSkills) {
+		for (AddSkill as: addSkills) {
 			as.keyReaction(keyCode);
+		}
+	}
+	
+	public void addSkillsMouseReac(int button) {
+		for (AddSkill as: addSkills) {
+			as.mouseReaction(button);
 		}
 	}
 	

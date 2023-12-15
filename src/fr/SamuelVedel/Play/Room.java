@@ -113,6 +113,7 @@ public class Room {
 				msPressed = true;
 				me.canShoot = true;
 			}
+			me.addSkillsMouseReac(e.getButton());
 		}
 		
 		@Override
