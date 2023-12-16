@@ -375,7 +375,7 @@ public abstract class UsefulTh {
 				Power.values()[i].display(x+num*(edge+powW), y, powW, powH, play.color, g2d);
 				
 				// pour les addSkills
-				if (i == Power.bomb.id) {
+				if (i == Power.BOMB.id) {
 					AddSkill as = play.room.me.addSkills[AddSkill.BOMB_TYPE];
 					
 					// affichage de la touche

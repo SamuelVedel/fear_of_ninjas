@@ -146,7 +146,7 @@ public class Bullet {
 					e.takeDammage(damage, shooter);
 					
 					// code que fait marcher le pouvoir stone2Birds
-					if (UsefulTh.rand.nextInt(100) < shooter.powers[Power.stone2Birds.id]*20) {
+					if (UsefulTh.rand.nextInt(100) < shooter.powers[Power.STONE2BIRDS.id]*20) {
 						Enemy closer = null;
 						double d = -1;
 						for (int i = 0; i < room.enemies.size(); i++) {

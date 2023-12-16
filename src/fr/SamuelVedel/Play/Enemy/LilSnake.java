@@ -35,7 +35,7 @@ public class LilSnake extends Enemy {
 			for (int i = 0; i < owner.powers.length; i++) {
 				for (int j = 0; j < owner.powers[i]; j++) {
 					Power pow = Power.values()[i];
-					if (pow != Power.turret && pow != Power.snakesOfPain) {
+					if (pow != Power.TURRET && pow != Power.SNAKES_OF_PAIN) {
 						addPower(pow);
 					}
 				}

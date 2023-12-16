@@ -196,7 +196,7 @@ public abstract class Entity {
 	public void takeDammage(int dammage, Entity e) {
 		if (life > 0) { // evite de mourir plusieurs fois
 			// fait les dégats
-			int x = powers[Power.shield.id]/*-e.powers[Power.strength.num]*/;
+			int x = powers[Power.SHIELD.id]/*-e.powers[Power.strength.num]*/;
 			if(x >= 0) {
 				dammage *= Math.pow(0.8, x);
 			} else {
@@ -208,14 +208,14 @@ public abstract class Entity {
 			//
 			
 			// effet du vampirisme
-			e.life += dammage*(1-1/((double)e.powers[Power.vampire.id]/2+1));
+			e.life += dammage*(1-1/((double)e.powers[Power.VAMPIRE.id]/2+1));
 			if (e.life > e.maxLife) e.life = e.maxLife;
 			
 			// poison
-			if (e.powers[Power.poison.id] > 0) debuffs[Debuff.POISON_TYPE].reset(e);
+			if (e.powers[Power.POISON.id] > 0) debuffs[Debuff.POISON_TYPE].reset(e);
 			
 			// petrification
-			if (UsefulTh.rand.nextInt(100) < e.powers[Power.petrification.id]*10) {
+			if (UsefulTh.rand.nextInt(100) < e.powers[Power.PETRIFICATION.id]*10) {
 				debuffs[Debuff.PETRIFICATION_TYPE].reset(e);
 			}
 			
@@ -223,36 +223,36 @@ public abstract class Entity {
 			if (life <= 0) die(e);
 			
 			// snakesOfPain
-			for (int i = 0; i < powers[Power.snakesOfPain.id]; i++) {
-				room.enemies.add(new LilSnake(this.x+i*w/powers[Power.snakesOfPain.id], y+i*w/powers[Power.snakesOfPain.id], this, room));
+			for (int i = 0; i < powers[Power.SNAKES_OF_PAIN.id]; i++) {
+				room.enemies.add(new LilSnake(this.x+i*w/powers[Power.SNAKES_OF_PAIN.id], y+i*w/powers[Power.SNAKES_OF_PAIN.id], this, room));
 			}
 		}
 	}
 	
 	public void addPower(Power pow) {
 		powers[pow.id]++;
-		if (pow == Power.speed) {
+		if (pow == Power.SPEED) {
 			v += 0.8;
-		} else if (pow == Power.crit) {
+		} else if (pow == Power.CRIT) {
 			critChance += 10;
-		} else if (pow == Power.bulletSpeed) {
+		} else if (pow == Power.BULLET_SPEED) {
 			bulletV += 1;
-		} else if (pow == Power.regen) {
+		} else if (pow == Power.REGEN) {
 			if (regen != 1) {
 				regen *= 0.8;
 				if(regen == 0) regen = 80;
 			}
-		} else if (pow == Power.moreLife) {
+		} else if (pow == Power.MORE_LIFE) {
 			maxLife += 10;
 			life += 10;
-		} else if (pow == Power.bouncingBall) {
+		} else if (pow == Power.BOUCING_BALLS) {
 			bounce++;
-		} else if (pow == Power.multipleJump) {
+		} else if (pow == Power.MULTIPLE_JUMPT) {
 			maxNumJump++;
-		} else if (pow == Power.cadence) {
+		} else if (pow == Power.CADENCE) {
 			cadence = (int)(1+(cadence-1)*0.9);
 			punchCadence = (int)(1+(punchCadence-1)*0.9);
-		} else if (pow == Power.turret) {
+		} else if (pow == Power.TURRET) {
 			if (play.phase == Play.PLAY_PHASE) {
 				room.enemies.add(new Turret(this, room));
 			}
@@ -309,8 +309,8 @@ public abstract class Entity {
 			room.enemies.add(new Soul(x, y, room));
 			diedWithASoul = true;
 		} else if (killer != null) {
-			if (killer.powers[Power.deadsBullets.id] > 0 && canDieWithDeathsBullets) {
-				int nOfBullets = 5+2*killer.powers[Power.deadsBullets.id]-2;
+			if (killer.powers[Power.DEATH_BULLETS.id] > 0 && canDieWithDeathsBullets) {
+				int nOfBullets = 5+2*killer.powers[Power.DEATH_BULLETS.id]-2;
 				for (int i = 0; i < nOfBullets; i++) {
 					room.bullets.add(new Bullet(x+w/2, y+h/2, killer.bulletW, killer.bulletH, 2*Math.PI*UsefulTh.rand.nextDouble(), killer.bulletV, killer.bulletDamage, killer));
 				}

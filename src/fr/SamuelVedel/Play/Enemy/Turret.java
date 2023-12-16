@@ -52,7 +52,7 @@ public class Turret extends Enemy {
 		clan = owner.clan;
 		initVar();
 		for (int i = 0; i < room.me.powers.length; i++) {
-			if (i != Power.turret.id) {
+			if (i != Power.TURRET.id) {
 				for (int j = 0; j < room.me.powers[i]; j++) {
 					addPower(Power.values()[i]);
 				}

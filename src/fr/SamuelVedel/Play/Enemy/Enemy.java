@@ -347,7 +347,7 @@ public abstract class Enemy extends Entity {
 				if (canDieWithAnItem && UsefulTh.rand.nextInt(100) == 0) {
 					room.items.add(new Item((int)x+w/2, (int)y+h, room));
 				}
-				if (canDieWithADrinkingDuck && UsefulTh.rand.nextInt(100) < 100*(1-1/((double)killer.powers[Power.drinkingDuck.id]/9+1))) {
+				if (canDieWithADrinkingDuck && UsefulTh.rand.nextInt(100) < 100*(1-1/((double)killer.powers[Power.DRINKING_DUCK.id]/9+1))) {
 					room.enemies.add(new DrinkingDuck(room, x+w/2, y+h));
 				}
 			}

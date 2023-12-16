@@ -220,7 +220,7 @@ public class SnakeBoss extends Enemy {
 			}
 		}
 		
-		room.items.add(new Item((int)x+w/2, (int)y+h, Power.snakesOfPain, room));
+		room.items.add(new Item((int)x+w/2, (int)y+h, Power.SNAKES_OF_PAIN, room));
 	}
 	
 	@Override

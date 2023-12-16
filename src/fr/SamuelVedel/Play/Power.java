@@ -23,27 +23,27 @@ import fr.SamuelVedel.FOD.UsefulTh;
 public enum Power {
 	
 	/** augmente de 0.8 la vitesse */
-	speed(0, "speed.texture", "Lapin Rapide", "Booste la vitesse"),
+	SPEED(0, "speed.texture", "Lapin Rapide", "Booste la vitesse"),
 	
 	/** augmente de 10% les chance de crit */
-	crit(1, "crit.texture", "Balles Vénères", "Augmente de 10%\nles chances de critique"),
+	CRIT(1, "crit.texture", "Balles Vénères", "Augmente de 10%\nles chances de critique"),
 	
 	/** augmente de 1 la vitese des balles */
-	bulletSpeed(2, "bulletSpeed.texture", "Balles Rapides", "Augmente la\nvitesse des balles"),
+	BULLET_SPEED(2, "bulletSpeed.texture", "Balles Rapides", "Augmente la\nvitesse des balles"),
 	
 	/** multiplie par 0.8 chaque dégat pris */
-	shield(3, "shield.texture", "Bouclier un peu Stylé", "Diminue les dégâts subis"),
+	SHIELD(3, "shield.texture", "Bouclier un peu Stylé", "Diminue les dégâts subis"),
 	
 	/** 
 	 * multiplie par 0.8 regen
 	 * ou la met à 80 si elle est à 0
 	 */
-	regen(4, "regen.texture", "Coeur Puissant", "Augmente la régénération"),
+	REGEN(4, "regen.texture", "Coeur Puissant", "Augmente la régénération"),
 	/**
 	 * ajoute ça de vie à une entité {@code e} qui fait des dégats :<br>
 	 * {@code dammage*(1-1/((double)e.powers[Power.vampire.num]/2+1))}
 	 */
-	vampire(5, "vampire.texture", "Vampire Cruel", "Recupère une partie\nde chaque dégât infligé"),
+	VAMPIRE(5, "vampire.texture", "Vampire Cruel", "Recupère une partie\nde chaque dégât infligé"),
 	
 	/**
 	 * tire 5 balles quand on tue quelqu'un<br>
@@ -51,45 +51,45 @@ public enum Power {
 	 * <p>
 	 * ne marche pas sur les {@code Blob}
 	 */
-	deadsBullets(6, "deadsBullets.texture", "Balles de la Mort", "Des balles partent à\nl'execution d'un ennemi"),
+	DEATH_BULLETS(6, "deadsBullets.texture", "Balles de la Mort", "Des balles partent à\nl'execution d'un ennemi"),
 	
 	/** ajoute 10 pts de vie */
-	moreLife(7, "moreLife.texture", "Grande Vitalité", "Ajoute 10 points de vie"),
+	MORE_LIFE(7, "moreLife.texture", "Grande Vitalité", "Ajoute 10 points de vie"),
 	
 	/** ajoute un rebond aux balles*/
-	bouncingBall(8, "bounce.texture", "Balle Rebondissante", "Ajoute un rebond à\nchaque balle"),
+	BOUCING_BALLS(8, "bounce.texture", "Balle Rebondissante", "Ajoute un rebond à\nchaque balle"),
 	/**
 	 * selon une chance de 100*(1-1/((double)killer.powers[Power.drinkingDuck.num]/8+1))
 	 * quand un énemie meurt il fait apparaitre un canard potable
 	 * et quand on boit ce canard on regagne 15 pts de vie
 	 */
-	drinkingDuck(9, "drinkingDuck.texture", "Canard Potable", "On peut le boire", true),
+	DRINKING_DUCK(9, "drinkingDuck.texture", "Canard Potable", "On peut le boire", true),
 	/** ajoute un saut */
-	multipleJump(10, "multipleJump.texture", "Pas de Lune", "Ajoute un saut", true),
+	MULTIPLE_JUMPT(10, "multipleJump.texture", "Pas de Lune", "Ajoute un saut", true),
 	
-	stone2Birds(11, "1stone2birds.texture", "D'une Pierre deux Coup",
+	STONE2BIRDS(11, "1stone2birds.texture", "D'une Pierre deux Coup",
 				"Les balles ont +20% de\nchance de partir sur\nl'énemie le plus proche\naprès en avoir touché\nun", true),
 	
 	/** ne fait rien */
-	nothing(12, "nothing.texture", "Rien", "Ne fait rien"),
+	NOTHING(12, "nothing.texture", "Rien", "Ne fait rien"),
 	
 	/**
 	 * améliore la cadence comme ceci :
 	 * <br> {@code cadence = (int)(1+(cadence-1)*0.9);}
 	 * <br> {@code punchCadence = (int)(1+(punchCadence-1)*0.9);}
 	 */
-	cadence(13, "cadence.texture", "Cadence", "Augmente la cadence"),
+	CADENCE(13, "cadence.texture", "Cadence", "Augmente la cadence"),
 	
 	/** ajoute une tourelle */
-	turret(14, "turret.texture", "Tourelle Fidèle", "Ajoute une tourelle\nà ton armée", true),
+	TURRET(14, "turret.texture", "Tourelle Fidèle", "Ajoute une tourelle\nà ton armée", true),
 	
-	poison(15, "poison.texture", "Fiole Empoisonné", "Mieux vaux la faire boire\nque la boire"),
+	POISON(15, "poison.texture", "Fiole Empoisonné", "Mieux vaux la faire boire\nque la boire"),
 	
-	bomb(16, "bomb.texture", "Bomb PI/4", "Hey tu peut envoyer des\nbombes\n(ça me rappelle quelqu'un)", true),
+	BOMB(16, "bomb.texture", "Bomb PI/4", "Hey tu peut envoyer des\nbombes\n(ça me rappelle quelqu'un)", true),
 	
-	snakesOfPain(17, "snakesOfPain.texture", "Seprents de la douleure", "La douleure se matérialise\nen seprent", true, true),
+	SNAKES_OF_PAIN(17, "snakesOfPain.texture", "Seprents de la douleure", "La douleure se matérialise\nen seprent", true, true),
 	
-	petrification(18, "petrification.texture", "Petrification", "+10% de chance de\npétrifier un énemies à\nchaque attaques");
+	PETRIFICATION(18, "petrification.texture", "Petrification", "+10% de chance de\npétrifier un énemies à\nchaque attaques");
 	
 	
 	

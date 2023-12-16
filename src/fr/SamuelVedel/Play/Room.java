@@ -436,7 +436,7 @@ public class Room {
 		if (!isABossLevel) goal += 2;
 		
 		// fait pop mes tourelles
-		for (int i = 0; i < me.powers[Power.turret.id]; i++) {
+		for (int i = 0; i < me.powers[Power.TURRET.id]; i++) {
 			enemies.add(new Turret(me, this));
 		}
 		

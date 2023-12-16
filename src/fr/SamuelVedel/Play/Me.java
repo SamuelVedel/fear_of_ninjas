@@ -198,7 +198,7 @@ public class Me extends Entity {
 	public void addPower(Power pow) {
 		super.addPower(pow);
 		// ajoute le pouvoir aux tourelles
-		if (pow != Power.turret) {
+		if (pow != Power.TURRET) {
 			for (int i = 0; i < room.enemies.size(); i++) {
 				Enemy en = room.enemies.get(i);
 				if (en.type == TURRET_TYPE && en.clan == clan) {
@@ -208,7 +208,7 @@ public class Me extends Entity {
 		}
 		
 		// pouvoir bombe
-		if (pow == Power.bomb) {
+		if (pow == Power.BOMB) {
 			if (powers[pow.id] == 1) {
 				addSkills[AddSkill.BOMB_TYPE].active = true;
 			} else {

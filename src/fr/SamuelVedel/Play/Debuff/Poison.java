@@ -64,7 +64,7 @@ public class Poison extends Debuff{
 	@Override
 	public void reset(Entity giver) {
 		super.reset(giver);
-		int num = giver.powers[Power.poison.id];
+		int num = giver.powers[Power.POISON.id];
 		tMax = (3+num)*60;
 //		if (num <= 3) {
 ////			if (num > perDammage) perDammage = 5+num;
