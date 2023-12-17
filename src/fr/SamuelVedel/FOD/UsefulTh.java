@@ -372,11 +372,12 @@ public abstract class UsefulTh {
 		for (int i = 0; i < powerList.length; i++) {
 			if (powerList[i] != 0) {
 				// affichage du pouvoir
-				Power.values()[i].display(x+num*(edge+powW), y, powW, powH, play.color, g2d);
+				Power pow = Power.values()[i];
+				pow.display(x+num*(edge+powW), y, powW, powH, play.color, g2d);
 				
 				// pour les addSkills
-				if (i == Power.BOMB.id) {
-					AddSkill as = play.room.me.addSkills[AddSkill.BOMB_TYPE];
+				if (pow.isAddSkillPower()) {
+					AddSkill as = play.room.me.addSkills[pow.addSkillId];
 					
 					// affichage de la touche
 					g2d.setColor(play.color);

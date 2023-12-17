@@ -144,7 +144,7 @@ public class Chat {
 		} else if (part[0].matches("exit")) {
 			System.exit(0);
 		} else if (part[0].matches("tp")) {
-			tp();
+			room.me.tp();
 		} else if (part[0].matches("setFps")) {
 			setFps(part);
 		} else {
@@ -193,6 +193,8 @@ public class Chat {
 				powI = 17;
 			} else if (args[1].matches("petrification")) {
 				powI = 18;
+			} else if (args[1].matches("tp")) {
+				powI = 19;
 			}
 			
 			if (powI >= 0) {
@@ -395,11 +397,6 @@ public class Chat {
 		} else {
 			addText("Il n'y a pas assez d'arguments");
 		}
-	}
-	
-	private void tp() {
-		room.me.x = (play.mouseX-room.transX)/play.scaleW;
-		room.me.y = (play.mouseY-room.transY)/play.scaleW;
 	}
 	
 	private void setFps(String[] args) {

@@ -7,7 +7,9 @@ import java.awt.Graphics2D;
 import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.AddSkill.AddSkill;
 import fr.SamuelVedel.Play.AddSkill.BombSkill;
+import fr.SamuelVedel.Play.AddSkill.TpSkill;
 import fr.SamuelVedel.Play.Enemy.Enemy;
+import fr.SamuelVedel.Play.Particle.ClassicParticle;
 
 /*  ___
  * (° °)
@@ -84,7 +86,10 @@ public class Me extends Entity {
 	}
 	
 	private void initAddSkills() {
-		addSkills = new AddSkill[] {new BombSkill(this, room)};
+		addSkills = new AddSkill[] {
+				new BombSkill(this, room),
+				new TpSkill(this)
+		};
 	}
 	
 	/**
@@ -210,10 +215,18 @@ public class Me extends Entity {
 		// pouvoir bombe
 		if (pow == Power.BOMB) {
 			if (powers[pow.id] == 1) {
-				addSkills[AddSkill.BOMB_TYPE].active = true;
+				addSkills[AddSkill.BOMB_TYPE].activate();
 			} else {
-				AddSkill as = addSkills[AddSkill.BOMB_TYPE];
-				as.setCooldown(3*as.getCooldown()/4);
+				addSkills[AddSkill.BOMB_TYPE].decreaseCooldown();;
+			}
+		}
+		
+		// pouvoir TP
+		if (pow == Power.TP) {
+			if (powers[pow.id] == 1) {
+				addSkills[AddSkill.TP_TYPE].activate();
+			} else {
+				addSkills[AddSkill.TP_TYPE].decreaseCooldown();
 			}
 		}
 	}
@@ -270,6 +283,21 @@ public class Me extends Entity {
 	
 	public boolean lookToTheRight() {
 		return iTex < textures.length/2;
+	}
+	
+	public void tp() {
+		// effet de particule
+		int nParticles = (w+h/2);
+		for (int i = 0; i < nParticles; i++) {
+			double pX = x+UsefulTh.rand.nextInt(w);
+			double pY = y+UsefulTh.rand.nextInt(h);
+			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
+			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
+			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
+		}
+		
+		x = (play.mouseX-room.transX)/play.scaleW;
+		y = (play.mouseY-room.transY)/play.scaleW;
 	}
 	
 	@Override

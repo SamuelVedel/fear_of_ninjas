@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 import fr.SamuelVedel.FOD.UsefulTh;
+import fr.SamuelVedel.Play.AddSkill.AddSkill;
 
 /*  ___
  * (° °)
@@ -85,13 +86,13 @@ public enum Power {
 	
 	POISON(15, "poison.texture", "Fiole Empoisonné", "Mieux vaux la faire boire\nque la boire"),
 	
-	BOMB(16, "bomb.texture", "Bomb PI/4", "Hey tu peut envoyer des\nbombes\n(ça me rappelle quelqu'un)", true),
+	BOMB(16, "bomb.texture", "Bomb PI/4", "Hey tu peut envoyer des\nbombes\n(ça me rappelle quelqu'un)", true, AddSkill.BOMB_TYPE),
 	
 	SNAKES_OF_PAIN(17, "snakesOfPain.texture", "Seprents de la douleure", "La douleure se matérialise\nen seprent", true, true),
 	
-	PETRIFICATION(18, "petrification.texture", "Petrification", "+10% de chance de\npétrifier un énemies à\nchaque attaques");
+	PETRIFICATION(18, "petrification.texture", "Petrification", "+10% de chance de\npétrifier un énemies à\nchaque attaques"),
 	
-	
+	TP(19, null, "Télétransportation", "Permet de se téléporter\nau pointeur de la sourie", true, AddSkill.TP_TYPE);
 	
 	//strength(, "strength.texture", "Biceps Impressionant", "Agmente les dégats")
 	
@@ -99,12 +100,13 @@ public enum Power {
 	public final int[][] texture;
 	public final boolean onlyForMe;
 	public final boolean bossPower;
+	public final int addSkillId;
 	
 	public String name;
 	/** description de l'effet du pouvoir */
 	public String effect;
 	
-	Power(int id, String file, String name, String effect, boolean onlyForMe, boolean bossPower) {
+	Power(int id, String file, String name, String effect, boolean onlyForMe, boolean bossPower, int addSkillId) {
 		this.id = id;
 		if (file != null) {
 			this.texture = UsefulTh.readMat("textures/powers/"+file);
@@ -115,10 +117,19 @@ public enum Power {
 		this.effect = effect;
 		this.onlyForMe = onlyForMe;
 		this.bossPower = bossPower;
+		this.addSkillId = addSkillId;
+	}
+	
+	Power(int id, String file, String name, String effect, boolean onlyForMe, boolean bossPower) {
+		this(id, file, name, effect, onlyForMe, bossPower, -1);
+	}
+	
+	Power(int id, String file, String name, String effect, boolean onlyForMe, int addSkillId) {
+		this(id, file, name, effect, onlyForMe, false, addSkillId);
 	}
 	
 	Power(int id, String file, String name, String effect, boolean onlyForMe) {
-		this(id, file, name, effect, onlyForMe, false);
+		this(id, file, name, effect, onlyForMe, -1);
 	}
 	
 	Power(int id, String file, String name, String effect) {
@@ -145,6 +156,10 @@ public enum Power {
 		for(String str : effect.split("\n")) {
 			cht.addText("     | "+str, Font.PLAIN);
 		}
+	}
+	
+	public boolean isAddSkillPower() {
+		return addSkillId >= 0;
 	}
 	
 	/**

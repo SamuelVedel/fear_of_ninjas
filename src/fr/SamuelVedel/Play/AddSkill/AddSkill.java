@@ -31,6 +31,7 @@ public abstract class AddSkill {
 	 * type et indice dans la liste des addSkills
 	 */
 	public static final int BOMB_TYPE = 0;
+	public static final int TP_TYPE = 1;
 	public int type;
 	
 	protected abstract void action();
@@ -50,6 +51,14 @@ public abstract class AddSkill {
 	
 	public void setInput(Input input) {
 		this.input = input;
+	}
+	
+	public void activate() {
+		active = true;
+	}
+	
+	public void decreaseCooldown() {
+		setCooldown(3*getCooldown()/4);
 	}
 	
 	public boolean canBeUsed() {
