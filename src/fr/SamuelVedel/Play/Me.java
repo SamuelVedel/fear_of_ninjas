@@ -214,26 +214,18 @@ public class Me extends Entity {
 		
 		// pouvoir bombe
 		if (pow == Power.BOMB) {
-			if (powers[pow.id] == 1) {
-				addSkills[AddSkill.BOMB_TYPE].activate();
-			} else {
-				addSkills[AddSkill.BOMB_TYPE].decreaseCooldown();;
-			}
+			addSkills[AddSkill.BOMB_TYPE].addOne();
 		}
 		
 		// pouvoir TP
 		if (pow == Power.TP) {
-			if (powers[pow.id] == 1) {
-				addSkills[AddSkill.TP_TYPE].activate();
-			} else {
-				addSkills[AddSkill.TP_TYPE].decreaseCooldown();
-			}
+			addSkills[AddSkill.TP_TYPE].addOne();
 		}
 	}
 	
 	public void resetAddSkillsProgession() {
 		for (AddSkill as : addSkills) {
-			as.resetProgression();
+			as.resetUse();
 		}
 	}
 	

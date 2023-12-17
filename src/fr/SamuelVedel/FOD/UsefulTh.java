@@ -375,16 +375,19 @@ public abstract class UsefulTh {
 				Power pow = Power.values()[i];
 				pow.display(x+num*(edge+powW), y, powW, powH, play.color, g2d);
 				
+				String text = Integer.toString(powerList[i]);
+				
 				// pour les addSkills
 				if (pow.isAddSkillPower()) {
 					AddSkill as = play.room.me.addSkills[pow.addSkillId];
+					text = as.getNum()+"/"+as.getMaxNum();
 					
 					// affichage de la touche
 					g2d.setColor(play.color);
 					g2d.setFont(new Font("ARIAL", Font.BOLD, (int)(12*play.scaleW)));
-					String text = as.getInputName();
-					int textH = getTextH(text, g2d);
-					drawString(text, x+num*(edge+powW)+(int)(4*play.scaleW), y+textH+(int)(4*play.scaleW), g2d);
+					String textI = as.getInputName();
+					int textH = getTextH(textI, g2d);
+					drawString(textI, x+num*(edge+powW)+(int)(4*play.scaleW), y+textH+(int)(4*play.scaleW), g2d);
 					
 					// affichage de la progression
 					if (as.getProgression() != 100) {
@@ -396,10 +399,9 @@ public abstract class UsefulTh {
 				}
 				
 				// affichage du nombre de pocession du pouvoris
-				if (powerList[i] != 1) {
+				if (powerList[i] != 1 || pow.isAddSkillPower()) {
 					g2d.setColor(play.color);
 					g2d.setFont(new Font("ARIAL", Font.BOLD, (int)(12*play.scaleW)));
-					String text = Integer.toString(powerList[i]);
 					int textW = getTextW(text, g2d);
 					drawString(text, x+num*(edge+powW)+powW-textW-(int)(4*play.scaleW), y+powH-(int)(4*play.scaleW), g2d);
 				}

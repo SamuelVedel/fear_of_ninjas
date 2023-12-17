@@ -19,7 +19,6 @@ public class BombSkill extends AddSkill {
 		this.user = user;
 		this.room = room;
 		type = BOMB_TYPE;
-		setCooldown(30*60); // 30 sec
 		setInput(new Input(Input.KEY_INPUT, 70, "F")); // F pour Bombe
 	}
 	

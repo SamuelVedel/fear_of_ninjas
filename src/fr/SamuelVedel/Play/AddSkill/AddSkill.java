@@ -14,12 +14,13 @@ import fr.SamuelVedel.Play.Input;
  */
 public abstract class AddSkill {
 	
-	public boolean active = false;
+	private int num = 0;
+	private int maxNum = 0;
 	/**
 	 * Temps necessaire entre chaque utilisation
 	 * (en 60ème de seconde)
 	 */
-	private int cooldown;
+	private int cooldown = 20*60; // 20 secondes
 	/**
 	 * Progretion du cooldonw tout simplement
 	 */
@@ -35,6 +36,14 @@ public abstract class AddSkill {
 	public int type;
 	
 	protected abstract void action();
+	
+	public int getNum() {
+		return num;
+	}
+	
+	public int getMaxNum() {
+		return maxNum;
+	}
 	
 	public int getCooldown() {
 		return cooldown;
@@ -53,22 +62,18 @@ public abstract class AddSkill {
 		this.input = input;
 	}
 	
-	public void activate() {
-		active = true;
-	}
-	
-	public void decreaseCooldown() {
-		setCooldown(3*getCooldown()/4);
-	}
-	
-	public boolean canBeUsed() {
-		return progressOfCooldown >= cooldown && active;
+	/**
+	 * ajoute un skill
+	 */
+	public void addOne() {
+		++maxNum;
+		++num;
 	}
 	
 	public void use() {
-		if (canBeUsed()) {
-			progressOfCooldown = 0;
+		if (num > 0) {
 			action();
+			--num;
 		}
 	}
 	
@@ -85,8 +90,13 @@ public abstract class AddSkill {
 	}
 	
 	public void progress(double delta) {
-		if (!canBeUsed()) {
+		if (num < maxNum) {
 			progressOfCooldown += delta;
+			if (progressOfCooldown >= cooldown) {
+				++num;
+				if (num < maxNum) progressOfCooldown -= cooldown;
+				else progressOfCooldown = 0;
+			}
 		}
 	}
 	
@@ -94,14 +104,13 @@ public abstract class AddSkill {
 	 * @return Le pourcentage de progression du cooldown
 	 */
 	public double getProgression() {
-		if (cooldown != 0) {
-			return progressOfCooldown*100/cooldown;
-		} else {
-			return 100;
-		}
+		if (num == maxNum) return 100;
+		if (cooldown != 0) return progressOfCooldown*100/cooldown;
+		return 100;
 	}
 	
-	public void resetProgression() {
-		progressOfCooldown = cooldown;
+	public void resetUse() {
+		num = maxNum;
+		progressOfCooldown = 0;
 	}
 }
