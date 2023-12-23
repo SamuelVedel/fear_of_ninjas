@@ -288,8 +288,8 @@ public class Me extends Entity {
 			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
 		}
 		
-		x = (play.mouseX-room.transX)/play.scaleW;
-		y = (play.mouseY-room.transY)/play.scaleW;
+		x = (play.mouseX-room.transX)/play.scaleW-w/2;
+		y = (play.mouseY-room.transY)/play.scaleW-h/2;
 	}
 	
 	@Override
