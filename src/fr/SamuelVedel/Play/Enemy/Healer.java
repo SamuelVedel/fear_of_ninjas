@@ -176,13 +176,13 @@ public class Healer extends Enemy {
 		for (int i = 0; i < nearest.length; i++) {
 			if (nearest[i] != null) {
 				Enemy en = nearest[i];
-				UsefulTh.drawSemiLine((int)x+w/2, (int)y+h/2, (int)en.x+en.w/2, (int)en.y+en.h/2, play.color, g2d);
+				UsefulTh.drawSemiLine((int)x+w/2, (int)y+h/2, (int)en.x+en.w/2, (int)en.y+en.h/2, play.color.darker(), g2d);
 			}
 		}
 		
 		// affiche le lien de vol de vie
 		if (nearestMe != null) {
-			UsefulTh.drawSemiLine((int)x+w/2, (int)y+h/2, (int)nearestMe.x+nearestMe.w/2, (int)nearestMe.y+nearestMe.h/2, play.color, g2d);
+			UsefulTh.drawSemiLine((int)x+w/2, (int)y+h/2, (int)nearestMe.x+nearestMe.w/2, (int)nearestMe.y+nearestMe.h/2, play.color.darker(), g2d);
 		}
 		
 		displayLife((int)(x+w/2-(w+2*UsefulTh.pixelW)/2), (int)(y-4*UsefulTh.pixelH-1.3*3*UsefulTh.pixelH), w+2*UsefulTh.pixelW, 3*UsefulTh.pixelH, UsefulTh.pixelW, g2d);

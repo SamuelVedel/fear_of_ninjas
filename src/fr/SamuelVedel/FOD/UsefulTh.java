@@ -164,7 +164,18 @@ public abstract class UsefulTh {
 			for (int iY = 0; iY < tex.length; iY++) {
 				for (int iX = 0; iX < tex[iY].length; iX++) {
 					if (tex[iY][iX] != 0) {
-						if (tex[iY][iX] == 1) {
+						switch (tex[iY][iX]) {
+						case 1:
+							g2d.setColor(Color.BLACK);
+							break;
+						case 2:
+							g2d.setColor(c2);
+							break;
+						case 3:
+							g2d.setColor(c2.darker());
+							break;
+						}
+						/*if (tex[iY][iX] == 1) {
 							g2d.setColor(Color.BLACK);
 						} else if (tex[iY][iX] == 2) {
 							g2d.setColor(c2);
@@ -181,7 +192,7 @@ public abstract class UsefulTh {
 //							int g = rand.nextInt(256);
 //							int b = rand.nextInt(256);
 //							g2d.setColor(new Color(r, g, b));
-						}
+						}*/
 						g2d.fillRect(x+iX*pW, y+iY*pH, pW, pH);
 					}
 				}

@@ -136,6 +136,6 @@ public class Bomb extends Enemy {
 	public void takeDammage(int dammage, Entity e) {}
 	
 	public void display(Graphics2D g2d) {
-		UsefulTh.displayTex(tex, (int)x, (int)y-2*UsefulTh.pixelH, w, h+3*UsefulTh.pixelH, play.color, g2d);
+		UsefulTh.displayTex(tex, (int)x, (int)y-2*UsefulTh.pixelH, w, h+2*UsefulTh.pixelH, play.color, g2d);
 	}
 }
