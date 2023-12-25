@@ -228,7 +228,8 @@ public class Bullet {
 	 * @param g2d {@code Graphics2D} sur lequel il dessine
 	 */
 	public void display(Graphics2D g2d) {
-		g2d.setColor(play.color);
+		if (shooter.clan == Enemy.MY_CLAN) g2d.setColor(play.color);
+		else g2d.setColor(play.color.darker());
 		g2d.fillRect((int)x, (int)y, w, h);
 	}
 }
