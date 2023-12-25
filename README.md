@@ -115,6 +115,7 @@ cette maj :
  - modification de l'extention pour les fichier des texutres et des salles.
    .txt -> .texture pour les textures
    .txt -> .room pour les salles
+ - ajout du pouvoir TP
 
 
 si cela vous interesse vous êtes invité à me faire des retours

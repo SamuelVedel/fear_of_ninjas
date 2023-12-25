@@ -92,7 +92,7 @@ public enum Power {
 	
 	PETRIFICATION(18, "petrification.texture", "Petrification", "+10% de chance de\npétrifier un énemies à\nchaque attaques"),
 	
-	TP(19, null, "Télétransportation", "Permet de se téléporter\nau pointeur de la sourie", true, AddSkill.TP_TYPE);
+	TP(19, "tp.texture", "Télétransportation", "Permet de se téléporter\nau pointeur de la sourie", true, AddSkill.TP_TYPE);
 	
 	//strength(, "strength.texture", "Biceps Impressionant", "Agmente les dégats")
 	
