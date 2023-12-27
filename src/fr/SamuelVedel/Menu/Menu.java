@@ -2,6 +2,7 @@ package fr.SamuelVedel.Menu;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.GraphicsDevice;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -60,6 +61,8 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 				jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				jf.setUndecorated(true);
 				jf.setResizable(false);
+				GraphicsDevice gdevice = jf.getGraphicsConfiguration().getDevice();
+				gdevice.setFullScreenWindow(jf);
 				fullScreen = true;
 			}
 			jf.setVisible(true);
@@ -117,6 +120,8 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 		jf.addKeyListener(this);
 		menuP.addMouseMotionListener(this);
 		jf.setContentPane(menuP);
+		GraphicsDevice gdevice = jf.getGraphicsConfiguration().getDevice();
+		gdevice.setFullScreenWindow(jf);
 		jf.setVisible(true);
 	}
 	
