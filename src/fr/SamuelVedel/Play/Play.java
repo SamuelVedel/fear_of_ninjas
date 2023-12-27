@@ -1,19 +1,13 @@
 package fr.SamuelVedel.Play;
 
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.GraphicsDevice;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
-
-import javax.swing.JFrame;
 
 import fr.SamuelVedel.FOD.UsefulTh;
+import fr.SamuelVedel.FOD.VFrame;
 
 /*  ___
  * (° °)
@@ -36,8 +30,7 @@ public class Play implements KeyListener, MouseMotionListener {
 	private double currentTime;
 	private int fps = 60;
 	
-	public JFrame jf = new JFrame();
-	private boolean fullScreen = true;
+	public VFrame jf = new VFrame();
 	
 	/** hauteur pour laquel le zoom est de 1 */
 	public double scaleW;
@@ -72,22 +65,7 @@ public class Play implements KeyListener, MouseMotionListener {
 			else if (phase == PAUSE_PHASE) phase = PLAY_PHASE;
 		}
 		else if (e.getKeyCode() == 122) { // F11 plein ecran <--> pas plein ecran
-			jf.dispose();
-			if (fullScreen) {
-				jf.setUndecorated(false);
-				jf.setResizable(true);
-				jf.setSize(800, 600);
-				jf.setLocationRelativeTo(null);
-				fullScreen = false;
-			} else {
-				jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				jf.setUndecorated(true);
-				jf.setResizable(false);
-				GraphicsDevice gdevice = jf.getGraphicsConfiguration().getDevice();
-				gdevice.setFullScreenWindow(jf);
-				fullScreen = true;
-			}
-			jf.setVisible(true);
+			jf.toggleFullScreen();
 		}
 	}
 	
@@ -114,12 +92,8 @@ public class Play implements KeyListener, MouseMotionListener {
 	
 	private void initJf() {
 		jf.setTitle("Fear of ninjas");
-		jf.setSize(800, 600);
-		jf.setLocationRelativeTo(null);
-		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		jf.setUndecorated(true);
-		jf.setResizable(false);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setFullScreen(true);
+		jf.setVoidCursor();
 		jf.setContentPane(playP);
 		jf.addKeyListener(this);
 		
@@ -128,9 +102,6 @@ public class Play implements KeyListener, MouseMotionListener {
 		playP.addMouseListener(room.ml);
 		
 		playP.addMouseMotionListener(this);
-		jf.setCursor((Cursor) Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(32, 32, BufferedImage.TRANSLUCENT), new Point(0, 0), ""));
-		GraphicsDevice gdevice = jf.getGraphicsConfiguration().getDevice();
-		gdevice.setFullScreenWindow(jf);
 		jf.setVisible(true);
 	}
 	

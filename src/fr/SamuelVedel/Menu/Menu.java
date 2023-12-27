@@ -1,19 +1,13 @@
 package fr.SamuelVedel.Menu;
 
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.GraphicsDevice;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
-
-import javax.swing.JFrame;
 
 import fr.SamuelVedel.FOD.UsefulTh;
+import fr.SamuelVedel.FOD.VFrame;
 import fr.SamuelVedel.VComponent.VActionListener;
 import fr.SamuelVedel.VComponent.VButton;
 import fr.SamuelVedel.VComponent.VComponent;
@@ -21,8 +15,7 @@ import fr.SamuelVedel.VComponent.VPanel;
 
 public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 	
-	private JFrame jf = new JFrame();
-	private boolean fullScreen = true;
+	private VFrame jf = new VFrame();
 	protected int mouseX, mouseY;
 	
 	protected double scaleW;
@@ -50,22 +43,7 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == 27) System.exit(0);
 		else if (e.getKeyCode() == 122) {
-			jf.dispose();
-			if (fullScreen) {
-				jf.setUndecorated(false);
-				jf.setResizable(true);
-				jf.setSize(800, 600);
-				jf.setLocationRelativeTo(null);
-				fullScreen = false;
-			} else {
-				jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				jf.setUndecorated(true);
-				jf.setResizable(false);
-				GraphicsDevice gdevice = jf.getGraphicsConfiguration().getDevice();
-				gdevice.setFullScreenWindow(jf);
-				fullScreen = true;
-			}
-			jf.setVisible(true);
+			jf.toggleFullScreen();
 		}
 	}
 	
@@ -110,18 +88,11 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 	
 	private void initJf() {
 		jf.setTitle("Fear of ninjas");
-		jf.setSize(800, 600);
-		jf.setLocationRelativeTo(null);
-		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		jf.setUndecorated(true);
-		jf.setResizable(false);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setCursor((Cursor) Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(32, 32, BufferedImage.TRANSLUCENT), new Point(0, 0), ""));
+		jf.setFullScreen(true);
+		jf.setVoidCursor();
 		jf.addKeyListener(this);
 		menuP.addMouseMotionListener(this);
 		jf.setContentPane(menuP);
-		GraphicsDevice gdevice = jf.getGraphicsConfiguration().getDevice();
-		gdevice.setFullScreenWindow(jf);
 		jf.setVisible(true);
 	}
 	
