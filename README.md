@@ -116,6 +116,7 @@ cette maj :
    .txt -> .texture pour les textures
    .txt -> .room pour les salles
  - ajout du pouvoir TP
+ - ajout d'une nouvelle couleur, qui est la couleur aléatoire mais en plus sombre
 
 
 si cela vous interesse vous êtes invité à me faire des retours

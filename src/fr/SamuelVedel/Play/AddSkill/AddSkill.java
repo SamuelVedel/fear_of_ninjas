@@ -20,7 +20,7 @@ public abstract class AddSkill {
 	 * Temps necessaire entre chaque utilisation
 	 * (en 60ème de seconde)
 	 */
-	private int cooldown = 20*60; // 20 secondes
+	private int cooldown = 10*60; // 10 secondes
 	/**
 	 * Progretion du cooldonw tout simplement
 	 */
