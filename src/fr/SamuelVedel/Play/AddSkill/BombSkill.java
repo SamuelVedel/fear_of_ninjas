@@ -24,11 +24,11 @@ public class BombSkill extends AddSkill {
 	
 	@Override
 	protected void action() {
-		if (user.lookToTheRight()) {
-			room.enemies.add(new Bomb(room, Math.cos(angle)*bombV, Math.sin(angle)*bombV, bombDammage, user));
-		} else {
-			room.enemies.add(new Bomb(room, Math.cos(angle-Math.PI/2)*bombV, Math.sin(angle-Math.PI/2)*bombV, bombDammage, user));
+		double alpha = angle;
+		if (room.getMouseXInRoom() < user.x) {
+		        alpha -= Math.PI/2;
 		}
+		room.enemies.add(new Bomb(room, Math.cos(alpha)*bombV, Math.sin(alpha)*bombV, bombDammage, user));
 	}
 	
 }

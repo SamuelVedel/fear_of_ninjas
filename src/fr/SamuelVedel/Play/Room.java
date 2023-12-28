@@ -410,6 +410,14 @@ public class Room {
 		return 0 <= y && y < cubes.length;
 	}
 	
+	public double getMouseXInRoom() {
+		return (play.mouseX-transX)/play.scaleW;
+	}
+	
+	public double getMouseYInRoom() {
+		return (play.mouseY-transY)/play.scaleW;
+	}
+	
 	public void refresh() {
 		level++;
 		

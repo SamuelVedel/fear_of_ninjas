@@ -177,8 +177,8 @@ public class Me extends Entity {
 			if (tShoot >= cadence) {
 				double x1 = x+w/2;
 				double y1 = y+h/2;
-				double x2 = (play.mouseX-room.transX)/play.scaleW;
-				double y2 = (play.mouseY-room.transY)/play.scaleW;
+				double x2 = room.getMouseXInRoom();
+				double y2 = room.getMouseYInRoom();
 				if (x1 != x2 || y1 != y2) {
 					double alpha = UsefulTh.getAlpha(x1, y1, x2, y2);
 					room.bullets.add(new Bullet(x+w/2-bulletW/2, y+h/2-bulletH/2, alpha, this));
@@ -288,8 +288,8 @@ public class Me extends Entity {
 			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
 		}
 		
-		x = (play.mouseX-room.transX)/play.scaleW-w/2;
-		y = (play.mouseY-room.transY)/play.scaleW-h/2;
+		x = room.getMouseXInRoom()-w/2;
+		y = room.getMouseYInRoom()-h/2;
 	}
 	
 	@Override
