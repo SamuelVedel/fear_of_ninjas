@@ -74,10 +74,6 @@ public class ChoicePanel {
 		if (play.phase == Play.CHOICE_PHASE && percentOnScreen < 100) {
 			percentOnScreen += v*delta;
 			v += a*delta;
-			if (percentOnScreen >= 100) {
-				percentOnScreen = 100;
-				v = 0;
-			}
 		} else if (play.phase == Play.PLAY_PHASE && percentOnScreen > 0) {
 			percentOnScreen += v*delta;
 			v -= a*delta;
@@ -85,6 +81,10 @@ public class ChoicePanel {
 				percentOnScreen = 0;
 				v = 0;
 			}
+		}
+		if (percentOnScreen > 100) {
+			percentOnScreen = 100;
+			v = 0;
 		}
 	}
 	
