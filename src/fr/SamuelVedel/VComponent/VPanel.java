@@ -21,22 +21,22 @@ public class VPanel extends VComponent {
 		
 		@Override
 		public void keyTyped(KeyEvent e) {
-			for (VComponent vc : vcList) {
-				vc.keyTyped(e);
+			for (int i = vcList.size()-1; i >= 0; --i) {
+				vcList.get(i).keyTyped(e);
 			}
 		}
 		
 		@Override
 		public void keyReleased(KeyEvent e) {
-			for (VComponent vc : vcList) {
-				vc.keyReleased(e);
+			for (int i = vcList.size()-1; i >= 0; --i) {
+				vcList.get(i).keyReleased(e);
 			}
 		}
 		
 		@Override
 		public void keyPressed(KeyEvent e) {
-			for (VComponent vc : vcList) {
-				vc.keyPressed(e);
+			for (int i = vcList.size()-1; i >= 0; --i) {
+				vcList.get(i).keyPressed(e);
 			}
 		}
 	};
@@ -44,15 +44,15 @@ public class VPanel extends VComponent {
 		
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			for (VComponent vc : vcList) {
-				vc.mouseReleased(e);
+			for (int i = vcList.size()-1; i >= 0; --i) {
+				vcList.get(i).mouseReleased(e);
 			}
 		}
 		
 		@Override
 		public void mousePressed(MouseEvent e) {
-			for (VComponent vc : vcList) {
-				vc.mousePressed(e);
+			for (int i = vcList.size()-1; i >= 0; --i) {
+				vcList.get(i).mousePressed(e);
 			}
 //			if (hasFocus() && jp != null) {
 //				jp.grabFocus();
@@ -72,15 +72,15 @@ public class VPanel extends VComponent {
 		
 		@Override
 		public void mouseMoved(MouseEvent e) {
-			for (VComponent vc : vcList) {
-				vc.mouseMoved(e);
+			for (int i = vcList.size()-1; i >= 0; --i) {
+				vcList.get(i).mouseMoved(e);
 			}
 		}
 		
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			for (VComponent vc : vcList) {
-				vc.mouseDragged(e);
+			for (int i = vcList.size()-1; i >= 0; --i) {
+				vcList.get(i).mouseDragged(e);
 			}
 		}
 	};
@@ -155,7 +155,8 @@ public class VPanel extends VComponent {
 	@Override
 	public void adjust(int widthRefrence, int heightRefrence) {
 		super.adjust(widthRefrence, heightRefrence);
-		for (VComponent vc : vcList) {
+		for (int i = vcList.size()-1; i >= 0; --i) {
+			VComponent vc = vcList.get(i);
 			vc.adjust(getActualWidth(), getActualHeight());
 			vc.setActualX(vc.getActualX()+getActualX());
 			vc.setActualY(vc.getActualY()+getActualY());
@@ -164,8 +165,8 @@ public class VPanel extends VComponent {
 	
 	@Override
 	public void display(Color c2, Graphics2D g2d) {
-		for (VComponent vc : vcList) {
-			vc.display(c2, g2d);
+		for (int i = vcList.size()-1; i >= 0; --i) {
+			vcList.get(i).display(c2, g2d);
 		}
 	}
 }

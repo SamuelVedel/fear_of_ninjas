@@ -85,8 +85,8 @@ public class Play implements KeyListener, MouseMotionListener {
 	}
 	
 	public Play() {
-		initJf();
 		initColor();
+		initJf();
 		actions();
 	}
 	
