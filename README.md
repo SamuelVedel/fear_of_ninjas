@@ -117,6 +117,10 @@ cette maj :
    .txt -> .room pour les salles
  - ajout du pouvoir TP
  - ajout d'une nouvelle couleur, qui est la couleur aléatoire mais en plus sombre
+ - lorsqu'on stack le pouvoir bomb ou tp, on peut l'utiliser plusieurs fois
+ - les bombes tirée par le joueur vont dans la direction de son
+ - y'avais un bug où le panneau de selection de pouvoir pouvais descendre trop bas
+ - le pleine ecran marche sur ubuntu
 
 
 si cela vous interesse vous êtes invité à me faire des retours
