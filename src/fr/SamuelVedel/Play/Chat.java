@@ -51,39 +51,6 @@ public class Chat {
 		this.play = room.play;
 	}
 	
-	private class Message {
-		private String text;
-		private double time = 0;
-		private static final int MAX_TIME = 7*60; // 7 secondes
-		private int w = 0;
-		private int h = 0;
-		
-		private int fontStyle;
-		
-		private Message(String text, int fontStyle) {
-			this.text = text;
-			this.fontStyle = fontStyle;
-		}
-		
-		private void actions(double delta) {
-			time += delta;
-		}
-		
-		private void setWH(Graphics2D g2d) {
-			if (w == 0 && h == 0) {
-				w = UsefulTh.getTextW(text, g2d);
-				h = UsefulTh.getTextH(text, g2d);
-			}
-		}
-		
-		private void display(int x, int y, Graphics2D g2d) {
-			g2d.setFont(new Font("ARIAL", fontStyle, (int)(textSize*play.scaleW)));
-			Color c = play.color;
-			g2d.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), (int)(((double)(MAX_TIME-time))/MAX_TIME*255)));
-			UsefulTh.drawString(text, x, y, g2d);
-		}
-	}
-	
 	public void actions(double delta) {
 		for (int i = 0; i < msgs.length; i++) {
 			if (msgs[i] != null) {
@@ -469,6 +436,40 @@ public class Chat {
 				Message msg = msgs[i];
 				msg.display(x+(gap), y-(i+1)*gap-i*msg.h, g2d);
 			}
+		}
+	}
+
+	
+	private class Message {
+		private String text;
+		private double time = 0;
+		private static final int MAX_TIME = 10*60; // 10 secondes //7*60; // 7 secondes
+		private int w = 0;
+		private int h = 0;
+		
+		private int fontStyle;
+		
+		private Message(String text, int fontStyle) {
+			this.text = text;
+			this.fontStyle = fontStyle;
+		}
+		
+		private void actions(double delta) {
+			time += delta;
+		}
+		
+		private void setWH(Graphics2D g2d) {
+			if (w == 0 && h == 0) {
+				w = UsefulTh.getTextW(text, g2d);
+				h = UsefulTh.getTextH(text, g2d);
+			}
+		}
+		
+		private void display(int x, int y, Graphics2D g2d) {
+			g2d.setFont(new Font("ARIAL", fontStyle, (int)(textSize*play.scaleW)));
+			Color c = play.color;
+			g2d.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), (int)(((double)(MAX_TIME-time))/MAX_TIME*255)));
+			UsefulTh.drawString(text, x, y, g2d);
 		}
 	}
 }
