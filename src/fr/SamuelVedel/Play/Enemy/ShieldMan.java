@@ -51,7 +51,7 @@ public class ShieldMan extends Enemy {
 	public void actions(double delta) {
 		super.actions(delta);
 		
-		followMe = false;
+		followTarget = false;
 		actionToWalk(delta);
 		
 		// gère l'animation de marche

@@ -78,7 +78,7 @@ public class MedSlime extends Enemy {
 				groundTouched = true;
 			}
 		} else {
-			followMe = false;
+			followTarget = false;
 			actionToWalk(delta);
 			
 			// fusionne

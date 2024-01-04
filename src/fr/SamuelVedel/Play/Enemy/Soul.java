@@ -83,7 +83,7 @@ public class Soul extends Enemy {
 		
 		// attaque
 		punch(delta);
-		shoot(room.me, delta);
+		shoot(target, delta);
 		
 //		if (UsefulTh.rand.nextInt(300) == 0) {
 		if (UsefulTh.rand.nextDouble() < (double)1/300*delta) {

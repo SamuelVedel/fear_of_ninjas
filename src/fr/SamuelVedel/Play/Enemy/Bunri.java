@@ -74,7 +74,7 @@ public class Bunri extends Enemy {
 		
 		// attaque
 		punch(delta);
-		shoot(room.me, delta);
+		shoot(target, delta);
 		
 		endOfActions(delta);
 	}

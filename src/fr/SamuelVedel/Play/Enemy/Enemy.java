@@ -38,8 +38,9 @@ public abstract class Enemy extends Entity {
 	protected double alpha;
 	
 	protected int viewDistance = 15*UsefulTh.cubeW;
-	protected boolean canSawMe = false;;
-	protected boolean followMe = true;
+	protected Entity target;
+	protected boolean canSawTarget = false;;
+	protected boolean followTarget = true;
 	
 	protected boolean dieWithAnIncrementationOfScore = true;
 	protected boolean canDieWithAnItem = true;
@@ -48,6 +49,7 @@ public abstract class Enemy extends Entity {
 	public Enemy(Room room) {
 		super(room);
 		clan = Entity.ENEMY_CLAN;
+		target = room.me;
 	}
 	
 	protected void spawnToFly() {
@@ -89,12 +91,12 @@ public abstract class Enemy extends Entity {
 		
 		regeneration(delta);
 		
-		if (!canSeeMe()) {
-			followMe = false;
-			canSawMe = false;
-		} else if (!canSawMe) {
-			followMe = true;
-			canSawMe = true;
+		if (!canSeeTarget()) {
+			followTarget = false;
+			canSawTarget = false;
+		} else if (!canSawTarget) {
+			followTarget = true;
+			canSawTarget = true;
 		}
 		
 		oldX = x;
@@ -117,8 +119,8 @@ public abstract class Enemy extends Entity {
 	 */
 	protected void actionToFly(double delta) {
 		// gère le mouvement
-		if (followMe) {
-			alpha = UsefulTh.getAlpha(x, y, room.me.x, room.me.y);
+		if (followTarget) {
+			alpha = UsefulTh.getAlpha(x, y, target.x, target.y);
 		}
 		double vX = v*Math.cos(alpha);
 		double vY = v*Math.sin(alpha);
@@ -131,11 +133,11 @@ public abstract class Enemy extends Entity {
 		if (y < 0) y = 0;
 		else if (y+h > room.plan.length*UsefulTh.cubeH) y = room.plan.length*UsefulTh.cubeH-h;
 		
-		// revoie la trajectoire pour pas être bloqué si il ne me voit pas
-		if (!followMe) {
+		// revoie la trajectoire pour pas être bloqué si il ne voit pas la cible
+		if (!followTarget) {
 			if (oldX == x || oldY == y) alpha = 2*Math.PI*UsefulTh.rand.nextDouble();
 		} else if (x == oldX && y == oldY) {
-			followMe = false;
+			followTarget = false;
 			alpha = 2*Math.PI*UsefulTh.rand.nextDouble();
 		}
 	}
@@ -146,7 +148,7 @@ public abstract class Enemy extends Entity {
 	 * à appeler avec les actions
 	 */
 	protected void actionToWalk(double delta) {
-		walkFollowMe();
+		walkFollowTarget();
 		// gère le mouvement
 		walkAndFall(delta);
 		collision();
@@ -159,11 +161,11 @@ public abstract class Enemy extends Entity {
 	// ---- différente fonction pour la fonction actionToWalk ----
 	
 	/** gère la façon dont l'énemie me suit */
-	protected void walkFollowMe() {
-		if (followMe) {
-			if (room.me.x > x) direction = 1;
+	protected void walkFollowTarget() {
+		if (followTarget) {
+			if (target.x > x) direction = 1;
 			else direction = -1;
-			if (Math.sqrt((room.me.x-x)*(room.me.x-x)) < v) {
+			if (Math.sqrt((target.x-x)*(target.x-x)) < v) {
 				direction = 0;
 			}
 		} else if (direction == 0) {
@@ -200,7 +202,7 @@ public abstract class Enemy extends Entity {
 			if (willFall) { // sinon regarde si il peut sauter
 				if (needToJump()) jump();
 				else {
-					followMe = false;
+					followTarget = false;
 					direction = -direction;
 				}
 			}
@@ -217,7 +219,7 @@ public abstract class Enemy extends Entity {
 		if (oldX == x && direction != 0) {
 			if (needToJump()) jump();
 			else {
-				followMe = false;
+				followTarget = false;
 				direction = -direction;
 			}
 		}
@@ -231,8 +233,8 @@ public abstract class Enemy extends Entity {
 	 * 
 	 * @return se il me voit
 	 */
-	protected boolean canSeeMe() {
-		return Math.sqrt(Math.pow(room.me.x-x, 2)+Math.pow(room.me.y-y, 2)) <= viewDistance;
+	protected boolean canSeeTarget() {
+		return Math.sqrt(Math.pow(target.x-x, 2)+Math.pow(target.y-y, 2)) <= viewDistance;
 	}
 	
 	/**

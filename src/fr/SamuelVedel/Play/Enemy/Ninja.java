@@ -70,12 +70,12 @@ public class Ninja extends Enemy {
 		tTex += delta;
 		
 		// gère le suicide
-		if (room.me.x+room.me.w > x && room.me.x < x+w
-			&& room.me.y+room.me.h > y && room.me.y < y+h) { // touché
+		if (target.x+target.w > x && target.x < x+w
+			&& target.y+target.h > y && target.y < y+h) { // touché
 			if (UsefulTh.rand.nextInt(100) < critChance) {
-				room.me.takeDammage(punchDamage*2, this);
+				target.takeDammage(punchDamage*2, this);
 			} else {
-				room.me.takeDammage(punchDamage, this);
+				target.takeDammage(punchDamage, this);
 			}
 			die(this);
 		}

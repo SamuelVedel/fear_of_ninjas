@@ -31,7 +31,7 @@ public class Blob extends Enemy {
 	}
 	
 	private void initVar() {
-		alpha = UsefulTh.getAlpha(x, y, room.me.x, room.me.y);
+		alpha = UsefulTh.getAlpha(x, y, target.x, target.y);
 		w = UsefulTh.cubeW+UsefulTh.pixelW;
 		h = UsefulTh.cubeH+UsefulTh.pixelH;
 		v = 3;
@@ -50,8 +50,8 @@ public class Blob extends Enemy {
 		
 		actionToFly(delta);
 		
-		if (room.me.x+room.me.w > x && room.me.x < x+w
-			&& room.me.y+room.me.h > y && room.me.y < y+h) { // touché
+		if (target.x+target.w > x && target.x < x+w
+			&& target.y+target.h > y && target.y < y+h) { // touché
 			if (tContact >= maxTContact) die(this);
 			tContact += delta;
 		} else {

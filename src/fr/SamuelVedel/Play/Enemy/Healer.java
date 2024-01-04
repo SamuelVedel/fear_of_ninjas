@@ -72,7 +72,7 @@ public class Healer extends Enemy {
 	public void actions(double delta) {
 		super.actions(delta);
 		
-		followMe = false;
+		followTarget = false;
 		if (nearest[0] != null) {
 			if (nearest[0].x > x) direction = 1;
 			else direction = -1;

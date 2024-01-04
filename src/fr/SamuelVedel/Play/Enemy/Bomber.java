@@ -86,9 +86,9 @@ public class Bomber extends Enemy {
 		// attaque
 		punch(delta);
 		// gère le lancer de bombe
-		if (Math.sqrt(Math.pow(room.me.x-x, 2)+Math.pow(room.me.y-y, 2)) <= viewDistance) {
+		if (Math.sqrt(Math.pow(target.x-x, 2)+Math.pow(target.y-y, 2)) <= viewDistance) {
 			if (tShoot >= cadence) {
-				if (room.me.x < x) {
+				if (target.x < x) {
 					room.enemies.add(new Bomb(room, -bulletV*Math.cos(alpha), bulletV*Math.sin(alpha), bulletDamage, this));
 				} else {
 					room.enemies.add(new Bomb(room, bulletV*Math.cos(alpha), bulletV*Math.sin(alpha), bulletDamage, this));
@@ -104,18 +104,18 @@ public class Bomber extends Enemy {
 	}
 	
 	@Override
-	protected void walkFollowMe() {
-		if (followMe) {
+	protected void walkFollowTarget() {
+		if (followTarget) {
 			/** distance à l'aquel il jette la bombe */;
 			int d = Math.abs((int)(bulletV*Math.cos(alpha)*(-bulletV*Math.sin(alpha)+Math.sqrt(Math.pow(bulletV*Math.sin(alpha), 2)+2*aFall*(h-4*UsefulTh.pixelH)))/aFall));
 			
-			if (room.me.x > x) direction = 1;
+			if (target.x > x) direction = 1;
 			else direction = -1;
 			
 			int addX = (lookToTheRight()? -3*UsefulTh.pixelW: w);
-			if (Math.abs(Math.sqrt((room.me.x-(x+addX))*(room.me.x-(x+addX)))-d) < v) {
+			if (Math.abs(Math.sqrt((target.x-(x+addX))*(target.x-(x+addX)))-d) < v) {
 				direction = 0;
-			} else if(Math.sqrt((room.me.x-(x+addX))*(room.me.x-(x+addX))) < d) {
+			} else if(Math.sqrt((target.x-(x+addX))*(target.x-(x+addX))) < d) {
 				direction *= -1;
 			}
 		} else if (direction == 0) {

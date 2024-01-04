@@ -24,7 +24,7 @@ public class DrinkingDuck extends Enemy {
 		type = DRINKING_DUCK;
 		name = "cannard potable";
 		clan = MY_CLAN;
-		followMe = false;
+		followTarget = false;
 		initTextures();
 		initVar(x, y);
 	}

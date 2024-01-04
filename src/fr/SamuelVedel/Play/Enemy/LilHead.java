@@ -70,7 +70,7 @@ public class LilHead extends Enemy {
 		actionToFly(delta);
 		
 		// attaque
-		shoot(room.me, delta);
+		shoot(target, delta);
 		
 		endOfActions(delta);
 	}

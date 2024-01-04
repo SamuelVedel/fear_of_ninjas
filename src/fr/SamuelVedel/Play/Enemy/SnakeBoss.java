@@ -62,7 +62,7 @@ public class SnakeBoss extends Enemy {
 	
 	@Override
 	public void actions(double delta) {
-		moove();
+		move();
 		
 		if (x%UsefulTh.cubeW == 0 && y%UsefulTh.cubeH == 0) {
 			// mange des pommes
@@ -103,7 +103,7 @@ public class SnakeBoss extends Enemy {
 		}
 	}
 	
-	private void moove() {
+	private void move() {
 		if (body.size() > 0) {
 			body.get(0)[0] = (int)x;
 			body.get(0)[1] = (int)y;
