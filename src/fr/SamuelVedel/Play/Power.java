@@ -175,15 +175,12 @@ public enum Power {
 	public void display(int x, int y, int w, int h, Color c2, Graphics2D g2d) {
 		int cW = 30;
 //		int cH = 30;
-		g2d.setColor(Color.BLACK);
+		g2d.setColor(c2);
 		g2d.fillRect(x, y, w, h);
 		
-		g2d.setColor(c2);
+		g2d.setColor(Color.BLACK);
 		int border = w*2/cW;
-		g2d.fillRect(x, y, w, border);
-		g2d.fillRect(x+w-border, y, border, h);
-		g2d.fillRect(x, y, border, h);
-		g2d.fillRect(x, y+h-border, w, border);
+		g2d.fillRect(x+border, y+border, w-2*border, h-2*border);
 		
 		// affiche l'image tel que si w == cW
 		// chaque pixel de l'icone fait un pixel de l'ecran
@@ -212,6 +209,7 @@ public enum Power {
 		
 		int cW = 30;
 		
+		g2d.setColor(c2);
 		g2d.setFont(new Font("ARIAL", Font.BOLD, w*4/cW));
 		int textW = (UsefulTh.getTextW(name, g2d));
 		int textH = (UsefulTh.getTextH(name, g2d));

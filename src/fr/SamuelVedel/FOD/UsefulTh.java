@@ -364,27 +364,27 @@ public abstract class UsefulTh {
 	public static void displayPowerList(int[] powerList, boolean left, boolean up, Play play, Graphics2D g2d) {
 		int powW = (int)(32*play.scaleW);
 		int powH = (int)(50*play.scaleW);
-		int edge = (int)(10*play.scaleW);
+		int gap = (int)(10*play.scaleW);
 		int num = 0;
 		
 		int x;
-		if (left) x = edge;
+		if (left) x = gap;
 		else {
 			int numOfPower = 0;
 			for (int pow : powerList) {
 				if (pow != 0) numOfPower++;
 			}
-			x = play.playP.getWidth()-numOfPower*(edge+powW);
+			x = play.playP.getWidth()-numOfPower*(gap+powW);
 		}
 		int y;
-		if (up) y = edge;
-		else y = play.playP.getHeight()-edge-powH;
+		if (up) y = gap;
+		else y = play.playP.getHeight()-gap-powH;
 		
 		for (int i = 0; i < powerList.length; i++) {
 			if (powerList[i] != 0) {
 				// affichage du pouvoir
 				Power pow = Power.values()[i];
-				pow.display(x+num*(edge+powW), y, powW, powH, play.color, g2d);
+				pow.display(x+num*(gap+powW), y, powW, powH, play.color, g2d);
 				
 				String text = Integer.toString(powerList[i]);
 				
@@ -398,23 +398,23 @@ public abstract class UsefulTh {
 					g2d.setFont(new Font("ARIAL", Font.BOLD, (int)(12*play.scaleW)));
 					String textI = as.getInputName();
 					int textH = getTextH(textI, g2d);
-					drawString(textI, x+num*(edge+powW)+(int)(4*play.scaleW), y+textH+(int)(4*play.scaleW), g2d);
+					drawString(textI, x+num*(gap+powW)+(int)(4*play.scaleW), y+textH+(int)(4*play.scaleW), g2d);
 					
 					// affichage de la progression
 					if (as.getProgression() != 100) {
 						Color c = play.color;
 						g2d.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 150));
 						int h = (int)(powH*(100-as.getProgression())/100);
-						g2d.fillRect(x+num*(edge+powW), y+powH-h, powW, h);
+						g2d.fillRect(x+num*(gap+powW), y+powH-h, powW, h);
 					}
 				}
 				
-				// affichage du nombre de pocession du pouvoris
+				// affichage du nombre de pocession du pouvoirs
 				if (powerList[i] != 1 || pow.isAddSkillPower()) {
 					g2d.setColor(play.color);
 					g2d.setFont(new Font("ARIAL", Font.BOLD, (int)(12*play.scaleW)));
 					int textW = getTextW(text, g2d);
-					drawString(text, x+num*(edge+powW)+powW-textW-(int)(4*play.scaleW), y+powH-(int)(4*play.scaleW), g2d);
+					drawString(text, x+num*(gap+powW)+powW-textW-(int)(4*play.scaleW), y+powH-(int)(4*play.scaleW), g2d);
 				}
 				num++;
 			}

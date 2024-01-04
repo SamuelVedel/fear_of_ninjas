@@ -121,6 +121,7 @@ cette maj :
  - les bombes tirée par le joueur vont dans la direction de son
  - y'avais un bug où le panneau de selection de pouvoir pouvais descendre trop bas
  - le pleine ecran marche sur ubuntu
+ - les msg restent 10 secondes dans le chat (contre 7sec avant)
 
 
 si cela vous interesse vous êtes invité à me faire des retours
