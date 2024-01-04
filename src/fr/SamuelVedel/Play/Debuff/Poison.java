@@ -21,7 +21,8 @@ public class Poison extends Debuff{
 	 */
 //	private int perDammage;
 	
-	private int dammage = 2;
+	private static final int START_DAMMAGE = 2;
+	private int dammage = START_DAMMAGE;
 	
 	private double tEffect = 0;
 	private final int maxTEffect = 60;
@@ -57,8 +58,13 @@ public class Poison extends Debuff{
 		tEffect += delta;
 		if (t >= tMax-1) {
 //			perDammage = 0;
-			dammage = 2;
+			dammage = START_DAMMAGE;
 		}
+	}
+	
+	public void cancel() {
+		super.cancel();
+		dammage = START_DAMMAGE;
 	}
 	
 	@Override
