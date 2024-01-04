@@ -438,7 +438,7 @@ public class Chat {
 			}
 		}
 	}
-
+	
 	
 	private class Message {
 		private String text;

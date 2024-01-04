@@ -31,6 +31,7 @@ public class Item {
 	public int w = UsefulTh.cubeW/*-2*UsefulTh.pixelW*/;
 	public int h = w;
 	private double aFall = UsefulTh.g;
+	/** accélération de quand il à touché le sol */
 	private double aY = -0.3;
 	private double vY;
 	private int maxvY = 3;
