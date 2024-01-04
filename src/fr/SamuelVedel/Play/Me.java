@@ -8,6 +8,7 @@ import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.AddSkill.AddSkill;
 import fr.SamuelVedel.Play.AddSkill.BombSkill;
 import fr.SamuelVedel.Play.AddSkill.TpSkill;
+import fr.SamuelVedel.Play.Debuff.Debuff;
 import fr.SamuelVedel.Play.Enemy.Enemy;
 import fr.SamuelVedel.Play.Particle.ClassicParticle;
 
@@ -224,8 +225,14 @@ public class Me extends Entity {
 	}
 	
 	public void resetAddSkillsProgession() {
-		for (AddSkill as : addSkills) {
+		for (AddSkill as: addSkills) {
 			as.resetUse();
+		}
+	}
+
+	public void cancelAllDebuffs() {
+		for (Debuff deb: debuffs) {
+			deb.cancel();
 		}
 	}
 	
@@ -313,6 +320,16 @@ public class Me extends Entity {
 		int textW = UsefulTh.getTextW(text, g2d);
 		int textH = UsefulTh.getTextH(text, g2d);
 		UsefulTh.drawString(text, lifeBarX+lW/2-textW/2, lifeBarY+lH/2+textH/2, g2d);
+	}
+	
+	/**
+	 * rafraichi Me pour le chagement de level
+	 */
+	public void refresh() {
+		life = maxLife;
+		resetAddSkillsProgession();
+		cancelAllDebuffs();
+		vFall = 0;
 	}
 	
 	/**

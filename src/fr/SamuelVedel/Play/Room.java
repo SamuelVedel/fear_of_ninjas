@@ -429,9 +429,8 @@ public class Room {
 		else {
 			loadARoom("NsnakeLevel");
 		}
-		
-		me.life = me.maxLife;
-		me.resetAddSkillsProgession();
+
+		me.refresh();
 		
 		//suprime tout
 		enemies.removeAll(enemies);

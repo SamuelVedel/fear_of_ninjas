@@ -38,6 +38,10 @@ public abstract class Debuff {
 			t += delta;
 		}
 	}
+
+	public void cancel() {
+		t = tMax;
+	}
 	
 	public void reset(Entity giver) {
 		t = 0;
