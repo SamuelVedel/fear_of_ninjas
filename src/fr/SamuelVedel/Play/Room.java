@@ -492,8 +492,8 @@ public class Room {
 			}
 		}
 		
-		for (Item it : items) {
-			it.display(g2d);
+		for (int i = 0; i < items.size(); ++i) {
+			items.get(i).display(g2d);
 		}
 		
 		for (int i = 0; i < bullets.size(); i++) {

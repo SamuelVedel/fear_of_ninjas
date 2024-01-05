@@ -39,7 +39,7 @@ public class Chat {
 	private Play play;
 	private Room room;
 	
-	private Message[] msgs = new Message[10];
+	private Message[] msgs = new Message[20];
 	private int textSize = 12;
 	
 	private int gap;

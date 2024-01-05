@@ -31,12 +31,15 @@ public class Item {
 	public int w = UsefulTh.cubeW/*-2*UsefulTh.pixelW*/;
 	public int h = w;
 	private double aFall = UsefulTh.g;
-	/** accélération de quand il à touché le sol */
-	private double aY = -0.3;
 	private double vY;
-	private int maxvY = 3;
 	public double oldY;
 	public double x, y;
+
+	// variable pour quand il à touché le sol
+	/** accélération de quand il à touché le sol */
+	private double aY = -0.1;
+	/** hauteurs auquelles la vitesse est nulle */
+	private int minY, maxY;
 	
 	
 	private boolean groundTouched = false;
@@ -67,14 +70,24 @@ public class Item {
 						if (room.cubes[iY][iX].contact(this) == Cube.UP_CONTACT) {
 							groundTouched = true;
 							vY = 0;
+							maxY = (int) y;
+							minY = (int) y-UsefulTh.cubeH;
 						}
 					}
 				}
 			}
 		} else {
 			vY += aY*delta;
-			if (Math.abs(vY) > maxvY) {
+			int center = minY+(maxY-minY)/2;
+			if (y < minY) {
+				y = minY;
+				vY = 0;
+			} else if (y > maxY) {
+				y = maxY;
+				vY = 0;
+			} else if ((y >= center && aY > 0 ) || (y <= center && aY < 0)) {
 				aY *= -1;
+				y = center;
 			}
 		}
 		
