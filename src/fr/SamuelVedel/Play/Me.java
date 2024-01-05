@@ -244,9 +244,11 @@ public class Me extends Entity {
 	 * @param keyCode touche appuyer
 	 */
 	public void move(int keyCode) {
-		if (keyCode == 68) rightPress = true;
-		else if (keyCode == 81) leftPress = true;
-		else if (keyCode == 32/* || keyCode == 90*/) jumpPress = true;
+		if (play.phase == Play.PLAY_PHASE) {
+			if (keyCode == 68) rightPress = true;
+			else if (keyCode == 81) leftPress = true;
+			else if (keyCode == 32/* || keyCode == 90*/) jumpPress = true;
+		}
 	}
 	
 	/**
@@ -269,14 +271,18 @@ public class Me extends Entity {
 	}
 	
 	public void addSkillsKeyReac(int keyCode) {
-		for (AddSkill as: addSkills) {
-			as.keyReaction(keyCode);
+		if (play.phase == Play.PLAY_PHASE) {
+			for (AddSkill as: addSkills) {
+				as.keyReaction(keyCode);
+			}
 		}
 	}
 	
 	public void addSkillsMouseReac(int button) {
-		for (AddSkill as: addSkills) {
-			as.mouseReaction(button);
+		if (play.phase == Play.PLAY_PHASE) {
+			for (AddSkill as: addSkills) {
+				as.mouseReaction(button);
+			}
 		}
 	}
 	
