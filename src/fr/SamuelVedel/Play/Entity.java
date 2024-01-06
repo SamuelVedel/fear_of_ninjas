@@ -296,23 +296,25 @@ public abstract class Entity {
 	 * avec en bonus une explosion de particule.
 	 */
 	public void die(Entity killer) {
-		alive = false;
-		int nParticles = (w+h/2);
-		for (int i = 0; i < nParticles; i++) {
-			double pX = x+UsefulTh.rand.nextInt(w);
-			double pY = y+UsefulTh.rand.nextInt(h);
-			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW, UsefulTh.pixelH, pVX, pVY));
-		}
-		if (canDieWithASoul && UsefulTh.rand.nextInt(10) == 0) {
-			room.enemies.add(new Soul(x, y, room));
-			diedWithASoul = true;
-		} else if (killer != null) {
-			if (killer.powers[Power.DEATH_BULLETS.id] > 0 && canDieWithDeathsBullets) {
-				int nOfBullets = 5+2*killer.powers[Power.DEATH_BULLETS.id]-2;
-				for (int i = 0; i < nOfBullets; i++) {
-					room.bullets.add(new Bullet(x+w/2, y+h/2, killer.bulletW, killer.bulletH, 2*Math.PI*UsefulTh.rand.nextDouble(), killer.bulletV, killer.bulletDamage, killer));
+		if (alive) {
+			alive = false;
+			int nParticles = (w+h/2);
+			for (int i = 0; i < nParticles; i++) {
+				double pX = x+UsefulTh.rand.nextInt(w);
+				double pY = y+UsefulTh.rand.nextInt(h);
+				double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
+				double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
+				room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW, UsefulTh.pixelH, pVX, pVY));
+			}
+			if (canDieWithASoul && UsefulTh.rand.nextInt(10) == 0) {
+				room.enemies.add(new Soul(x, y, room));
+				diedWithASoul = true;
+			} else if (killer != null) {
+				if (killer.powers[Power.DEATH_BULLETS.id] > 0 && canDieWithDeathsBullets) {
+					int nOfBullets = 5+2*killer.powers[Power.DEATH_BULLETS.id]-2;
+					for (int i = 0; i < nOfBullets; i++) {
+						room.bullets.add(new Bullet(x+w/2, y+h/2, killer.bulletW, killer.bulletH, 2*Math.PI*UsefulTh.rand.nextDouble(), killer.bulletV, killer.bulletDamage, killer));
+					}
 				}
 			}
 		}
