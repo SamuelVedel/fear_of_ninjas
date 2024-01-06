@@ -114,6 +114,8 @@ public class Chat {
 			room.me.tp();
 		} else if (part[0].matches("setFps")) {
 			setFps(part);
+		} else if (part[0].matches("restart")) {
+			play.restart();
 		} else {
 			addText("Il n'y a pas de méthode "+part[0]);
 		}
