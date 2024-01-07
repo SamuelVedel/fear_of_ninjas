@@ -48,11 +48,11 @@ public class Bump extends Cube {
 	}
 	
 	@Override
-	public void display(Color c2, Graphics2D g2d) {
+	public void display(double scaleW, Color c2, Graphics2D g2d) {
 		if (active) {
-			UsefulTh.displayTex(tex, x, y, w, h, c2, g2d);
+			UsefulTh.displayTex(tex, x, y, w, h, scaleW, c2, g2d);
 		} else {
-			UsefulTh.displayTex(tex2, x, y+2*UsefulTh.pixelH, w, 4*UsefulTh.pixelH, c2, g2d);
+			UsefulTh.displayTex(tex2, x, y+2*UsefulTh.pixelH, w, 4*UsefulTh.pixelH, scaleW, c2, g2d);
 		}
 	}
 }

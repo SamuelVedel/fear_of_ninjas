@@ -112,9 +112,9 @@ public class Summoner extends Enemy {
 		int wTex = w+6*UsefulTh.pixelW;
 		int hTex = h+UsefulTh.pixelH;
 		if (iTex <= 2) {
-			UsefulTh.displayTex(textures[iTex], (int)x-5*UsefulTh.pixelW, (int)y-UsefulTh.pixelH, wTex, hTex, play.color, g2d);
+			UsefulTh.displayTex(textures[iTex], (int)x-5*UsefulTh.pixelW, (int)y-UsefulTh.pixelH, wTex, hTex, play.scaleW, play.color, g2d);
 		} else {
-			UsefulTh.displayTex(textures[iTex], (int)x-UsefulTh.pixelW, (int)y-UsefulTh.pixelH, wTex, hTex, play.color, g2d);
+			UsefulTh.displayTex(textures[iTex], (int)x-UsefulTh.pixelW, (int)y-UsefulTh.pixelH, wTex, hTex, play.scaleW, play.color, g2d);
 		}
 	}
 }

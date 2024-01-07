@@ -44,7 +44,7 @@ public class Gate extends Cube {
 	}
 	
 	@Override
-	public void display(Color c2, Graphics2D g2d) {
-		if (active) super.display(c2, g2d);
+	public void display(double scaleW, Color c2, Graphics2D g2d) {
+		if (active) super.display(scaleW, c2, g2d);
 	}
 }

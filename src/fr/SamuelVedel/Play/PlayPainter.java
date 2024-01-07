@@ -65,7 +65,7 @@ public class PlayPainter extends JPanel {
 		
 		play.endS.display(g2d);
 		
-		UsefulTh.displayTex(UsefulTh.cursor, (int)(play.mouseX-UsefulTh.cursorW*play.scaleW/2), (int)(play.mouseY-UsefulTh.cursorH*play.scaleW/2), (int)(UsefulTh.cursorW*play.scaleW), (int)(UsefulTh.cursorH*play.scaleW), play.color, g2d);
+		UsefulTh.displayTex(UsefulTh.cursor, (int)(play.mouseX-UsefulTh.cursorW*play.scaleW/2), (int)(play.mouseY-UsefulTh.cursorH*play.scaleW/2), (int)(UsefulTh.cursorW*play.scaleW), (int)(UsefulTh.cursorH*play.scaleW), 1, play.color, g2d);
 		
 		g2d.dispose();
 	}

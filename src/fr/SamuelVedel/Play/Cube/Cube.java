@@ -202,7 +202,7 @@ public class Cube {
 	 * @param c2 seconde couleur
 	 * @param g2d {@code Graphics2D} sur lequel on le dessine
 	 */
-	public void display(Color c2, Graphics2D g2d) {
-		UsefulTh.displayTex(tex, x, y, w, h, c2, g2d);
+	public void display(double scaleW, Color c2, Graphics2D g2d) {
+		UsefulTh.displayTex(tex, x, y, w, h, scaleW, c2, g2d);
 	}
 }

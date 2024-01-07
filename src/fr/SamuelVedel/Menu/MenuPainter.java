@@ -28,7 +28,7 @@ public class MenuPainter extends JPanel {
 		menu.vp.adjust(getWidth(), getHeight());
 		menu.vp.display(menu.color, g2d);
 		
-		UsefulTh.displayTex(UsefulTh.cursor, (int)(menu.mouseX-UsefulTh.cursorW*menu.scaleW/2), (int)(menu.mouseY-UsefulTh.cursorH*menu.scaleW/2), (int)(UsefulTh.cursorW*menu.scaleW), (int)(UsefulTh.cursorH*menu.scaleW), menu.color, g2d);
+		UsefulTh.displayTex(UsefulTh.cursor, (int)(menu.mouseX-UsefulTh.cursorW*menu.scaleW/2), (int)(menu.mouseY-UsefulTh.cursorH*menu.scaleW/2), (int)(UsefulTh.cursorW*menu.scaleW), (int)(UsefulTh.cursorH*menu.scaleW), 1, menu.color, g2d);
 		
 		g2d.dispose();
 	}

@@ -82,7 +82,7 @@ public class Bunri extends Enemy {
 	@Override
 	public void display(Graphics2D g2d) {
 		displayLife(g2d);
-		UsefulTh.displayTex(textures[iTex], (int)x-(iTex <= 2? 4*UsefulTh.pixelW : 0), (int)y, w+4*UsefulTh.pixelW, h, play.color, g2d);
+		UsefulTh.displayTex(textures[iTex], (int)x-(iTex <= 2? 4*UsefulTh.pixelW : 0), (int)y, w+4*UsefulTh.pixelW, h, play.scaleW, play.color, g2d);
 	}
 
 }

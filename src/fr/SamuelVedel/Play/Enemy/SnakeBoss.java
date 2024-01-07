@@ -257,7 +257,7 @@ public class SnakeBoss extends Enemy {
 			h2 += 2*UsefulTh.pixelH;
 			break;
 		}
-		UsefulTh.displayTex(textures[direction], x2, y2, w2, h2, play.color, g2d);
+		UsefulTh.displayTex(textures[direction], x2, y2, w2, h2, play.scaleW, play.color, g2d);
 	}
 	
 	private class Apple {
@@ -309,7 +309,7 @@ public class SnakeBoss extends Enemy {
 		}
 		
 		private void display(Graphics2D g2d) {
-			UsefulTh.displayTex(appleTex, x1, y1-2*UsefulTh.pixelH, w, h+2*UsefulTh.pixelH, play.color, g2d);
+			UsefulTh.displayTex(appleTex, x1, y1-2*UsefulTh.pixelH, w, h+2*UsefulTh.pixelH, play.scaleW, play.color, g2d);
 		}
 	}
 }

@@ -189,6 +189,6 @@ public class Healer extends Enemy {
 		// une partie de la texture n'est pas comprise dans la hitbox
 		int wTex = w+6*UsefulTh.pixelW;
 		int hTex = h+4*UsefulTh.pixelH;
-		UsefulTh.displayTex(textures[iTex], (int)x-3*UsefulTh.pixelW, (int)y-4*UsefulTh.pixelH, wTex, hTex, play.color, g2d);
+		UsefulTh.displayTex(textures[iTex], (int)x-3*UsefulTh.pixelW, (int)y-4*UsefulTh.pixelH, wTex, hTex, play.scaleW, play.color, g2d);
 	}
 }

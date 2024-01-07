@@ -346,7 +346,7 @@ public class Me extends Entity {
 	public void display(Graphics2D g2d) {
 //		UsefulTh.drawSemiLine((int)x+w/2, (int)y+h/2, (int)((play.mouseX-room.transX)/play.scaleW), (int)((play.mouseY-room.transY)/play.scaleW), play.color, g2d);
 		if (alive) {
-			UsefulTh.displayTex(textures[iTex], (int)x, (int)y, w, h, play.color, g2d);
+			UsefulTh.displayTex(textures[iTex], (int)x, (int)y, w, h, play.scaleW, play.color, g2d);
 		}
 	}
 }

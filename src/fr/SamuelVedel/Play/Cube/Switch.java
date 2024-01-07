@@ -65,11 +65,11 @@ public class Switch extends Border {
 	}
 	
 	@Override
-	public void display(Color c2, Graphics2D g2d) {
+	public void display(double scaleW, Color c2, Graphics2D g2d) {
 		if (active) {
-			UsefulTh.displayTex(tex, x, y, w, h, c2, g2d);	
+			UsefulTh.displayTex(tex, x, y, w, h, scaleW, c2, g2d);
 		} else {
-			UsefulTh.displayTex(tex2, x, y, w, h, c2, g2d);
+			UsefulTh.displayTex(tex2, x, y, w, h, scaleW, c2, g2d);
 		}
 	}
 }

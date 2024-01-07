@@ -477,7 +477,7 @@ public class Room {
 		}
 		
 		g2d.translate(transX, transY);
-		g2d.scale(play.scaleW, play.scaleW);
+		//g2d.scale(play.scaleW, play.scaleW);
 		
 		for (int i = 0; i < particles.size(); i++) {
 			particles.get(i).display(play.color, g2d);
@@ -487,7 +487,7 @@ public class Room {
 		for (int iY = (int)(-transY/(UsefulTh.cubeH*play.scaleW)); iY < (int)((play.playP.getHeight()-transY)/(UsefulTh.cubeH*play.scaleW))+1; iY++) {
 			for (int iX = (int)(-transX/(UsefulTh.cubeW*play.scaleW)); iX < (int)((play.playP.getWidth()-transX)/(UsefulTh.cubeW*play.scaleW))+1; iX++) {
 				if (isXInCubes(iX) && isYInCubes(iY) && cubes[iY][iX] != null) {
-					cubes[iY][iX].display(play.color, g2d);
+					cubes[iY][iX].display(play.scaleW, play.color, g2d);
 				}
 			}
 		}
@@ -506,7 +506,7 @@ public class Room {
 			enemies.get(i).display(g2d);
 		}
 		
-		g2d.scale(1/play.scaleW, 1/play.scaleW);
+		//g2d.scale(1/play.scaleW, 1/play.scaleW);
 		g2d.translate(-transX, -transY);
 		
 		me.displayMyLife(g2d);

@@ -89,6 +89,6 @@ public class LilHead extends Enemy {
 	@Override
 	public void display(Graphics2D g2d) {
 		displayLife(g2d);
-		UsefulTh.displayTex(textures[iTex], (int)x, (int)y, w, h, play.color, g2d);
+		UsefulTh.displayTex(textures[iTex], (int)x, (int)y, w, h, play.scaleW, play.color, g2d);
 	}
 }

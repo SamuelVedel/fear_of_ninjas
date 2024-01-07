@@ -148,7 +148,7 @@ public class Turret extends Enemy {
 		displayLife((int)(x+w/2-lW/2), (int)(y-1.3*lH)-2*UsefulTh.pixelH, lW, lH, UsefulTh.pixelW, g2d);
 		
 		// affiche les pieds
-		UsefulTh.displayTex(feetTex, (int)x, (int)y, w, h, play.color, g2d);
+		UsefulTh.displayTex(feetTex, (int)x, (int)y, w, h, play.scaleW, play.color, g2d);
 		
 		// affiche la tête
 		Graphics2D g2d2 = (Graphics2D) g2d.create();

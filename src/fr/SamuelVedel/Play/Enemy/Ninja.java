@@ -86,6 +86,6 @@ public class Ninja extends Enemy {
 	@Override
 	public void display(Graphics2D g2d) {
 		displayLife(g2d);
-		UsefulTh.displayTex(textures[iTex], (int)x-(iTex <= 2? 2*UsefulTh.pixelW : 0), (int)y, w+2*UsefulTh.pixelW, h, play.color, g2d);
+		UsefulTh.displayTex(textures[iTex], (int)x-(iTex <= 2? 2*UsefulTh.pixelW : 0), (int)y, w+2*UsefulTh.pixelW, h, play.scaleW, play.color, g2d);
 	}
 }

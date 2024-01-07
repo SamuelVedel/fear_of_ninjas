@@ -134,9 +134,9 @@ public class Bomber extends Enemy {
 		int wTex = w+3*UsefulTh.pixelW;
 		int hTex = h;
 		if (iTex <= 2) {
-			UsefulTh.displayTex(textures[iTex], (int)x-3*UsefulTh.pixelW, (int)y, wTex, hTex, play.color, g2d);
+			UsefulTh.displayTex(textures[iTex], (int)x-3*UsefulTh.pixelW, (int)y, wTex, hTex, play.scaleW, play.color, g2d);
 		} else {
-			UsefulTh.displayTex(textures[iTex], (int)x, (int)y, wTex, hTex, play.color, g2d);
+			UsefulTh.displayTex(textures[iTex], (int)x, (int)y, wTex, hTex, play.scaleW, play.color, g2d);
 		}
 	}
 }

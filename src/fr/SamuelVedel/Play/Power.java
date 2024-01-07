@@ -189,7 +189,7 @@ public enum Power {
 		Graphics2D g2d2 = (Graphics2D) g2d.create();
 		g2d2.translate(x+w/2-texW/2, y+h/2-texH/2);
 		g2d2.scale(texW/texture[0].length, texH/texture.length);
-		UsefulTh.displayTex(texture, 0, 0, texture[0].length, texture.length, c2, g2d2);
+		UsefulTh.displayTex(texture, 0, 0, texture[0].length, texture.length, 1, c2, g2d2);
 		g2d2.dispose();
 	}
 	

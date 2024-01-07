@@ -84,7 +84,7 @@ public class ClassicParticle extends Particle {
 			g2d2.translate(x, y);
 			g2d2.scale((double)w/tex[0].length, (double)h/tex.length);
 //			System.out.println((double)tex[0].length/w+" "+(double)tex.length/h);
-			UsefulTh.displayTex(tex, 0, 0, tex[0].length, tex.length, c, g2d2);
+			UsefulTh.displayTex(tex, 0, 0, tex[0].length, tex.length, 1, c, g2d2);
 			g2d2.dispose();
 		}
 	}
