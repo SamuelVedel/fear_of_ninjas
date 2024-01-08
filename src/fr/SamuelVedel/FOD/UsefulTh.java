@@ -158,8 +158,8 @@ public abstract class UsefulTh {
 	 */
 	public static void displayTex(int[][] tex, int x, int y, int w, int h, double scaleW, Color c2, Graphics2D g2d) {
 		if (tex != null) {
-			int pW = (int)(w*scaleW/tex[0].length);
-			int pH = (int)(h*scaleW/tex.length);
+			double pW = w*scaleW/tex[0].length;
+			double pH = h*scaleW/tex.length;
 			
 			for (int iY = 0; iY < tex.length; iY++) {
 				for (int iX = 0; iX < tex[iY].length; iX++) {
@@ -193,7 +193,7 @@ public abstract class UsefulTh {
 //							int b = rand.nextInt(256);
 //							g2d.setColor(new Color(r, g, b));
 						}*/
-						g2d.fillRect((int)(x*scaleW)+iX*pW, (int)(y*scaleW)+iY*pH, pW, pH);
+						g2d.fillRect((int)Math.round(x*scaleW+iX*pW), (int)Math.round(y*scaleW+iY*pH), (int)Math.round(pW), (int)Math.round(pH));
 					}
 				}
 			}
