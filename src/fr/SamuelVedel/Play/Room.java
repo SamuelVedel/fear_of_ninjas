@@ -477,7 +477,7 @@ public class Room {
 			if (transY < -(height*play.scaleW)+play.playP.getHeight()) transY = -(height*play.scaleW)+play.playP.getHeight();
 		}
 
-		BufferedImage bi = new BufferedImage((int)(play.playP.getWidth()/play.scaleW),(int)( play.playP.getHeight()/play.scaleW), BufferedImage.TYPE_INT_RGB);
+		BufferedImage bi = new BufferedImage((int)(play.playP.getWidth()/play.scaleW), (int)(play.playP.getHeight()/play.scaleW), BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2dbi = bi.createGraphics();
 
 		g2dbi.setColor(UsefulTh.BACKGROUND_COLOR);
@@ -517,6 +517,7 @@ public class Room {
 		//g2d.translate(-transX, -transY);
 
 		g2d.drawImage(bi, 0, 0, (int)(bi.getWidth()*play.scaleW), (int)(bi.getHeight()*play.scaleW), null);
+		g2dbi.dispose();
 		
 		me.displayMyLife(g2d);
 		
