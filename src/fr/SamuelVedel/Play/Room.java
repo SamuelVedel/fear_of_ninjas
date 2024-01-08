@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -475,39 +476,47 @@ public class Room {
 			if (transX < -(width*play.scaleW)+play.playP.getWidth()) transX = -(width*play.scaleW)+play.playP.getWidth();
 			if (transY < -(height*play.scaleW)+play.playP.getHeight()) transY = -(height*play.scaleW)+play.playP.getHeight();
 		}
+
+		BufferedImage bi = new BufferedImage((int)(play.playP.getWidth()/play.scaleW),(int)( play.playP.getHeight()/play.scaleW), BufferedImage.TYPE_INT_RGB);
+		Graphics2D g2dbi = bi.createGraphics();
+
+		g2dbi.setColor(UsefulTh.BACKGROUND_COLOR);
+		g2dbi.fillRect(0, 0, bi.getWidth(), bi.getHeight());
 		
-		g2d.translate(transX, transY);
-		g2d.scale(play.scaleW, play.scaleW);
+		g2dbi.translate(transX/play.scaleW, transY/play.scaleW);
+		//g2d.scale(play.scaleW, play.scaleW);
 		
 		for (int i = 0; i < particles.size(); i++) {
-			particles.get(i).display(play.color, g2d);
+			particles.get(i).display(play.color, g2dbi);
 		}
 		
 		// affichages des cubes qui sont présent dans l'écran
 		for (int iY = (int)(-transY/(UsefulTh.cubeH*play.scaleW)); iY < (int)((play.playP.getHeight()-transY)/(UsefulTh.cubeH*play.scaleW))+1; iY++) {
 			for (int iX = (int)(-transX/(UsefulTh.cubeW*play.scaleW)); iX < (int)((play.playP.getWidth()-transX)/(UsefulTh.cubeW*play.scaleW))+1; iX++) {
 				if (isXInCubes(iX) && isYInCubes(iY) && cubes[iY][iX] != null) {
-					cubes[iY][iX].display(play.color, g2d);
+					cubes[iY][iX].display(play.color, g2dbi);
 				}
 			}
 		}
 		
 		for (int i = 0; i < items.size(); ++i) {
-			items.get(i).display(g2d);
+			items.get(i).display(g2dbi);
 		}
 		
 		for (int i = 0; i < bullets.size(); i++) {
-			bullets.get(i).display(g2d);
+			bullets.get(i).display(g2dbi);
 		}
 		
-		me.display(g2d);
+		me.display(g2dbi);
 		
 		for (int i = enemies.size()-1; i >= 0; i--) {
-			enemies.get(i).display(g2d);
+			enemies.get(i).display(g2dbi);
 		}
 		
-		g2d.scale(1/play.scaleW, 1/play.scaleW);
-		g2d.translate(-transX, -transY);
+		//g2d.scale(1/play.scaleW, 1/play.scaleW);
+		//g2d.translate(-transX, -transY);
+
+		g2d.drawImage(bi, 0, 0, (int)(bi.getWidth()*play.scaleW), (int)(bi.getHeight()*play.scaleW), null);
 		
 		me.displayMyLife(g2d);
 		

@@ -44,9 +44,9 @@ public class PlayPainter extends JPanel {
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		// fond
-		g2d.setColor(UsefulTh.BACKGROUND_COLOR);
+		//g2d.setColor(UsefulTh.BACKGROUND_COLOR);
 //		g2d.setPaint(new GradientPaint(0, 0, play.color2, 0, getHeight(), UsefulTh.BACKGROUND_COLOR));
-		g2d.fillRect(0, 0, play.playP.getWidth(), play.playP.getHeight());
+		//g2d.fillRect(0, 0, play.playP.getWidth(), play.playP.getHeight());
 //		g2d.drawImage(background, 0, 0, getWidth(), getHeight(), this);
 		
 //		Color c2 = new Color(play.color.getRed(), play.color.getGreen(), play.color.getBlue(), 5);
