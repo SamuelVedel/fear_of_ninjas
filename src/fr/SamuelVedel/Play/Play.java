@@ -36,7 +36,7 @@ public class Play implements KeyListener, MouseMotionListener {
 	public double scaleW;
 	public PlayPainter playP = new PlayPainter(this);
 	
-	public Color color;
+	public Color color = Color.WHITE;
 //	public Color color2;
 	
 	public static final int PLAY_PHASE = 0;

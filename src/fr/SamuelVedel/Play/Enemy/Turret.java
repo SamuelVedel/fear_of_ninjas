@@ -2,7 +2,7 @@ package fr.SamuelVedel.Play.Enemy;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+//import java.awt.RenderingHints;
 
 import fr.SamuelVedel.FOD.UsefulTh;
 import fr.SamuelVedel.Play.Bullet;
@@ -152,9 +152,9 @@ public class Turret extends Enemy {
 		
 		// affiche la tête
 		Graphics2D g2d2 = (Graphics2D) g2d.create();
-		if (alpha != 0 && alpha != Math.PI) {
-			g2d2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		}
+//		if (alpha != 0 && alpha != Math.PI) {
+//			g2d2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//		}
 		g2d2.rotate(alpha, x+w/2, y);
 		int headW = 5*UsefulTh.pixelW;
 		int headH = 4*UsefulTh.pixelW;

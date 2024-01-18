@@ -77,7 +77,7 @@ public class Room {
 	
 	public Cube[][] cubes;
 	/** liste des cubes qui doivent éxécuter des actions */
-	public ArrayList<Cube> cubeWithActions = new ArrayList<>();
+	public ArrayList<Cube> cubesWithActions = new ArrayList<>();
 	
 	public ArrayList<Bullet> bullets = new ArrayList<>();
 	
@@ -264,11 +264,11 @@ public class Room {
 	}
 	
 	private void initCubeWithAction() {
-		cubeWithActions.removeAll(cubeWithActions);
+		cubesWithActions.removeAll(cubesWithActions);
 		for (Cube[] cu : cubes) {
 			for (Cube c : cu) {
 				if (c != null && c.hasActions()) {
-					cubeWithActions.add(c);
+					cubesWithActions.add(c);
 				}
 			}
 		}
@@ -287,7 +287,7 @@ public class Room {
 		}
 		
 		// actions des cubes
-		for (Cube c : cubeWithActions) {
+		for (Cube c : cubesWithActions) {
 			c.actions(delta);
 		}
 		
@@ -479,7 +479,7 @@ public class Room {
 
 		BufferedImage bi = new BufferedImage((int)(play.playP.getWidth()/play.scaleW), (int)(play.playP.getHeight()/play.scaleW), BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2dbi = bi.createGraphics();
-
+		
 		g2dbi.setColor(UsefulTh.BACKGROUND_COLOR);
 		g2dbi.fillRect(0, 0, bi.getWidth(), bi.getHeight());
 		
@@ -515,7 +515,7 @@ public class Room {
 		
 		//g2d.scale(1/play.scaleW, 1/play.scaleW);
 		//g2d.translate(-transX, -transY);
-
+		
 		g2d.drawImage(bi, 0, 0, (int)(bi.getWidth()*play.scaleW), (int)(bi.getHeight()*play.scaleW), null);
 		g2dbi.dispose();
 		
