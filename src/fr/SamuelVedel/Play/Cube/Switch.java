@@ -11,7 +11,7 @@ import fr.SamuelVedel.Play.Item;
 public class Switch extends Border {
 	
 	private int[][] tex2;
-	private int t = 1;
+	private double t = 1;
 	private boolean active;
 	
 	private Switch(int x, int y, int w, int h, boolean on) {

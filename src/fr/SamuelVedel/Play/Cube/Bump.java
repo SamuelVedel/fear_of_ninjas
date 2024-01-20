@@ -9,7 +9,7 @@ import fr.SamuelVedel.Play.Entity;
 public class Bump extends Cube {
 	
 	private int[][] tex2;
-	private int t = 0;
+	private double t = 0;
 	private boolean active = true;;
 	
 	private Bump(int x, int y, int w, int h) {
