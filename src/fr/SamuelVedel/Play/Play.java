@@ -1,6 +1,7 @@
 package fr.SamuelVedel.Play;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -30,6 +31,7 @@ public class Play implements KeyListener, MouseMotionListener {
 	private double currentTime;
 	private int fps = 60;
 	
+	private Toolkit toolkit = Toolkit.getDefaultToolkit();
 	public VFrame jf = new VFrame();
 	
 	/** hauteur pour laquel le zoom est de 1 */
@@ -165,6 +167,7 @@ public class Play implements KeyListener, MouseMotionListener {
 			choiceP.actions(delta);
 			
 			jf.repaint();
+			toolkit.sync();
 			try {
 				Thread.sleep(1000/fps);
 			} catch (InterruptedException e) {
