@@ -22,7 +22,8 @@ public class SnakeBoss extends Enemy {
 	private final int rightDirection = 2;
 	private final int downDirection = 3;
 	
-	private ArrayList<Integer[]> body = new ArrayList<>();
+	private int length = 0;
+	private ArrayList<BodyPart> body = new ArrayList<>();
 	private Apple[] apples = new Apple[35];
 	
 	public SnakeBoss(Room room) {
@@ -62,17 +63,19 @@ public class SnakeBoss extends Enemy {
 	
 	@Override
 	public void actions(double delta) {
-		move();
+		move(delta);
+		double dist = stopOnCase();
 		
-		if (x%UsefulTh.cubeW == 0 && y%UsefulTh.cubeH == 0) {
+		if (dist != 0) {
 			// mange des pommes
 			for (Apple ap : apples) {
 				ap.eat();
 			}
 			
+			int oldDirection = direction;
+			
 			// peut tourner aléatoirement
 			if (UsefulTh.rand.nextInt(5) == 0) {
-				int oldDirection = direction;
 				randomTurn();
 				if (isNeededToTurn()) {
 					direction = oldDirection;
@@ -87,46 +90,147 @@ public class SnakeBoss extends Enemy {
 				}
 			}
 			
+			// ajoute de quoi indique au corps qu'il à tourné
+			if (direciton != oldDirection) {
+				Body.add(0, new BodyPart(x, y, BodyPart.TURN_TYPE, oldDirection));
+			}
+			
 			eatHimself();
 		}
+		
+		if (dist != 0) moveDist(dist);
 		
 		punch(delta);
 	}
 	
 	private void grow() {
-		for (int i = 0; i < UsefulTh.cubeW/v; i++) {
-			if (body.size() != 0) {
-				body.add(body.get(body.size()-1).clone());
-			} else {
-				body.add(new Integer[] {(int)x, (int)y});
-			}
+		length += UsefulTh.cubeW;
+		if (body.size() == 0) {
+			body.add(new BodyPart((int)x, (int)y, BodyPart.STOP_TYPE));
+		} else {
+			int endPos = getEndOfTheBody();
+			body.add(new BodyPart((int)endPos[0], (int)endPos[1], BodyPart.STOP_TYPE));
 		}
 	}
 	
-	private void move() {
-		if (body.size() > 0) {
-			body.get(0)[0] = (int)x;
-			body.get(0)[1] = (int)y;
+	private int[] getEndOfTheBody() {
+		double dist = 0;
+		int i;
+		for (i = 0; i < body.size()+1; ++i) {
+			double startX;
+			double startY;
+			int startDirection;
+			
+			if (i == 0) {
+				startX = x;
+				startY = y;
+				startDirection = direction;
+			} else {
+				startX = body.get(i-1).x;
+				startY = body.get(i-1).y;
+				startDirection = body.get(i-1).direction;
+			}
+			
+			double endX, endY;
+			if (i < body.size()) {
+				endX = body.get(i).x;
+				endY = body.get(i).y;
+			}
+			
+			int sign = 1;
+			switch (startDirection) {
+			case rightDirection:
+				sign = -1;
+			case leftDirection:
+				if (i < body.size()) {
+					dist += (endX-startX)*sign;
+					if (dist > length) {
+						endX -= (dist-length)*sign;
+						body.remove(i);
+						return new int[] {endX, endY};
+					}
+				} else {
+					endY = startY;
+					endX = startX+(length-dist)*sign;
+					return new int[] {endX, endY};
+				}
+				break;
+			case downDirection:
+				sign = -1;
+			case upDirection:
+				if (i < body.size()) {
+					dist += (endY-startY)*sign;
+					if (dist > length) {
+						endY -= (dist-length)*sign;
+						body.remove(i);
+						return new int[] {endX, endY};
+					}
+				} else {
+					endX = startX;
+					endY = startY+(length-dist)*sign;
+					return new int[] {endX, endY};
+				}
+				break;
+			}
+			if (body.get(i).type == STOP_TYPE) {
+				return new int[] {endX, endY};
+			}
 		}
-		
-		for (int i = body.size()-1; i >= 1; i--) {
-			body.get(i)[0] = body.get(i-1)[0];
-			body.get(i)[1] = body.get(i-1)[1];
-		}
-		
+		return new int[] {-1, -1};
+	}
+	
+	private void move(double delta) {
+		oldX = x;
+		oldY = y;
+		moveDist(v*delta);
+	}
+	
+	private void moveDist(double dist) {
 		switch (direction) {
 		case leftDirection :
-			x -= v;
+			x -= dist;
 			break;
 		case upDirection :
-			y -= v;
+			y -= dist;
 			break;
 		case rightDirection :
-			x += v;
+			x += dist;
 			break;
 		case downDirection :
-			y += v;
+			y += dist;
 		}
+	}
+	
+	/**
+	 * si les serpent dépase une case, il l'arrête au niveau
+	 * de la case et renvoie la distance à laquelle il l'a dépassé
+	 */
+	private double stopOnCase() {
+		int ix = (int)x/UsefulTh.cubeW;
+		int iy = (int)y/UsefulTh.cubeH;
+		
+		int oldIx = (int)oldX/UsefulTh.cubeW;
+		int oldIy = (int)oldY/UsefulTh.cubeH;
+		
+		double ret = 0;
+		if (oldIx != ix) {
+			if (direction == leftDirection) {
+				ret = oldIx-x;
+				x = oldIX;
+			} else if (direction == rightDirection) {
+				ret[0] = ix-x;
+				x = ix;
+			}
+		} else if (oldIy != iy) {
+			if (direction == upDirection) {
+				ret = oldIy-y;
+				y = oldIy;
+			} else if (direction == downDirection) {
+				ret = iy-y;
+				y = iy;
+			}
+		}
+		return (ret > 0? ret: -ret);
 	}
 	
 	/**
@@ -258,6 +362,26 @@ public class SnakeBoss extends Enemy {
 			break;
 		}
 		UsefulTh.displayTex(textures[direction], x2, y2, w2, h2, play.color, g2d);
+	}
+	
+	public class BodyPart {
+		private static final int TURN_TYPE = 0;
+		private static final int STOP_TYPE = 0;
+		
+		private final int x, y;
+		private final int type;
+		private final int direction;
+		
+		public BodyPart(int x, int y, int type, int direction) {
+			this.x = x;
+			this.y = y;
+			this.type = type;
+			this.direction = direction;
+		}
+		
+		public BodyPart(int x, int y, int type) {
+			this(x, y, type, -1);
+		}
 	}
 	
 	private class Apple {
