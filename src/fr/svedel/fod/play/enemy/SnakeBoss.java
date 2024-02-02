@@ -92,7 +92,7 @@ public class SnakeBoss extends Enemy {
 			
 			// ajoute de quoi indique au corps qu'il à tourné
 			if (direciton != oldDirection) {
-				Body.add(0, new BodyPart(x, y, BodyPart.TURN_TYPE, oldDirection));
+				addBodyPart(direction);
 			}
 			
 			eatHimself();
@@ -105,78 +105,49 @@ public class SnakeBoss extends Enemy {
 	
 	private void grow() {
 		length += UsefulTh.cubeW;
-		if (body.size() == 0) {
-			body.add(new BodyPart((int)x, (int)y, BodyPart.STOP_TYPE));
-		} else {
-			int endPos = getEndOfTheBody();
-			body.add(new BodyPart((int)endPos[0], (int)endPos[1], BodyPart.STOP_TYPE));
-		}
 	}
 	
-	private int[] getEndOfTheBody() {
-		double dist = 0;
-		int i;
-		for (i = 0; i < body.size()+1; ++i) {
-			double startX;
-			double startY;
-			int startDirection;
-			
-			if (i == 0) {
-				startX = x;
-				startY = y;
-				startDirection = direction;
-			} else {
-				startX = body.get(i-1).x;
-				startY = body.get(i-1).y;
-				startDirection = body.get(i-1).direction;
-			}
-			
-			double endX, endY;
-			if (i < body.size()) {
-				endX = body.get(i).x;
-				endY = body.get(i).y;
-			}
-			
-			int sign = 1;
-			switch (startDirection) {
-			case rightDirection:
-				sign = -1;
-			case leftDirection:
-				if (i < body.size()) {
-					dist += (endX-startX)*sign;
-					if (dist > length) {
-						endX -= (dist-length)*sign;
-						body.remove(i);
-						return new int[] {endX, endY};
-					}
-				} else {
-					endY = startY;
-					endX = startX+(length-dist)*sign;
-					return new int[] {endX, endY};
-				}
-				break;
-			case downDirection:
-				sign = -1;
-			case upDirection:
-				if (i < body.size()) {
-					dist += (endY-startY)*sign;
-					if (dist > length) {
-						endY -= (dist-length)*sign;
-						body.remove(i);
-						return new int[] {endX, endY};
-					}
-				} else {
-					endX = startX;
-					endY = startY+(length-dist)*sign;
-					return new int[] {endX, endY};
-				}
-				break;
-			}
-			if (body.get(i).type == STOP_TYPE) {
-				return new int[] {endX, endY};
-			}
+	private int getBodyLength() {
+		int len = 0;
+		for (int i = 0; i < body.size(); ++i) {
+			len += body.get(i).getLength();
 		}
-		return new int[] {-1, -1};
+		return len;
+	}
+	
+	/**
+	 * appelé quand le seprent tourne
+	 */
+	private void addBodyPart(int newDirection) {
+		double bx, by;
+		double bw, bh;
+		switch (newDireciton) {
+		case leftDirection:
+			bx = x+w;
+			by = y;
+			bw = 0;
+			bh = h;
+			break;
+		case upDirection:
+			bx = x;
+			by = y+h;
+			bw = w;
+			bh = 0;
+			break;
+		case rightDirection:
+			bx = x;
+			by = y;
+			bw = 0;
+			bh = h;
+			break;
+		case downDirection:
+			bx = x;
+			by = y;
+			bw = w;
+			bh = 0;
+			break;
+		}
+		body.add(0, new BodyPart(bx, by, bw, bh, newDireciton));
 	}
 	
 	private void move(double delta) {
@@ -184,7 +155,7 @@ public class SnakeBoss extends Enemy {
 		oldY = y;
 		moveDist(v*delta);
 	}
-	
+
 	private void moveDist(double dist) {
 		switch (direction) {
 		case leftDirection :
@@ -218,7 +189,7 @@ public class SnakeBoss extends Enemy {
 				ret = oldIx-x;
 				x = oldIX;
 			} else if (direction == rightDirection) {
-				ret[0] = ix-x;
+				ret = ix-x;
 				x = ix;
 			}
 		} else if (oldIy != iy) {
@@ -364,23 +335,48 @@ public class SnakeBoss extends Enemy {
 		UsefulTh.displayTex(textures[direction], x2, y2, w2, h2, play.color, g2d);
 	}
 	
-	public class BodyPart {
-		private static final int TURN_TYPE = 0;
-		private static final int STOP_TYPE = 0;
-		
-		private final int x, y;
-		private final int type;
+	private class BodyPart {
+		private final double x, y;
+		private double w, h;
 		private final int direction;
+		private boolean noMoreReasonToBe = false;
 		
-		public BodyPart(int x, int y, int type, int direction) {
+		private BodyPart(double x, double y, double w, double h, int direction) {
 			this.x = x;
 			this.y = y;
+			this.w = w;
+			this.h = h;
 			this.type = type;
 			this.direction = direction;
 		}
 		
-		public BodyPart(int x, int y, int type) {
-			this(x, y, type, -1);
+		private void getLength() {
+			switch (direction) {
+			case leftDirection:
+			case rightDirection:
+				return w;
+			default:
+				return h;
+			}
+		}
+		
+		private void reduce(double dist) {
+			if (dist > getLength()) {
+				noMoreReasonToBe = true;
+			} else {
+				switch (direction) {
+				case leftDirection:
+					w -= dist;
+				case rightDirection:
+					x += dist;
+					break;
+				case upDirection:
+					h -= dist;
+				case downDi:
+					y += dist;
+					break;
+				}
+			}
 		}
 	}
 	
