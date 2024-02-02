@@ -306,7 +306,7 @@ public class SnakeBoss extends Enemy {
 		
 		g2d.setColor(play.color);
 		for (int i = body.size()-1; i >= 0; i--) {
-			g2d.fillRect(body.get(i)[0], body.get(i)[1], w, h);
+			body.get(i).dispaly(g2d);
 		}
 		
 		// coordonnées et dimensions pour l'affichage
@@ -360,23 +360,66 @@ public class SnakeBoss extends Enemy {
 			}
 		}
 		
-		private void reduce(double dist) {
-			if (dist > getLength()) {
+		private void move(double dist) {
+			switch (direction) {
+			case leftDirection:
+				w += dist;
+				x -= dist;
+				break;
+			case rightDirection:
+				w += dist;
+				break;
+			case upDirection:
+				h += dist;
+				y -= dist;
+				break;
+			case downDirection:
+				h += dist;
+				break;
+			}
+		}
+		
+		/*private void followHead(double hx, double hy, hw, hh) {
+			switch (direction) {
+			case leftDirection:
+				w += hx+hw-x;
+				x = hx+hw;
+				break;
+			case rightDirection:
+				w += hx-x-w;
+				break;
+			case upDirection:
+				h += hy+hh-y;
+				y = hy+hh;
+				break;
+			case downDirection:
+				h += hy-y-h;
+				break;
+			}
+			}*/
+		
+		private void reduce() {
+			int dist = getLength()-length
+			if (dist < 0) {
 				noMoreReasonToBe = true;
 			} else {
 				switch (direction) {
-				case leftDirection:
-					w -= dist;
 				case rightDirection:
 					x += dist;
+				case leftDirection:
+					w -= dist;
 					break;
+				case downDirection:
+					y += dist;
 				case upDirection:
 					h -= dist;
-				case downDi:
-					y += dist;
 					break;
 				}
 			}
+		}
+		
+		private void display(Graphics2D g2d) {
+			g2d.fillRect(x, y, w, h);
 		}
 	}
 	
