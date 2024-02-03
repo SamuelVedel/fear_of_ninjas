@@ -34,6 +34,7 @@ public class SnakeBoss extends Enemy {
 		initTex();
 		spawnToFly();
 		initApples();
+		addBodyPart(direction);
 		for (int i = 0; i < 10; i++) {
 			grow();
 		}
@@ -122,37 +123,37 @@ public class SnakeBoss extends Enemy {
 	 * appelé quand le seprent tourne
 	 */
 	private void addBodyPart(int newDirection) {
-		double bx = 0;
-		double by = 0;
-		double bw = 0;
-		double bh = 0;
+		double x1 = 0;
+		double y1 = 0;
+		double x2 = 0;
+		double y2 = 0;
 		switch (newDirection) {
 		case leftDirection:
-			bx = x+w;
-			by = y;
-			bw = 0;
-			bh = h;
+			x1 = x+w;
+			y1 = y;
+			x2 = x1;
+			y2 = y1+h;
 			break;
 		case upDirection:
-			bx = x;
-			by = y+h;
-			bw = w;
-			bh = 0;
+			x1 = x;
+			y1 = y+h;
+			x2 = x1+w;
+			y2 = y1;
 			break;
 		case rightDirection:
-			bx = x;
-			by = y;
-			bw = 0;
-			bh = h;
+			x1 = x;
+			y1 = y;
+			x2 = x1;
+			y2 = y1+h;
 			break;
 		case downDirection:
-			bx = x;
-			by = y;
-			bw = w;
-			bh = 0;
+			x1 = x;
+			y1 = y;
+			x2 = x1+w;
+			y2 = y1;
 			break;
 		}
-		body.add(0, new BodyPart(bx, by, bw, bh, newDirection));
+		body.add(0, new BodyPart(x1, y1, x2, y2, newDirection));
 	}
 	
 	private void move(double delta) {
@@ -177,12 +178,13 @@ public class SnakeBoss extends Enemy {
 		}
 		
 		if (body.size() > 0) {
-			body.get(0).followHead(x, y, w, h);
+			body.get(0).followHead();
 			//body.get(0).move(dist);
 			int bodySize = body.size();
 			body.get(bodySize-1).reduce();
 			if (body.get(bodySize-1).noMoreReasonToBe) {
 				body.remove(bodySize-1);
+				body.get(bodySize-2).reduce();
 			}
 		}
 	}
@@ -207,6 +209,7 @@ public class SnakeBoss extends Enemy {
 				ret = ix*UsefulTh.cubeW-x;
 				x = ix*UsefulTh.cubeW;
 			}
+			if (body.size() > 0) body.get(0).stopOnCase();
 		} else if (oldIy != iy) {
 			if (direction == upDirection) {
 				ret = oldIy*UsefulTh.cubeH-y;
@@ -215,9 +218,9 @@ public class SnakeBoss extends Enemy {
 				ret = iy*UsefulTh.cubeH-y;
 				y = iy*UsefulTh.cubeH;
 			}
+			if (body.size() > 0) body.get(0).stopOnCase();
 		}
 		
-		//if (body.size() > 0) body.get(0).stopOnCase();
 		return (ret > 0? ret: -ret);
 	}
 	
@@ -248,10 +251,10 @@ public class SnakeBoss extends Enemy {
 	}
 	
 	private void eatHimself() {
-		for (int i = 1; i < body.size(); i++) {
+		for (int i = 2; i < body.size(); i++) {
 			BodyPart bp = body.get(i);
-			if (x+w > bp.x && x < bp.x+bp.w
-				&& y+h > bp.y && y < bp.y+bp.h) {
+			if (x+w > bp.x1 && x < bp.x2
+				&& y+h > bp.y1 && y < bp.y2) {
 				takeDammage(0, this);
 			}
 		}
@@ -352,16 +355,16 @@ public class SnakeBoss extends Enemy {
 	}
 	
 	private class BodyPart {
-		private double x, y;
-		private double w, h;
+		private double x1, y1;
+		private double x2, y2;
 		private int direction;
 		private boolean noMoreReasonToBe = false;
 		
-		private BodyPart(double x, double y, double w, double h, int direction) {
-			this.x = x;
-			this.y = y;
-			this.w = w;
-			this.h = h;
+		private BodyPart(double x1, double y1, double x2, double y2, int direction) {
+			this.x1 = x1;
+			this.y1 = y1;
+			this.x2 = x2;
+			this.y2 = y2;
 			this.direction = direction;
 		}
 		
@@ -369,111 +372,111 @@ public class SnakeBoss extends Enemy {
 			switch (direction) {
 			case leftDirection:
 			case rightDirection:
-				return w;
+				return x2-x1;
 			default:
-				return h;
+				return y2-y1;
 			}
 		}
 		
 		private void stopOnCase() {
 			switch(direction) {
 			case leftDirection:
-				x = (int)((int)(x/UsefulTh.cubeW+1)*UsefulTh.cubeW);
+				x1 = (int)((int)(x1/UsefulTh.cubeW+1)*UsefulTh.cubeW);
+				break;
 			case rightDirection:
-				w = (int)((int)(x+w)/UsefulTh.cubeW)*UsefulTh.cubeW-x;
+				x2 = (int)((int)(x2/UsefulTh.cubeW)*UsefulTh.cubeW);
 				break;
 			case upDirection:
-				y = (int)((int)(y/UsefulTh.cubeH+1)*UsefulTh.cubeH);
+				y1 = (int)((int)(y1/UsefulTh.cubeH+1)*UsefulTh.cubeH);
+				break;
 			case downDirection:
-				h = (int)((int)(y+h)/UsefulTh.cubeH)*UsefulTh.cubeH-y;
+				y2 = (int)((int)(y2/UsefulTh.cubeH)*UsefulTh.cubeH);
 				break;
 			}
 		}
 		
-		private void move(double dist) {
+		/*private void move(double dist) {
 			switch (direction) {
 			case leftDirection:
-				w += dist;
-				x -= dist;
+				x1 -= dist;
 				break;
 			case rightDirection:
-				w += dist;
+				x2 += dist;
 				break;
 			case upDirection:
-				h += dist;
-				y -= dist;
+				y1 -= dist;
 				break;
 			case downDirection:
-				h += dist;
+				y2 += dist;
 				break;
 			}
-		}
+			}*/
 		
-		private void followHead(double hx, double hy, double hw, double hh) {
+		private void followHead() {
 			switch (direction) {
 			case leftDirection:
-				w += hx+hw-x;
-				x = hx+hw;
+				x1 = x+w;
 				break;
 			case rightDirection:
-				w += hx-x-w;
+				x2 = x+w;
 				break;
 			case upDirection:
-				h += hy+hh-y;
-				y = hy+hh;
+				y1 = y+h;
 				break;
 			case downDirection:
-				h += hy-y-h;
+				y2 = y+h;
 				break;
 			}
 		}
 		
 		private void reduce() {
 			double dist = getBodyLength()-length;
-			if (getLength()-dist < 0) {
+			if (getLength() < dist) {
 				noMoreReasonToBe = true;
 			} else if (dist > 0) {
 				switch (direction) {
 				case rightDirection:
-					x += dist;
+					x1 += dist;
+					break;
 				case leftDirection:
-					w -= dist;
+					x2 -= dist;
 					break;
 				case downDirection:
-					y += dist;
+					y1 += dist;
+					break;
 				case upDirection:
-					h -= dist;
+					y2 -= dist;
 					break;
 				}
 			}
 		}
 		
 		private double[] getEndPos() {
-			double x2 = 0;
-			double y2 = 0;
+			double x3 = 0;
+			double y3 = 0;
 			switch (direction) {
 			case leftDirection:
-				x2 = x+w-UsefulTh.cubeW;
-				y2 = y;
+				x3 = x2-UsefulTh.cubeW;
+				y3 = y1;
 				break;
 			case rightDirection:
-				x2 = x;
-				y2 = y;
+				x3 = x1;
+				y3 = y1;
 				break;
 			case upDirection:
-				x2 = x;
-				y2 = y+h-UsefulTh.cubeH;
+				x3 = x1;
+				y3 = y2-UsefulTh.cubeH;
 				break;
 			case downDirection:
-				x2 = x;
-				y2 = y;
+				x3 = x1;
+				y3 = y1;
 				break;
 			}
 			return new double[] {x2, y2};
 		}
 		
 		private void display(Graphics2D g2d) {
-			g2d.fillRect((int)x, (int)y, (int)w, (int)h);
+			g2d.fillRect((int)x1, (int)y1, (int)x2-(int)x1, (int)y2-(int)y1);
 		}
 	}
 	
@@ -509,8 +512,8 @@ public class SnakeBoss extends Enemy {
 					if (!boo) {
 						for (int i = 1; i < body.size(); i++) {
 							BodyPart bp = body.get(i);
-							if (x1+UsefulTh.cubeW > bp.x && x1 < bp.x+bp.w
-								&& y1+UsefulTh.cubeH > bp.y && y1 < bp.y+bp.h) {
+							if (x1+UsefulTh.cubeW > bp.x1 && x1 < bp.x2
+								&& y1+UsefulTh.cubeH > bp.y1 && y1 < bp.y2) {
 								boo = true;
 								break;
 							}
