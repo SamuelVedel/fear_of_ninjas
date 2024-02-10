@@ -64,8 +64,8 @@ public class SnakeBoss extends Enemy {
 	
 	@Override
 	public void actions(double delta) {
-		oldX = x;
-		oldY = y;
+		//oldX = x;
+		//oldY = y;
 		
 		move(delta);
 		double dist = stopOnCase();
@@ -111,8 +111,8 @@ public class SnakeBoss extends Enemy {
 		length += UsefulTh.cubeW;
 	}
 	
-	private int getBodyLength() {
-		int len = 0;
+	private double getBodyLength() {
+		double len = 0;
 		for (int i = 0; i < body.size(); ++i) {
 			len += body.get(i).getLength();
 		}
@@ -194,11 +194,13 @@ public class SnakeBoss extends Enemy {
 	 * de la case et renvoie la distance à laquelle il l'a dépassé
 	 */
 	private double stopOnCase() {
-		int ix = (int)(x)/UsefulTh.cubeW;
-		int iy = (int)(y)/UsefulTh.cubeH;
+		int ix = (int)x/UsefulTh.cubeW;
+		int iy = (int)y/UsefulTh.cubeH;
 		
-		int oldIx = (int)(oldX)/UsefulTh.cubeW;
-		int oldIy = (int)(oldY)/UsefulTh.cubeH;
+		int oldIx = (int)oldX/UsefulTh.cubeW;
+		int oldIy = (int)oldY/UsefulTh.cubeH;
+		
+		//room.cht.addText(""+ix+"/"+oldIx+" "+iy+"/"+oldIy);
 		
 		double ret = 0;
 		if (oldIx != ix) {
@@ -343,11 +345,9 @@ public class SnakeBoss extends Enemy {
 			h2 += 2*UsefulTh.pixelH;
 			break;
 		case rightDirection :
-			x2 += 2*UsefulTh.pixelW;
 			w2 += 2*UsefulTh.pixelW;
 			break;
 		case downDirection :
-			y2 += 2*UsefulTh.pixelH;
 			h2 += 2*UsefulTh.pixelH;
 			break;
 		}
@@ -418,13 +418,13 @@ public class SnakeBoss extends Enemy {
 				x1 = x+w;
 				break;
 			case rightDirection:
-				x2 = x+w;
+				x2 = x;
 				break;
 			case upDirection:
 				y1 = y+h;
 				break;
 			case downDirection:
-				y2 = y+h;
+				y2 = y;
 				break;
 			}
 		}
