@@ -190,7 +190,7 @@ public class SnakeBoss extends Enemy {
 	}
 	
 	/**
-	 * si les serpent dépase une case, il l'arrête au niveau
+	 * si les serpent dépase une case, il s'arrête au niveau
 	 * de la case et renvoie la distance à laquelle il l'a dépassé
 	 */
 	private double stopOnCase() {
@@ -212,6 +212,7 @@ public class SnakeBoss extends Enemy {
 				x = ix*UsefulTh.cubeW;
 			}
 			if (body.size() > 0) body.get(0).stopOnCase();
+			if (ret == 0) ret = 0.00001;
 		} else if (oldIy != iy) {
 			if (direction == upDirection) {
 				ret = oldIy*UsefulTh.cubeH-y;
@@ -221,6 +222,7 @@ public class SnakeBoss extends Enemy {
 				y = iy*UsefulTh.cubeH;
 			}
 			if (body.size() > 0) body.get(0).stopOnCase();
+			if (ret == 0) ret = 0.00001;
 		}
 		
 		return (ret > 0? ret: -ret);
