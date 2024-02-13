@@ -82,7 +82,7 @@ public class Chat {
 			String s = JOptionPane.showInputDialog(null, "Ecit un truc", "Alors comme ça tu veux écrire", JOptionPane.QUESTION_MESSAGE);
 			play.phase = Play.PLAY_PHASE;
 			
-			if (s != null && !s.matches("")) {
+			if (s != null && !s.equals("")) {
 				if (s.charAt(0) != '\\') {
 					addText("Message inutile : "+s);
 				} else {
@@ -94,27 +94,27 @@ public class Chat {
 	
 	private void cheat(String commande) {
 		String[] part = commande.split(" ");
-		if (part[0].matches("takePower")) {
+		if (part[0].equals("takePower")) {
 			takePower(part);
-		} else if (part[0].matches("givePower")) {
+		} else if (part[0].equals("givePower")) {
 			givePower(part);
-		} else if (part[0].matches("summon")) {
+		} else if (part[0].equals("summon")) {
 			summon(part);
-		} else if (part[0].matches("setLife")){
+		} else if (part[0].equals("setLife")){
 			setLife(part);
-		} else if (part[0].matches("cleanRoom")) {
+		} else if (part[0].equals("cleanRoom")) {
 			cleanRoom();
-		} else if (part[0].matches("setColor")) {
+		} else if (part[0].equals("setColor")) {
 			setColor(part);
-		} else if (part[0].matches("setNumOfKills")) {
+		} else if (part[0].equals("setNumOfKills")) {
 			setNumOfKills(part);
-		} else if (part[0].matches("exit")) {
+		} else if (part[0].equals("exit")) {
 			System.exit(0);
-		} else if (part[0].matches("tp")) {
+		} else if (part[0].equals("tp")) {
 			room.me.tp();
-		} else if (part[0].matches("setFps")) {
+		} else if (part[0].equals("setFps")) {
 			setFps(part);
-		} else if (part[0].matches("restart")) {
+		} else if (part[0].equals("restart")) {
 			play.restart();
 		} else {
 			addText("Il n'y a pas de méthode "+part[0]);
@@ -124,45 +124,45 @@ public class Chat {
 	private void takePower(String[] args) {
 		if (args.length >= 3) {
 			int powI = -1;
-			if (args[1].matches("speed")) {
+			if (args[1].equals("speed")) {
 				powI = 0;
-			} else if (args[1].matches("crit")) {
+			} else if (args[1].equals("crit")) {
 				powI = 1;
-			} else if (args[1].matches("bulletSpeed")) {
+			} else if (args[1].equals("bulletSpeed")) {
 				powI = 2;
-			} else if (args[1].matches("shield")) {
+			} else if (args[1].equals("shield")) {
 				powI = 3;
-			} else if (args[1].matches("regen")) {
+			} else if (args[1].equals("regen")) {
 				powI = 4;
-			} else if (args[1].matches("vampire")) {
+			} else if (args[1].equals("vampire")) {
 				powI = 5;
-			} else if (args[1].matches("deathsBullets")) {
+			} else if (args[1].equals("deathsBullets")) {
 				powI = 6;
-			} else if (args[1].matches("moreLife")) {
+			} else if (args[1].equals("moreLife")) {
 				powI = 7;
-			} else if (args[1].matches("bouncingBall")) {
+			} else if (args[1].equals("bouncingBall")) {
 				powI = 8;
-			} else if (args[1].matches("drinkingDuck")) {
+			} else if (args[1].equals("drinkingDuck")) {
 				powI = 9;
-			} else if (args[1].matches("multipleJump")) {
+			} else if (args[1].equals("multipleJump")) {
 				powI = 10;
-			} else if (args[1].matches("stone2Birds")) {
+			} else if (args[1].equals("stone2Birds")) {
 				powI = 11;
-			} else if (args[1].matches("nothing")) {
+			} else if (args[1].equals("nothing")) {
 				powI = 12;
-			} else if (args[1].matches("cadence")) {
+			} else if (args[1].equals("cadence")) {
 				powI = 13;
-			} else if (args[1].matches("turret")) {
+			} else if (args[1].equals("turret")) {
 				powI = 14;
-			} else if (args[1].matches("poison")) {
+			} else if (args[1].equals("poison")) {
 				powI = 15;
-			} else if (args[1].matches("bomb")) {
+			} else if (args[1].equals("bomb")) {
 				powI = 16;
-			} else if (args[1].matches("snakesOfPain")) {
+			} else if (args[1].equals("snakesOfPain")) {
 				powI = 17;
-			} else if (args[1].matches("petrification")) {
+			} else if (args[1].equals("petrification")) {
 				powI = 18;
-			} else if (args[1].matches("tp")) {
+			} else if (args[1].equals("tp")) {
 				powI = 19;
 			}
 			
@@ -188,33 +188,33 @@ public class Chat {
 	private void givePower(String[] args) {
 		if (args.length >= 3) {
 			int powI = -1;
-			if (args[1].matches("speed")) {
+			if (args[1].equals("speed")) {
 				powI = 0;
-			} else if (args[1].matches("crit")) {
+			} else if (args[1].equals("crit")) {
 				powI = 1;
-			} else if (args[1].matches("bulletSpeed")) {
+			} else if (args[1].equals("bulletSpeed")) {
 				powI = 2;
-			} else if (args[1].matches("shield")) {
+			} else if (args[1].equals("shield")) {
 				powI = 3;
-			} else if (args[1].matches("regen")) {
+			} else if (args[1].equals("regen")) {
 				powI = 4;
-			} else if (args[1].matches("vampire")) {
+			} else if (args[1].equals("vampire")) {
 				powI = 5;
-			} else if (args[1].matches("deathsBullets")) {
+			} else if (args[1].equals("deathsBullets")) {
 				powI = 6;
-			} else if (args[1].matches("moreLife")) {
+			} else if (args[1].equals("moreLife")) {
 				powI = 7;
-			} else if (args[1].matches("bouncingBall")) {
+			} else if (args[1].equals("bouncingBall")) {
 				powI = 8;
-			} else if (args[1].matches("nothing")) {
+			} else if (args[1].equals("nothing")) {
 				powI = 12;
-			} else if (args[1].matches("cadence")) {
+			} else if (args[1].equals("cadence")) {
 				powI = 13;
-			} else if (args[1].matches("poison")) {
+			} else if (args[1].equals("poison")) {
 				powI = 15;
-			} /*else if (args[1].matches("snakesOfPain")) {
+			} /*else if (args[1].equals("snakesOfPain")) {
 				powI = 17;
-			} */else if (args[1].matches("petrification")) {
+			} */else if (args[1].equals("petrification")) {
 				powI = 18;
 			}
 			
@@ -246,58 +246,58 @@ public class Chat {
 				addText(args[2]+" ne peut pas être converti en entier");
 			}
 			for (int i = 0; i < num; i++) {
-				if (args[1].matches("blob")) {
+				if (args[1].equals("blob")) {
 					room.enemies.add(new Blob(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("bomber")) {
+				} else if (args[1].equals("bomber")) {
 					room.enemies.add(new Bomber(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("darkGuy")) {
+				} else if (args[1].equals("darkGuy")) {
 					room.enemies.add(new DarkGuy(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("flyingHead")) {
+				} else if (args[1].equals("flyingHead")) {
 					room.enemies.add(new FlyingHead(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("ninja")) {
+				} else if (args[1].equals("ninja")) {
 					room.enemies.add(new Ninja(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("shieldMan")) {
+				} else if (args[1].equals("shieldMan")) {
 					room.enemies.add(new ShieldMan(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("summoner")) {
+				} else if (args[1].equals("summoner")) {
 					room.enemies.add(new Summoner(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("soul")) {
+				} else if (args[1].equals("soul")) {
 					room.enemies.add(new Soul(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("lilSlime")) {
+				} else if (args[1].equals("lilSlime")) {
 					room.enemies.add(new LilSlime(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("medSlime")) {
+				} else if (args[1].equals("medSlime")) {
 					room.enemies.add(new MedSlime(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("bigSlime")) {
+				} else if (args[1].equals("bigSlime")) {
 					room.enemies.add(new BigSlime(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
-				} else if (args[1].matches("lilSnake")) {
+				} else if (args[1].equals("lilSnake")) {
 					room.enemies.add(new LilSnake(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("lilHead")) {
+				} else if (args[1].equals("lilHead")) {
 					room.enemies.add(new LilHead(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					
-				} else if (args[1].matches("healer")) {
+				} else if (args[1].equals("healer")) {
 					room.enemies.add(new Healer(room));
 					if (i == 0) addText("Invocation de "+num+" "+room.enemies.get(room.enemies.size()-1).name);
 					

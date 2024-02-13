@@ -33,7 +33,7 @@ public class VFrame extends JFrame {
 			setExtendedState(JFrame.MAXIMIZED_BOTH);
 			setUndecorated(true);
 			setResizable(false);
-			if (System.getProperty("os.name").matches("Linux")) {
+			if (System.getProperty("os.name").equals("Linux")) {
 				GraphicsDevice gdevice = getGraphicsConfiguration().getDevice();
 				gdevice.setFullScreenWindow(this);
 			}

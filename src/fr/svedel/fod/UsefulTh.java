@@ -135,7 +135,7 @@ public abstract class UsefulTh {
 	public static int[][] readTex(String file) {
 		int i = -1;
 		for (int j = 0; j < textures.size(); j++) {
-			if (file.matches(textures.keySet().toArray()[j].toString())) {
+			if (file.equals(textures.keySet().toArray()[j].toString())) {
 				i = j;
 				break;
 			}
