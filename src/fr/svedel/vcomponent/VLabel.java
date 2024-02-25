@@ -12,7 +12,7 @@ public class VLabel extends VComponent {
 	
 	private String fontName = "ARIAL";
 	private int fontStyle = Font.BOLD;
-	private int[] fontSize = {10, 0};
+	private VAdjustInt fontSize = new VAdjustInt(10);
 	
 	public VLabel(int x, int y, int widthReference, int heightReference, String text) {
 		super(x, y, 0, 0, widthReference, heightReference);
@@ -63,58 +63,29 @@ public class VLabel extends VComponent {
 		this.fontStyle = fontStyle;
 	}
 	
-	public int getFontSize() {
-		return fontSize[0];
-	}
-	
-	public void setFontSize(int fontSize) {
-		this.fontSize[0] = fontSize;
-	}
-	
-	public int getActualFontSize() {
-		return fontSize[1];
-	}
-	
-	public void setActualFontSize(int fontSize) {
-		this.fontSize[1] = fontSize;
+	public VAdjustInt getFontSize() {
+		return fontSize;
 	}
 	
 	@Override
 	public void adjust(int widthReference, int heightReference) {
 		super.adjust(widthReference, heightReference);
-		switch (getAdjustment()) {
-		case NO_ADJUSTMENT :
-			fontSize[1] = fontSize[0];
-			break;
-		case ADJUSTMENT_BY_WIDTH_AND_HEIGHT :
-			fontSize[1] = getActualWidthReference()*fontSize[0]/getWidthReference();
-			break;
-		case ADJUSTMENT_BY_WIDTH :
-			fontSize[1] = getActualWidthReference()*fontSize[0]/getWidthReference();
-			break;
-		case ADJUSTMENT_BY_HEIGHT :
-			fontSize[1] = getActualHeightReference()*fontSize[0]/getHeightReference();
-			break;
-		default :
-//			if (widthReference[0]*w[0]/widthReference[1] >= heightReference[0]*w[0]/heightReference[1]) {
-//				autoAdjustment = PitiButton.ADJUSTMENT_BY_WIDTH;
-//				adjust(width, height);
-//			} else {
-//				autoAdjustment = PitiButton.ADJUSTMENT_BY_HEIGHT;
-//				adjust(width, height);
-//			}
-//			autoAdjustment = PitiButton.ADJUSTMENT_BY_THE_SMALLEST;
-		}
+		adjustValue(fontSize);
 	}
 	
 	@Override
-	public void display(Color c2, Graphics2D g2d) {
-		g2d.setFont(new Font(fontName, fontStyle, fontSize[0]));
-		setWidth(UsefulTh.getTextW(text, g2d));
-		setHeight(UsefulTh.getTextH(text, g2d));
+	public void display(Graphics2D g2d) {
+		int currentX = getX().getCurrentValue();
+		int currentY = getY().getCurrentValue();
+		int currentWidth = getWidth().getCurrentValue();
+		int currentHeight = getHeight().getCurrentValue();
+		
+		g2d.setFont(new Font(fontName, fontStyle, fontSize.getValue()));
+		getWidth().setValue(UsefulTh.getTextW(text, g2d));
+		getHeight().setValue(UsefulTh.getTextH(text, g2d));
 		
 		g2d.setColor(color);
-		g2d.setFont(new Font(fontName, fontStyle, fontSize[1]));
-		g2d.drawString(text, getActualX(), getActualY()+getActualHeight());
+		g2d.setFont(new Font(fontName, fontStyle, fontSize.getCurrentValue()));
+		UsefulTh.drawString(text, currentX, currentY+currentHeight, g2d);
 	}
 }

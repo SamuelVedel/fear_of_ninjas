@@ -15,7 +15,7 @@ public class VNumberWriter extends VComponent {
 	private Color border = Color.BLACK;
 	private Color foreground = Color.BLACK;
 	
-	private int[] fontSize = new int[2];
+	private VAdjustInt fontSize;
 	
 	private int t = 0;
 	/**
@@ -53,7 +53,7 @@ public class VNumberWriter extends VComponent {
 	public VNumberWriter(int x, int y, int w, int h, int widthReference, int heightReference) {
 		super(x, y, w, h, widthReference, heightReference);
 		addKeyListener(kl);
-		fontSize[0] = 7*h/10;
+		fontSize = new VAdjustInt(7*h/10);
 	}
 	public VNumberWriter(int x, int y, int h, int widthReference, int heightReference) {
 		this(x, y, 50*h/30, h, widthReference, heightReference);
@@ -107,45 +107,46 @@ public class VNumberWriter extends VComponent {
 		this.foreground = foreground;
 	}
 	
-	public int getFontSize() {
-		return fontSize[0];
-	}
-	
-	public void setFontSize(int fontSize) {
-		this.fontSize[0] = fontSize;
-	}
-	
-	public int getActualFontSize() {
-		return fontSize[1];
-	}
-	
-	public void setActualFontSize(int fontSize) {
-		this.fontSize[1] = fontSize;
+	public VAdjustInt getFontSize() {
+		return fontSize;
 	}
 	
 	@Override
-	public void display(Color c2, Graphics2D g2d) {
+	public void adjust(int widthReference, int heightReference) {
+		super.adjust(widthReference, heightReference);
+		adjustValue(fontSize, false);
+	}
+	
+	@Override
+	public void display(Graphics2D g2d) {
+		int currentX = getX().getCurrentValue();
+		int currentY = getY().getCurrentValue();
+		int currentWidth = getWidth().getCurrentValue();
+		int currentHeight = getHeight().getCurrentValue();
+		
 		g2d.setColor(background);
-		g2d.fillRect(getActualX(), getActualY(), getActualWidth(), getActualHeight());
+		g2d.fillRect(currentX, currentY, currentWidth, currentHeight);
 		
 		if (border != null) {
 			g2d.setColor(border);
-			g2d.drawRect(getActualX(), getActualY(), getActualWidth(), getActualHeight());
+			g2d.drawRect(currentX, currentY, currentWidth, currentHeight);
 		}
 		
-		fontSize[1] = fontSize[0]*getActualHeight()/getHeight();
 		g2d.setColor(foreground);
-		g2d.setFont(new Font("ARIAL", Font.BOLD, fontSize[1]));
+		g2d.setFont(new Font("ARIAL", Font.BOLD, fontSize.getCurrentValue()));
 		String text = Integer.toString(number);
 		int textW = UsefulTh.getTextW(text, g2d);
 		int textH = UsefulTh.getTextH(text, g2d);
-		g2d.drawString(text, getActualX()+getActualWidth()/2-textW/2, getActualY()+getActualHeight()/2+textH/2);
+		UsefulTh.drawString(text, currentX+currentWidth/2-textW/2,
+							currentY+currentHeight/2+textH/2, g2d);
 		
 		if (hasFocus()) {
 			t += 1;
 			if ((t-t%dt)%(2*dt) != 0) {
-				g2d.drawLine(getActualX()+getActualWidth()/2+textW/2, getActualY()+getActualHeight()/2+textH/2,
-							 getActualX()+getActualWidth()/2+textW/2, getActualY()+getActualHeight()/2-textH/2);
+				g2d.drawLine(currentX+currentWidth/2+textW/2,
+							 currentY+currentHeight/2+textH/2,
+							 currentX+currentWidth/2+textW/2,
+							 currentY+currentHeight/2-textH/2);
 			}
 		}
 	}

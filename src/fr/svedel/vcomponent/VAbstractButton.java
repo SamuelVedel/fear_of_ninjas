@@ -17,7 +17,7 @@ public abstract class VAbstractButton extends VComponent {
 		
 		@Override
 		public void mousePressed(MouseEvent e) {
-			if (e.getButton() == 1 && !usable) setPressed(false);
+			if (!usable) setPressed(false);
 		}
 		
 		@Override
@@ -28,7 +28,7 @@ public abstract class VAbstractButton extends VComponent {
 		
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			if (e.getButton() == 1 && usable) executeVActLs(e);
+			if (usable) executeVActLs(e);
 		}
 	};
 	

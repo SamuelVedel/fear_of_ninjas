@@ -1,6 +1,5 @@
 package fr.svedel.vcomponent;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -21,22 +20,22 @@ public class VPanel extends VComponent {
 		
 		@Override
 		public void keyTyped(KeyEvent e) {
-			for (int i = vcList.size()-1; i >= 0; --i) {
-				vcList.get(i).keyTyped(e);
+			for (VComponent vc : vcList) {
+				vc.keyTyped(e);
 			}
 		}
 		
 		@Override
 		public void keyReleased(KeyEvent e) {
-			for (int i = vcList.size()-1; i >= 0; --i) {
-				vcList.get(i).keyReleased(e);
+			for (VComponent vc : vcList) {
+				vc.keyReleased(e);
 			}
 		}
 		
 		@Override
 		public void keyPressed(KeyEvent e) {
-			for (int i = vcList.size()-1; i >= 0; --i) {
-				vcList.get(i).keyPressed(e);
+			for (VComponent vc : vcList) {
+				vc.keyPressed(e);
 			}
 		}
 	};
@@ -44,15 +43,15 @@ public class VPanel extends VComponent {
 		
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			for (int i = vcList.size()-1; i >= 0; --i) {
-				vcList.get(i).mouseReleased(e);
+			for (VComponent vc : vcList) {
+				vc.mouseReleased(e);
 			}
 		}
 		
 		@Override
 		public void mousePressed(MouseEvent e) {
-			for (int i = vcList.size()-1; i >= 0; --i) {
-				vcList.get(i).mousePressed(e);
+			for (VComponent vc : vcList) {
+				vc.mousePressed(e);
 			}
 //			if (hasFocus() && jp != null) {
 //				jp.grabFocus();
@@ -72,15 +71,15 @@ public class VPanel extends VComponent {
 		
 		@Override
 		public void mouseMoved(MouseEvent e) {
-			for (int i = vcList.size()-1; i >= 0; --i) {
-				vcList.get(i).mouseMoved(e);
+			for (VComponent vc : vcList) {
+				vc.mouseMoved(e);
 			}
 		}
 		
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			for (int i = vcList.size()-1; i >= 0; --i) {
-				vcList.get(i).mouseDragged(e);
+			for (VComponent vc : vcList) {
+				vc.mouseDragged(e);
 			}
 		}
 	};
@@ -134,8 +133,10 @@ public class VPanel extends VComponent {
 	public void add(VComponent vc) {
 		vcList.add(vc);
 		
-		vc.setWidthReference(getWidth());
-		vc.setHeightReference(getHeight());
+		//vc.setWidthReference(getWidth());
+		vc.getWidthReference().setValue(getWidth().getValue());
+		//vc.setHeightReference(getHeight());
+		vc.getHeightReference().setValue(getHeight().getValue());
 		vc.setAdjustment(ADJUSTMENT_BY_WIDTH_AND_HEIGHT);
 		vc.setAlignment(NO_ALIGNMENT);
 	}
@@ -155,18 +156,19 @@ public class VPanel extends VComponent {
 	@Override
 	public void adjust(int widthRefrence, int heightRefrence) {
 		super.adjust(widthRefrence, heightRefrence);
-		for (int i = vcList.size()-1; i >= 0; --i) {
-			VComponent vc = vcList.get(i);
-			vc.adjust(getActualWidth(), getActualHeight());
-			vc.setActualX(vc.getActualX()+getActualX());
-			vc.setActualY(vc.getActualY()+getActualY());
+		for (VComponent vc : vcList) {
+			vc.adjust(getWidth().getCurrentValue(), getHeight().getCurrentValue());
+			vc.getX().setCurrentValue(vc.getX().getCurrentValue()
+									  +getX().getCurrentValue());
+			vc.getY().setCurrentValue(vc.getY().getCurrentValue()
+									  +getY().getCurrentValue());
 		}
 	}
 	
 	@Override
-	public void display(Color c2, Graphics2D g2d) {
-		for (int i = vcList.size()-1; i >= 0; --i) {
-			vcList.get(i).display(c2, g2d);
+	public void display(Graphics2D g2d) {
+		for (VComponent vc : vcList) {
+			vc.display(g2d);
 		}
 	}
 }

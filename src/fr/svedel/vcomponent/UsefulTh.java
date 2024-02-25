@@ -37,7 +37,7 @@ public abstract class UsefulTh {
 		return (int) textBounds.getHeight()-g2d.getFont().getSize()*20/50;
 	}
 	
-	protected static void drawString(String text, int x, int y, Graphics2D g2d) {
+	public static void drawString(String text, int x, int y, Graphics2D g2d) {
 		Graphics2D g2d2 = (Graphics2D) g2d.create();
 		g2d2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d2.drawString(text, x, y);

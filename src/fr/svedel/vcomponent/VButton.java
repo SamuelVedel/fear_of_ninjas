@@ -7,20 +7,18 @@ import java.awt.Graphics2D;
 public class VButton extends VAbstractButton {
 	
 	private String text;
-	private int[] fontSize = {50, 0};
-	private int[] borderSize = {50, 0};
-	
-	private int addW = 20;
+	private VAdjustInt fontSize = new VAdjustInt(50);
+	private VAdjustInt round = new VAdjustInt(50);
 	
 	// Couleur noraml du boutton.
-	private Color background = new Color(0, 0, 0);
-//	private Color foreground = new Color(255, 255, 255, 200);
-//	private Color border = new Color(255, 255, 255, 200);
+	private Color background = new Color(0, 0, 0, 200);
+	private Color foreground = new Color(255, 255, 255, 200);
+	private Color border = new Color(255, 255, 255, 200);
 	
-//	// Couleur du boutton quand il est survolé.
-//	private Color survolBackground = new Color(255, 255, 255, 200);
-//	private Color survolForeground = new Color(0, 0, 0, 200);
-//	private Color survolBorder = new Color(255, 255, 255, 200);
+	// Couleur du boutton quand il est survolé.
+	private Color survolBackground = new Color(255, 255, 255, 200);
+	private Color survolForeground = new Color(0, 0, 0, 200);
+	private Color survolBorder = new Color(255, 255, 255, 200);
 	
 	public VButton(int x, int y, int w, int h, int widthReference, int heightReference, String text) {
 		super(x, y, w, h, widthReference, heightReference);
@@ -47,44 +45,12 @@ public class VButton extends VAbstractButton {
 		this.text = text;
 	}
 	
-	public int getFontSize() {
-		return fontSize[0];
+	public VAdjustInt getFontSize() {
+		return fontSize;
 	}
 	
-	public void setFontSize(int fontSize) {
-		this.fontSize[0] = fontSize;
-	}
-	
-	public int getActualFontSize() {
-		return fontSize[1];
-	}
-	
-	public void setActualFontSize(int fontSize) {
-		this.fontSize[1] = fontSize;
-	}
-	
-	public int getBorderSize() {
-		return borderSize[0];
-	}
-	
-	public void setBorderSize(int borderSize) {
-		this.borderSize[0] = borderSize;
-	}
-	
-	public int getActualBorderSize() {
-		return borderSize[1];
-	}
-	
-	public void setActualBorderSize(int borderSize) {
-		this.borderSize[1] = borderSize;
-	}
-	
-	public int getAddW() {
-		return addW;
-	}
-	
-	public void setAddW(int addW) {
-		this.addW = addW;
+	public VAdjustInt getRound() {
+		return round;
 	}
 	
 	public Color getBackground() {
@@ -95,114 +61,75 @@ public class VButton extends VAbstractButton {
 		this.background = background;
 	}
 	
-//	public Color getForeground() {
-//		return foreground;
-//	}
-//	
-//	public void setForeground(Color foreground) {
-//		this.foreground = foreground;
-//	}
-//	
-//	public Color getBorder() {
-//		return border;
-//	}
-//	
-//	public void setBorder(Color border) {
-//		this.border = border;
-//	}
-//	
-//	public Color getSurvolBackground() {
-//		return survolBackground;
-//	}
-//	
-//	public void setSurvolBackground(Color survolBackground) {
-//		this.survolBackground = survolBackground;
-//	}
-//	
-//	public Color getSurvolForeground() {
-//		return survolForeground;
-//	}
-//	
-//	public void setSurvolForeground(Color survolForeground) {
-//		this.survolForeground = survolForeground;
-//	}
-//	
-//	public Color getSurvolBorder() {
-//		return survolBorder;
-//	}
-//	
-//	public void setSurvolBorder(Color survolBorder) {
-//		this.survolBorder = survolBorder;
-//	}
+	public Color getForeground() {
+		return foreground;
+	}
 	
-	@Override
-	public void adjust(int widthReference, int heightReference) {
-		int x0 = getX();
-		int y0 = getY();
-		int w0 = getWidth();
-		int h0 = getHeight();
-		if (isMouseIn()) {
-			setX(x0-addW/2);
-			setY(y0-addW/2);
-			setWidth(w0+addW);
-			setHeight(h0+addW);
-		}
-		
-		super.adjust(widthReference, heightReference);
-		switch (getAdjustment()) {
-		case NO_ADJUSTMENT :
-			fontSize[1] = fontSize[0];
-			borderSize[1] = borderSize[0];
-			break;
-		case ADJUSTMENT_BY_WIDTH_AND_HEIGHT :
-			fontSize[1] = getActualWidthReference()*fontSize[0]/getWidthReference();
-			borderSize[1] = getActualWidthReference()*borderSize[0]/getWidthReference();
-			break;
-		case ADJUSTMENT_BY_WIDTH :
-			fontSize[1] = getActualWidthReference()*fontSize[0]/getWidthReference();
-			borderSize[1] = getActualWidthReference()*borderSize[0]/getWidthReference();
-			break;
-		case ADJUSTMENT_BY_HEIGHT :
-			fontSize[1] = getActualHeightReference()*fontSize[0]/getHeightReference();
-			borderSize[1] = getActualHeightReference()*borderSize[0]/getHeightReference();
-			break;
-		default :
-//			if (widthReference[0]*w[0]/widthReference[1] >= heightReference[0]*w[0]/heightReference[1]) {
-//				autoAdjustment = PitiButton.ADJUSTMENT_BY_WIDTH;
-//				adjust(width, height);
-//			} else {
-//				autoAdjustment = PitiButton.ADJUSTMENT_BY_HEIGHT;
-//				adjust(width, height);
-//			}
-//			autoAdjustment = PitiButton.ADJUSTMENT_BY_THE_SMALLEST;
-		}
-		
-		setX(x0);
-		setY(y0);
-		setWidth(w0);
-		setHeight(h0);
+	public void setForeground(Color foreground) {
+		this.foreground = foreground;
+	}
+	
+	public Color getBorder() {
+		return border;
+	}
+	
+	public void setBorder(Color border) {
+		this.border = border;
+	}
+	
+	public Color getSurvolBackground() {
+		return survolBackground;
+	}
+	
+	public void setSurvolBackground(Color survolBackground) {
+		this.survolBackground = survolBackground;
+	}
+	
+	public Color getSurvolForeground() {
+		return survolForeground;
+	}
+	
+	public void setSurvolForeground(Color survolForeground) {
+		this.survolForeground = survolForeground;
+	}
+	
+	public Color getSurvolBorder() {
+		return survolBorder;
+	}
+	
+	public void setSurvolBorder(Color survolBorder) {
+		this.survolBorder = survolBorder;
 	}
 	
 	@Override
-	public void display(Color c2, Graphics2D g2d) {
-//		g2d.setColor(/*!isMouseIn()? */background/* : survolBackground*/);
-//		g2d.fillRoundRect(getActualX(), getActualY(), getActualWidth(), getActualHeight(), round[1], round[1]);
-//		
-//		g2d.setColor(/*isMouseIn()? border : survolBorder*/c2);
-//		g2d.drawRoundRect(getActualX(), getActualY(), getActualWidth(), getActualHeight(), round[1], round[1]);
+	public void adjust(int widthReference, int heightReference) {
+		super.adjust(widthReference, heightReference);
+		adjustValue(fontSize);
+		adjustValue(round);
+	}
+	
+	@Override
+	public void display(Graphics2D g2d) {
+		int currentX = getX().getCurrentValue();
+		int currentY = getY().getCurrentValue();
+		int currentWidth = getWidth().getCurrentValue();
+		int currentHeight = getHeight().getCurrentValue();
 		
-		g2d.setColor(c2);
-		g2d.fillRect(getActualX(), getActualY(), getActualWidth(), getActualHeight());
-		g2d.setColor(Color.BLACK);
-		g2d.fillRect(getActualX()+borderSize[1], getActualY()+borderSize[1],
-				getActualWidth()-2*borderSize[1], getActualHeight()-2*borderSize[1]);
+		g2d.setColor(!isMouseIn()? background : survolBackground);
+		g2d.fillRoundRect(currentX, currentY, currentWidth, currentHeight,
+						  round.getCurrentValue(), round.getCurrentValue());
+		
+		g2d.setColor(isMouseIn()? border : survolBorder);
+		g2d.drawRoundRect(currentX, currentY, currentWidth, currentHeight,
+						  round.getCurrentValue(), round.getCurrentValue());
 		
 		if (text != null) {
-			g2d.setColor(/*!isMouseIn()? foreground : survolForeground*/c2);
-			g2d.setFont(new Font("ARIAL", Font.BOLD, fontSize[1]));
+			g2d.setColor(!isMouseIn()? foreground : survolForeground);
+			g2d.setFont(new Font("ARIAL", Font.BOLD, fontSize.getCurrentValue()));
 			int textW = UsefulTh.getTextW(text, g2d);
 			int textH = UsefulTh.getTextH(text, g2d);
-			UsefulTh.drawString(text, getActualX()+getActualWidth()/2-textW/2, getActualY()+getActualHeight()/2+textH/2, g2d);
+			UsefulTh.drawString(text, currentX+currentWidth/2-textW/2,
+								currentY+currentHeight/2+textH/2, g2d);
 		}
 	}
 }
