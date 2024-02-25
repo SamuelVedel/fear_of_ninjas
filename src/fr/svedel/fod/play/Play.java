@@ -176,7 +176,14 @@ public class Play implements KeyListener, MouseMotionListener {
 		}
 	}
 	
+	public void die() {
+		phase = Play.DEAD_PHASE;
+		endS.setUsable(true);
+		endS.setColor(color);
+	}
+	
 	public void restart() {
+		initColor();
 		jf.removeKeyListener(room.kl);
 		playP.removeMouseListener(room.ml);
 		room = new Room(this);

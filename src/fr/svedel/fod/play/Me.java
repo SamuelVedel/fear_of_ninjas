@@ -308,9 +308,8 @@ public class Me extends Entity {
 	@Override
 	public void die(Entity killer) {
 		super.die(killer);
-		play.phase = Play.DEAD_PHASE;
-		play.endS.setUsable(true);
 		room.cht.addText("un(e) "+killer.name+" vient de vous tuer");
+		play.die();
 	}
 	
 	public void displayMyLife(Graphics2D g2d) {

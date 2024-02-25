@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
+import fr.svedel.fod.FodButton;
 import fr.svedel.fod.UsefulTh;
 import fr.svedel.vcomponent.VActionListener;
 import fr.svedel.vcomponent.VButton;
@@ -19,10 +20,13 @@ public class EndScreen {
 	private final int buttonW = 400;
 	private final int buttonH = 100;
 	private final int buttonGap = 30;
-	private VPanel vp = new VPanel(0, 0, widthReference, heightReference, widthReference, heightReference);
-	private VButton[] buttons = {
-			new VButton(widthReference/2-buttonW/2, heightReference/2-buttonH-buttonGap/2, buttonW, buttonH, widthReference, heightReference, "Rejouer"),
-			new VButton(widthReference/2-buttonW/2, heightReference/2+buttonGap/2, buttonW, buttonH, widthReference, heightReference, "Quitter")
+	private VPanel vp = new VPanel(0, 0, widthReference, heightReference,
+								   widthReference, heightReference);
+	private FodButton[] buttons = {
+			new FodButton(widthReference/2-buttonW/2, heightReference/2-buttonH-buttonGap/2,
+						  buttonW, buttonH, widthReference, heightReference, "Rejouer"),
+			new FodButton(widthReference/2-buttonW/2, heightReference/2+buttonGap/2,
+						  buttonW, buttonH, widthReference, heightReference, "Quitter")
 	};
 	
 	public VActionListener val = new VActionListener() {
@@ -42,13 +46,13 @@ public class EndScreen {
 	public EndScreen(Play play) {
 		this.play = play;
 		
-		for (VButton vb : buttons) {
-			vp.add(vb);
-			vb.setUsable(false);
-			vb.setBorderSize(2*UsefulTh.pixelW);
-			vb.setAddW(10);
-			vb.setFontSize(35);
-			vb.addVActionListener(val);
+		for (FodButton fb : buttons) {
+			vp.add(fb);
+			fb.setUsable(false);
+			fb.getBorderWidth().setValue(2*UsefulTh.pixelW);
+			fb.setAddW(10);
+			fb.getFontSize().setValue(35);
+			fb.addVActionListener(val);
 		}
 		vp.setAdjustment(VComponent.ADJUSTMENT_BY_HEIGHT);
 		vp.setAlignment(VComponent.CENTER_ALIGNMENT);
@@ -57,8 +61,15 @@ public class EndScreen {
 	}
 	
 	public void setUsable(boolean boo) {
-		for (VButton vb : buttons) {
-			vb.setUsable(boo);
+		for (FodButton fb : buttons) {
+			fb.setUsable(boo);
+		}
+	}
+	
+	public void setColor(Color color) {
+		for (FodButton fb : buttons) {
+			fb.setBorder(play.color);
+			fb.setForeground(play.color);
 		}
 	}
 	
@@ -68,7 +79,7 @@ public class EndScreen {
 			g2d.fillRect(0, 0, play.playP.getWidth(), play.playP.getHeight());
 			
 			vp.adjust(play.playP.getWidth(), play.playP.getHeight());
-			vp.display(play.color, g2d);
+			vp.display(g2d);
 		}
 	}
 }

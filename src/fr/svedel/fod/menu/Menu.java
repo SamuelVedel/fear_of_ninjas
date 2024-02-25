@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
+import fr.svedel.fod.FodButton;
 import fr.svedel.fod.UsefulTh;
 import fr.svedel.fod.VFrame;
 import fr.svedel.vcomponent.VActionListener;
@@ -24,14 +25,18 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 	
 	private MenuPainter menuP = new MenuPainter(this);
 	
-	public VPanel vp = new VPanel(0, 0, 800, UsefulTh.heightForNoScale, 800, UsefulTh.heightForNoScale);
+	public VPanel vp = new VPanel(0, 0, 800, UsefulTh.heightForNoScale,
+								  800, UsefulTh.heightForNoScale);
 	private final int buttonW = 220;
 	private final int buttonH = 60;
 	private final int buttonGap = 20;
-	private VButton[] buttons = {
-			new VButton(buttonGap, UsefulTh.heightForNoScale-2*(buttonH+buttonGap), buttonW, buttonH, 800, UsefulTh.heightForNoScale, "Jeux"),
-			/*new VButton(buttonGap, UsefulTh.heightForNoScale-2*(buttonH+buttonGap), buttonW, buttonH, 800, UsefulTh.heightForNoScale, "Option"),*/
-			new VButton(buttonGap, UsefulTh.heightForNoScale-buttonH-buttonGap, buttonW, buttonH, 800, UsefulTh.heightForNoScale, "Sortie")
+	private FodButton[] buttons = {
+			new FodButton(buttonGap, UsefulTh.heightForNoScale-2*(buttonH+buttonGap),
+						  buttonW, buttonH, 800, UsefulTh.heightForNoScale, "Jeux"),
+			/*new FodButton(buttonGap, UsefulTh.heightForNoScale-2*(buttonH+buttonGap),
+			  buttonW, buttonH, 800, UsefulTh.heightForNoScale, "Option"),*/
+			new FodButton(buttonGap, UsefulTh.heightForNoScale-buttonH-buttonGap,
+						  buttonW, buttonH, 800, UsefulTh.heightForNoScale, "Sortie")
 	};
 	
 	private boolean wantToPlay = false;
@@ -72,12 +77,14 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 		initJf();
 		initColor();
 		
-		for (VButton vb : buttons) {
-			vp.add(vb);
-			vb.setBorderSize(2*UsefulTh.pixelW);
-			vb.setAddW(10);
-			vb.setFontSize(35);
-			vb.addVActionListener(this);
+		for (FodButton fb : buttons) {
+			vp.add(fb);
+			fb.getBorderWidth().setValue(2*UsefulTh.pixelW);
+			fb.setAddW(10);
+			fb.getFontSize().setValue(35);
+			fb.addVActionListener(this);
+			fb.setBorder(color);
+			fb.setForeground(color);
 		}
 		vp.setAdjustment(VComponent.ADJUSTMENT_BY_HEIGHT);
 		vp.addMlToAComponent(menuP);
@@ -101,9 +108,11 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 	 * la couleur ne peut pas être trop sombre
 	 */
 	private void initColor() {
-		color = new Color(UsefulTh.rand.nextInt(256), UsefulTh.rand.nextInt(256), UsefulTh.rand.nextInt(256));
+		color = new Color(UsefulTh.rand.nextInt(256), UsefulTh.rand.nextInt(256),
+						  UsefulTh.rand.nextInt(256));
 		while (color.getRed()+color.getGreen()+color.getBlue() < 300) {
-			color = new Color(UsefulTh.rand.nextInt(256), UsefulTh.rand.nextInt(256), UsefulTh.rand.nextInt(256));
+			color = new Color(UsefulTh.rand.nextInt(256), UsefulTh.rand.nextInt(256),
+							  UsefulTh.rand.nextInt(256));
 		}
 	}
 	
