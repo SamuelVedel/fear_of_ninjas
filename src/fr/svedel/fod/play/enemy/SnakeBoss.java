@@ -69,8 +69,12 @@ public class SnakeBoss extends Enemy {
 		
 		move(delta);
 		double dist = stopOnCase();
+		/*if (dist >= 0) {
+			oldX = x;
+			oldY = y;
+			}*/
 		
-		if (dist != 0) {
+		if (dist >= 0) {
 			// mange des pommes
 			for (Apple ap : apples) {
 				ap.eat();
@@ -94,7 +98,7 @@ public class SnakeBoss extends Enemy {
 				}
 			}
 			
-			// ajoute de quoi indique au corps qu'il à tourné
+			// ajoute de quoi indiquer au corps qu'il à tourné
 			if (direction != oldDirection) {
 				addBodyPart(direction);
 			}
@@ -102,7 +106,7 @@ public class SnakeBoss extends Enemy {
 			eatHimself();
 		}
 		
-		if (dist != 0) moveDist(dist);
+		if (dist >= 0) moveDist(dist);
 		
 		punch(delta);
 	}
@@ -157,12 +161,14 @@ public class SnakeBoss extends Enemy {
 	}
 	
 	private void move(double delta) {
-		oldX = x;
-		oldY = y;
+		//oldX = x;
+		//oldY = y;
 		moveDist(v*delta);
 	}
-
+	
 	private void moveDist(double dist) {
+		oldX = x;
+		oldY = y;
 		switch (direction) {
 		case leftDirection :
 			x -= dist;
@@ -202,30 +208,31 @@ public class SnakeBoss extends Enemy {
 		
 		//room.cht.addText(""+ix+"/"+oldIx+" "+iy+"/"+oldIy);
 		
-		double ret = 0;
+		double ret = -1;
 		if (oldIx != ix) {
 			if (direction == leftDirection) {
-				ret = oldIx*UsefulTh.cubeW-x;
+				ret = Math.abs(oldIx*UsefulTh.cubeW-x);
 				x = oldIx*UsefulTh.cubeW;
 			} else if (direction == rightDirection) {
-				ret = ix*UsefulTh.cubeW-x;
+				ret = Math.abs(ix*UsefulTh.cubeW-x);
 				x = ix*UsefulTh.cubeW;
 			}
 			if (body.size() > 0) body.get(0).stopOnCase();
-			if (ret == 0) ret = 0.00001;
+			//if (ret == 0) ret = 0.00001;
 		} else if (oldIy != iy) {
 			if (direction == upDirection) {
-				ret = oldIy*UsefulTh.cubeH-y;
+				ret = Math.abs(oldIy*UsefulTh.cubeH-y);
 				y = oldIy*UsefulTh.cubeH;
 			} else if (direction == downDirection) {
-				ret = iy*UsefulTh.cubeH-y;
+				ret = Math.abs(iy*UsefulTh.cubeH-y);
 				y = iy*UsefulTh.cubeH;
 			}
 			if (body.size() > 0) body.get(0).stopOnCase();
-			if (ret == 0) ret = 0.00001;
+			//if (ret == 0) ret = 0.00001;
 		}
 		
-		return (ret > 0? ret: -ret);
+		//return (ret > 0? ret: -ret);
+		return ret;
 	}
 	
 	/**
@@ -271,7 +278,8 @@ public class SnakeBoss extends Enemy {
 			double pY = y+UsefulTh.rand.nextInt(h);
 			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
 			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW, UsefulTh.pixelH, pVX, pVY));
+			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW,
+												   UsefulTh.pixelH, pVX, pVY));
 		}
 	}
 	
@@ -284,7 +292,8 @@ public class SnakeBoss extends Enemy {
 			makeDeathParticuleAt(x2, y2);
 			
 			for (int i = 0; i < 3; i++) {
-				room.enemies.add(new LilSnake(x2+i*3*UsefulTh.pixelW, y2+i*3*UsefulTh.pixelH, this, room));
+				room.enemies.add(new LilSnake(x2+i*3*UsefulTh.pixelW, y2+i*3*UsefulTh.pixelH,
+											  this, room));
 			}
 			
 			length -= UsefulTh.cubeW;
