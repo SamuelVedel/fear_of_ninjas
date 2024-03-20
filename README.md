@@ -29,6 +29,15 @@ make
 ```
 dans son terminal pour compiler et lancer le jeu.
 
+Vous pouvez aussi compiler ce qu'il faut sans lancer le jeu avec la commande
+```bash
+make compile
+```
+Et le lancer le jeu sans rien compiler avec la commande
+```bash
+make launch
+```
+
 Il est bien sûr aussi possible de compiler le code en utilisant un IDE.
 
 Si vous vouler compiler et lancé le jeu sans utiliser le Makefile,
@@ -43,7 +52,7 @@ java -cp bin fr.svedel.fod.MainFod
 
 ## Voilà
 si cela vous interesse vous êtes invité à me faire des retours
-car ce jeux est en cours développement
+car ce jeu est en cours développement
 
 
 
