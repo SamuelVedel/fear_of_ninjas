@@ -77,7 +77,7 @@ public abstract class Entity {
 	protected double v;
 	public double vFall = 0;
 	protected double aFall = UsefulTh.g;
-	public double vJump = -/*11.5*/12.1;
+	public double vJump = -/*11.5*/12.1/5*UsefulTh.pixelH;
 	public int numJump = 0;
 	public int maxNumJump = 1;
 	
@@ -92,7 +92,7 @@ public abstract class Entity {
 	
 	protected int bulletW = UsefulTh.pixelW;
 	protected int bulletH = UsefulTh.pixelH;
-	protected int bulletV = 7;
+	protected double bulletV = 7./5*UsefulTh.pixelW;
 	protected int bulletDamage = 10;
 	/** décompte de temps qui sert pour tirer */
 	protected double tShoot;
@@ -124,8 +124,8 @@ public abstract class Entity {
 		this.play = room.play;
 		
 		debuffs = new Debuff[] {
-				new Poison(this, room),
-				new Petrification(this, room)
+			new Poison(this, room),
+			new Petrification(this, room)
 		};
 	}
 	
@@ -151,7 +151,9 @@ public abstract class Entity {
 	protected boolean collision() {
 		// collision avec les bords
 		if (x < 0) x = 0;
-		else if (x+w > room.plan[0].length*UsefulTh.cubeW) x = room.plan[0].length*UsefulTh.cubeW-w;
+		else if (x+w > room.plan[0].length*UsefulTh.cubeW) {
+			x = room.plan[0].length*UsefulTh.cubeW-w;
+		}
 		
 		boolean contact = false;
 		
@@ -232,11 +234,11 @@ public abstract class Entity {
 	public void addPower(Power pow) {
 		powers[pow.id]++;
 		if (pow == Power.SPEED) {
-			v += 0.8;
+			v += 0.8/5*UsefulTh.pixelW;
 		} else if (pow == Power.CRIT) {
 			critChance += 10;
 		} else if (pow == Power.BULLET_SPEED) {
-			bulletV += 1;
+			bulletV += 1./5*UsefulTh.pixelW;
 		} else if (pow == Power.REGEN) {
 			if (regen != 1) {
 				regen *= 0.8;
@@ -302,9 +304,12 @@ public abstract class Entity {
 			for (int i = 0; i < nParticles; i++) {
 				double pX = x+UsefulTh.rand.nextInt(w);
 				double pY = y+UsefulTh.rand.nextInt(h);
-				double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-				double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-				room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW, UsefulTh.pixelH, pVX, pVY));
+				double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+							 *0.2*UsefulTh.pixelW;
+				double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+							 *0.2*UsefulTh.pixelH;
+				room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW,
+													   UsefulTh.pixelH, pVX, pVY));
 			}
 			if (canDieWithASoul && UsefulTh.rand.nextInt(10) == 0) {
 				room.enemies.add(new Soul(x, y, room));
@@ -313,7 +318,11 @@ public abstract class Entity {
 				if (killer.powers[Power.DEATH_BULLETS.id] > 0 && canDieWithDeathsBullets) {
 					int nOfBullets = 5+2*killer.powers[Power.DEATH_BULLETS.id]-2;
 					for (int i = 0; i < nOfBullets; i++) {
-						room.bullets.add(new Bullet(x+w/2, y+h/2, killer.bulletW, killer.bulletH, 2*Math.PI*UsefulTh.rand.nextDouble(), killer.bulletV, killer.bulletDamage, killer));
+						room.bullets.add(new Bullet(x+w/2, y+h/2, killer.bulletW,
+													killer.bulletH,
+													2*Math.PI*UsefulTh.rand.nextDouble(),
+													killer.bulletV, killer.bulletDamage,
+													killer));
 					}
 				}
 			}

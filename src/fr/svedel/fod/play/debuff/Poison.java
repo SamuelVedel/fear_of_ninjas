@@ -48,8 +48,12 @@ public class Poison extends Debuff{
 				for (int i = 0; i < nParticles; i++) {
 					double pX = victim.x+victim.w/2;
 					double pY = victim.y+victim.h/2;
-					double pVX = 2*(UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-					double pVY = 2*(UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
+					double pVX = 2*(UsefulTh.rand.nextBoolean()? 1 : -1)
+						*UsefulTh.rand.nextDouble()
+						*0.2*UsefulTh.pixelW;
+					double pVY = 2*(UsefulTh.rand.nextBoolean()? 1 : -1)
+						*UsefulTh.rand.nextDouble()
+						*0.2*UsefulTh.pixelH;
 					room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW, UsefulTh.pixelH, pVX, pVY, "textures/particles/skull.texture"));
 				}
 			}

@@ -57,7 +57,8 @@ public class Bullet {
 	 * @param v vitesse
 	 * @param damage degat
 	 */
-	public Bullet(double x, double y, int w, int h, double alpha, double v, int damage, Entity shooter) {
+	public Bullet(double x, double y, int w, int h, double alpha,
+				  double v, int damage, Entity shooter) {
 		this.x = x-w/2;
 		this.y = y-h/2;
 		this.w = w;
@@ -80,7 +81,8 @@ public class Bullet {
 	}
 	
 	public Bullet(double x, double y, double alpha, Entity shooter) {
-		this(x, y, shooter.bulletW, shooter.bulletH, alpha, shooter.bulletV, shooter.bulletDamage, shooter);
+		this(x, y, shooter.bulletW, shooter.bulletH, alpha, shooter.bulletV,
+			 shooter.bulletDamage, shooter);
 	}
 	
 	/**
@@ -94,7 +96,8 @@ public class Bullet {
 		y += vY*delta;
 		
 		// gère les collisions avec les cubes
-		if (room.isXInCubes((int) (x/UsefulTh.cubeW)) && room.isYInCubes((int) (y/UsefulTh.cubeH))) {
+		if (room.isXInCubes((int) (x/UsefulTh.cubeW))
+			&& room.isYInCubes((int) (y/UsefulTh.cubeH))) {
 			if (room.cubes[(int) (y/UsefulTh.cubeH)][(int) (x/UsefulTh.cubeW)] != null) {
 				room.cubes[(int) (y/UsefulTh.cubeH)][(int) (x/UsefulTh.cubeW)].contact(this);
 			}
@@ -114,9 +117,12 @@ public class Bullet {
 		if (crit && UsefulTh.rand.nextDouble() < ((double)1/3)*delta) {
 			double pX = x;
 			double pY = y;
-			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
+			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+						 *0.2*UsefulTh.pixelW;
+			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+						 *0.2*UsefulTh.pixelH;
+			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2,
+												   UsefulTh.pixelH/2, pVX, pVY));
 		}
 	}
 	
@@ -215,9 +221,12 @@ public class Bullet {
 		double pY = y;
 		int nParticles = UsefulTh.rand.nextInt(11-5)+5;
 		for (int i = 0; i < nParticles; i++) {
-			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			room.particles.add(new ClassicParticle(pX, pY, (int)(UsefulTh.pixelW/1.5), (int)(UsefulTh.pixelH/1.5), pVX, pVY));
+			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+						 *0.2*UsefulTh.pixelW;
+			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+						 *0.2*UsefulTh.pixelH;
+			room.particles.add(new ClassicParticle(pX, pY, (int)(UsefulTh.pixelW/1.5),
+												   (int)(UsefulTh.pixelH/1.5), pVX, pVY));
 		}
 		noMoreReasonToBe = true;
 	}

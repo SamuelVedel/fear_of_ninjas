@@ -53,7 +53,7 @@ public class MedSlime extends Enemy {
 	private void initVar() {
 		w = 10*UsefulTh.pixelW;
 		h = 6*UsefulTh.pixelH;
-		v = 2;
+		v = 2./5*UsefulTh.pixelW;
 		maxLife = 40;
 		life = maxLife;
 		punchCadence = 60;

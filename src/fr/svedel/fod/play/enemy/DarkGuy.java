@@ -41,7 +41,7 @@ public class DarkGuy extends Enemy {
 	private void initVar() {
 		w = UsefulTh.cubeW;
 		h = UsefulTh.cubeH*2;
-		v = 2;
+		v = 2./5*UsefulTh.pixelW;
 		maxLife = 30;
 		life = maxLife;
 		cadence = 120;

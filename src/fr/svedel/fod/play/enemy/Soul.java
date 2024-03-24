@@ -45,7 +45,7 @@ public class Soul extends Enemy {
 		alpha = UsefulTh.getAlpha(x, y, room.me.x, room.me.y);
 		w = UsefulTh.cubeW;
 		h = 10*UsefulTh.pixelH;
-		v = 2;
+		v = 2./5*UsefulTh.pixelW;
 		maxLife = 30;
 		life = maxLife;
 		cadence = 60;
@@ -100,8 +100,10 @@ public class Soul extends Enemy {
 			for (int i = 0; i < nParticles; i++) {
 				double pX = x+UsefulTh.rand.nextInt(w);
 				double pY = y+UsefulTh.rand.nextInt(h);
-				double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-				double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
+				double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+					*0.2*UsefulTh.pixelW;
+				double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+					*0.2*UsefulTh.pixelH;
 				room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
 			}
 			

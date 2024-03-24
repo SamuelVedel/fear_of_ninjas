@@ -43,7 +43,7 @@ public class DrinkingDuck extends Enemy {
 		h = UsefulTh.cubeH;
 		this.x = x-w/2;
 		this.y = y-h;
-		v = 2;
+		v = 2./5*UsefulTh.pixelW;
 		life = maxLife;
 	}
 	

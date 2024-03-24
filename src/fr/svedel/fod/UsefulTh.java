@@ -35,22 +35,22 @@ import fr.svedel.fod.play.addskill.AddSkill;
  *
  */
 public abstract class UsefulTh {
-
+	
 	public static Random rand = new Random();
 	
 	public static final Color BACKGROUND_COLOR = Color.DARK_GRAY.darker().darker();
-	
-	/** force du poid */
-	public static final double g = 0.75;
 	
 	/** largreur d'un cube de base */
 	public static final int cubeW = 30;
 	/** hauteur d'un cube de base */
 	public static final int cubeH = cubeW;
 	/** largeur d'un pixel de base */
-	public static final int pixelW = cubeW/6;
+	public static final int pixelW = cubeW/6; // 5
 	/** hauteur d'un pixel de base */
-	public static final int pixelH = cubeH/6;
+	public static final int pixelH = cubeH/6; // 5
+	
+	/** force du poid */
+	public static final double g = 0.75/5*pixelH;
 	
 	/** hauteur d'écran pour laquelle le zoom est nul */
 	public static final int heightForNoScale = 19*cubeH;
@@ -76,7 +76,7 @@ public abstract class UsefulTh {
 		int w = 0, h = 0;
 		
 		try {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "utf-8"));
 			String line = reader.readLine();
 			int lineR = 0;
 			
@@ -248,7 +248,7 @@ public abstract class UsefulTh {
 	 * @param mat
 	 * @return
 	 */
-	public static int[][] reverseXTex(int [][] mat) {
+	public static int[][] reverseXTex(int[][] mat) {
 		int i = -1;
 		for (int j = 0; j < reverseXTexs.size(); j++) {
 			if (mat == reverseXTexs.keySet().toArray()[j]) {

@@ -43,7 +43,7 @@ public class SnakeBoss extends Enemy {
 	private void initVar() {
 		w = UsefulTh.cubeW;
 		h = UsefulTh.cubeH;
-		v = 3;
+		v = 3./5*UsefulTh.pixelW;
 		punchCadence = 90;
 		punchDamage = 40;
 		direction = leftDirection;
@@ -276,8 +276,10 @@ public class SnakeBoss extends Enemy {
 		for (int j = 0; j < nParticles; j++) {
 			double pX = x+UsefulTh.rand.nextInt(w);
 			double pY = y+UsefulTh.rand.nextInt(h);
-			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
+			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+				*0.2*UsefulTh.pixelW;
+			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+				*0.2*UsefulTh.pixelH;
 			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW,
 												   UsefulTh.pixelH, pVX, pVY));
 		}

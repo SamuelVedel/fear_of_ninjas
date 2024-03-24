@@ -49,7 +49,7 @@ public class LilHead extends Enemy {
 		alpha = UsefulTh.getAlpha(x, y, room.me.x, room.me.y);
 		w = 5*UsefulTh.pixelW;
 		h = 5*UsefulTh.pixelH;
-		v = 2;
+		v = 2./5*UsefulTh.pixelW;
 		maxLife = 10;
 		life = maxLife;
 		cadence = 60;
@@ -83,7 +83,7 @@ public class LilHead extends Enemy {
 	@Override
 	public void die(Entity killer) {
 		super.die(killer);
-		if (father != null) father.CurrentNumOfHead--;
+		if (father != null) father.currentNumOfHead--;
 	}
 	
 	@Override

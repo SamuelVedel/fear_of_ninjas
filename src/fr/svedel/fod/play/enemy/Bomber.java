@@ -42,13 +42,13 @@ public class Bomber extends Enemy {
 	private void initVar() {
 		w = UsefulTh.cubeW;
 		h = UsefulTh.cubeH*2;
-		v = 2.5;
+		v = 2.5/5*UsefulTh.pixelW;
 		maxLife = 50;
 		life = maxLife;
 		cadence = 150;
 		punchCadence = 60;
 		bulletDamage = 40;
-		bulletV = 15;
+		bulletV = 15./5*UsefulTh.pixelW;
 		alpha = -Math.PI/4;
 	}
 	

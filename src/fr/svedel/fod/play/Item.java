@@ -37,7 +37,7 @@ public class Item {
 
 	// variable pour quand il à touché le sol
 	/** accélération de quand il à touché le sol */
-	private double aY = -0.1;
+	private double aY = -0.1/5*UsefulTh.pixelH;
 	/** hauteurs auquelles la vitesse est nulle */
 	private int minY, maxY;
 	

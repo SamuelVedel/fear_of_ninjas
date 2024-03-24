@@ -16,13 +16,13 @@ public class LightParticle extends Particle {
 	private double x;
 	private double y;
 	
-	private double aX = (UsefulTh.rand.nextBoolean()? -1: 1)*0.01;
+	private double aX = (UsefulTh.rand.nextBoolean()? -1: 1)*0.01/5*UsefulTh.pixelW;
 	private double vX;
-	private double vY = 1;
+	private double vY = 1./5*UsefulTh.pixelH;
 	
 	public LightParticle(Play play) {
 		this.play = play;
-		w = UsefulTh.rand.nextInt(150-60)+60;
+		w = (UsefulTh.rand.nextInt(30-12)+12)*UsefulTh.pixelH;
 		h = w;
 		y = -h;
 		x = UsefulTh.rand.nextInt(play.room.width-w);
@@ -36,6 +36,7 @@ public class LightParticle extends Particle {
 		
 		//if (UsefulTh.rand.nextInt(10) == 0) {
 		if (UsefulTh.rand.nextDouble() < ((double)1/10)*delta) {
+		//if (UsefulTh.deltaRandom(10, delta)) {
 			aX *= -1;
 		}
 		

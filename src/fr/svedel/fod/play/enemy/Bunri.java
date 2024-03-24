@@ -34,7 +34,7 @@ public class Bunri extends Enemy {
 	private void initVar() {
 		w = UsefulTh.cubeW*2;
 		h = UsefulTh.cubeH*4;
-		v = 2;
+		v = 2./5*UsefulTh.pixelW;
 		maxLife = 400;
 		life = maxLife;
 		cadence = 120;

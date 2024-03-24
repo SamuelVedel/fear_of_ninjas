@@ -78,7 +78,7 @@ public class Me extends Entity {
 		clan = Entity.MY_CLAN;
 		w = UsefulTh.cubeW;
 		h = 2*UsefulTh.cubeH;
-		v = 4;
+		v = 4./5*UsefulTh.pixelW;
 //		vJump = -11.5;
 		maxLife = 100;
 		life = maxLife;
@@ -88,8 +88,8 @@ public class Me extends Entity {
 	
 	private void initAddSkills() {
 		addSkills = new AddSkill[] {
-				new BombSkill(this, room),
-				new TpSkill(this)
+			new BombSkill(this, room),
+			new TpSkill(this)
 		};
 	}
 	
@@ -296,9 +296,12 @@ public class Me extends Entity {
 		for (int i = 0; i < nParticles; i++) {
 			double pX = x+UsefulTh.rand.nextInt(w);
 			double pY = y+UsefulTh.rand.nextInt(h);
-			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
+			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+						 *0.2*UsefulTh.pixelW;
+			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+						 *0.2*UsefulTh.pixelH;
+			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2,
+												   UsefulTh.pixelH/2, pVX, pVY));
 		}
 		
 		x = room.getMouseXInRoom()-w/2;

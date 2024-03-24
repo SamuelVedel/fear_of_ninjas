@@ -52,7 +52,7 @@ public class Healer extends Enemy {
 	private void initVar() {
 		w = UsefulTh.cubeW;
 		h = UsefulTh.cubeH*2;
-		v = 1;
+		v = 1./5*UsefulTh.pixelW;
 		maxLife = 100;
 		life = maxLife;
 		cadence = 120;

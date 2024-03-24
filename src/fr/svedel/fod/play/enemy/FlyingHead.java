@@ -40,7 +40,7 @@ public class FlyingHead extends Enemy {
 		alpha = UsefulTh.getAlpha(x, y, room.me.x, room.me.y);
 		w = UsefulTh.cubeW;
 		h = UsefulTh.cubeH;
-		v = 2;
+		v = 2./5*UsefulTh.pixelW;
 		maxLife = 20;
 		life = maxLife;
 		cadence = 60;

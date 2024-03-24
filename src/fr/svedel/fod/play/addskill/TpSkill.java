@@ -16,7 +16,7 @@ public class TpSkill extends AddSkill {
 	}
 	
 	@Override
-	protected void action() {
+	protected void actions() {
 		user.tp();
 	}
 }

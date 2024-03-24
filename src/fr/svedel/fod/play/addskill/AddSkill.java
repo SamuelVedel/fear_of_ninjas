@@ -35,7 +35,7 @@ public abstract class AddSkill {
 	public static final int TP_TYPE = 1;
 	public int type;
 	
-	protected abstract void action();
+	protected abstract void actions();
 	
 	public int getNum() {
 		return num;
@@ -72,7 +72,7 @@ public abstract class AddSkill {
 	
 	public void use() {
 		if (num > 0) {
-			action();
+			actions();
 			--num;
 		}
 	}

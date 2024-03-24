@@ -1,5 +1,6 @@
 package fr.svedel.fod.play.addskill;
 
+import fr.svedel.fod.UsefulTh;
 import fr.svedel.fod.play.Input;
 import fr.svedel.fod.play.Me;
 import fr.svedel.fod.play.Room;
@@ -11,7 +12,7 @@ public class BombSkill extends AddSkill {
 	
 	private Me user;
 	
-	private int bombV = 15;
+	private int bombV = 3*UsefulTh.pixelW;
 	private int bombDammage = 40;
 	private final double angle = -Math.PI/4;
 	
@@ -23,12 +24,13 @@ public class BombSkill extends AddSkill {
 	}
 	
 	@Override
-	protected void action() {
+	protected void actions() {
 		double alpha = angle;
 		if (room.getMouseXInRoom() < user.x) {
-		        alpha -= Math.PI/2;
+			alpha -= Math.PI/2;
 		}
-		room.enemies.add(new Bomb(room, Math.cos(alpha)*bombV, Math.sin(alpha)*bombV, bombDammage, user));
+		room.enemies.add(new Bomb(room, Math.cos(alpha)*bombV, Math.sin(alpha)*bombV,
+								  bombDammage, user));
 	}
 	
 }

@@ -32,7 +32,7 @@ public class Ninja extends Enemy {
 	private void initVar() {
 		w = UsefulTh.cubeW;
 		h = UsefulTh.cubeH*2;
-		v = 4.5;
+		v = 4.5/5*UsefulTh.pixelW;
 		maxLife = 20;
 		life = maxLife;
 		punchDamage = 30;

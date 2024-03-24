@@ -27,7 +27,7 @@ public class Summoner extends Enemy {
 	/** temps entre deux changement de textures quand on marche */
 	private final int vTex = 8;
 	
-	public int CurrentNumOfHead = 0;
+	public int currentNumOfHead = 0;
 	private int maxNumOfHead = 10;
 	
 	public Summoner(Room room) {
@@ -43,7 +43,7 @@ public class Summoner extends Enemy {
 	private void initVar() {
 		w = UsefulTh.cubeW;
 		h = UsefulTh.cubeH*2;
-		v = 1;
+		v = 1./5*UsefulTh.pixelW;
 		maxLife = 100;
 		life = maxLife;
 		cadence = 150;
@@ -88,7 +88,7 @@ public class Summoner extends Enemy {
 		punch(delta);
 		// gère l'invocation
 		if (tShoot >= cadence) {
-			if (CurrentNumOfHead < maxNumOfHead) {
+			if (currentNumOfHead < maxNumOfHead) {
 				double x2;
 				if (iTex <= 2) {
 					x2 = x-5*UsefulTh.pixelW;
@@ -96,7 +96,7 @@ public class Summoner extends Enemy {
 					x2 = x+w;;
 				}
 				room.enemies.add(new LilHead(x2, y+4*UsefulTh.pixelH, this, room));
-				CurrentNumOfHead++;
+				currentNumOfHead++;
 			}
 			tShoot = 0;
 		}

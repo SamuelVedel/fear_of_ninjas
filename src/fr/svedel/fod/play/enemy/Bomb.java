@@ -96,8 +96,10 @@ public class Bomb extends Enemy {
 		if (crit && UsefulTh.rand.nextInt(3) == 0) {
 			double pX = x+UsefulTh.pixelH/2;
 			double pY = y-1.5*UsefulTh.pixelH;
-			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
-			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble();
+			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+				*0.2*UsefulTh.pixelW;
+			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
+				*0.2*UsefulTh.pixelH;
 			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
 		}
 	}
@@ -119,7 +121,7 @@ public class Bomb extends Enemy {
 		int nParticles = /*UsefulTh.rand.nextInt(11-5)+5*/500;
 		for (int i = 0; i < nParticles; i++) {
 			double theta = 2*Math.PI*UsefulTh.rand.nextDouble();
-			double pV = 3*UsefulTh.rand.nextDouble();
+			double pV = 3./5*UsefulTh.rand.nextDouble()*UsefulTh.pixelW;
 			double pVX = pV*Math.cos(theta);
 			double pVY = pV*Math.sin(theta);
 			room.particles.add(new ClassicParticle(pX, pY, (int)(UsefulTh.pixelW/1.5), (int)(UsefulTh.pixelH/1.5), pVX, pVY));

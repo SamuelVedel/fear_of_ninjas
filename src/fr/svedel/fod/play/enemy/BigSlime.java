@@ -46,7 +46,7 @@ public class BigSlime extends Enemy {
 	private void initVar() {
 		w = 12*UsefulTh.pixelW;
 		h = 9*UsefulTh.pixelH;
-		v = 2;
+		v = 2./5*UsefulTh.pixelW;
 		maxLife = 60;
 		life = maxLife;
 		punchCadence = 60;
