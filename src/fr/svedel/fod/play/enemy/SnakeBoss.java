@@ -1,5 +1,6 @@
 package fr.svedel.fod.play.enemy;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
@@ -485,11 +486,14 @@ public class SnakeBoss extends Enemy {
 				y3 = y1;
 				break;
 			}
-			return new double[] {x2, y2};
+			return new double[] {x3, y3};
 		}
 		
 		private void display(Graphics2D g2d) {
 			g2d.fillRect((int)x1, (int)y1, (int)x2-(int)x1, (int)y2-(int)y1);
+			//g2d.setColor(Color.PINK);
+			//g2d.drawRect((int)x1, (int)y1, (int)x2-(int)x1, (int)y2-(int)y1);
+			//g2d.setColor(play.color);
 		}
 	}
 	
