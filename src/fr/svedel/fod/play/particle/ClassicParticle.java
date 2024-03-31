@@ -10,7 +10,7 @@ public class ClassicParticle extends Particle {
 	private double w, h;
 	private double x, y;
 	private double vX, vY;
-	private double aY = 0.1/5*UsefulTh.pixelH;
+	private double aY = 0.1/5*UsefulTh.PIXEL_H;
 	
 //	private double tNarrowing;
 	/** temps pour que {@code w} et {@code h} diminuent de 1 */

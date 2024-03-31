@@ -44,9 +44,9 @@ public class BigSlime extends Enemy {
 	}
 	
 	private void initVar() {
-		w = 12*UsefulTh.pixelW;
-		h = 9*UsefulTh.pixelH;
-		v = 2./5*UsefulTh.pixelW;
+		w = 12*UsefulTh.PIXEL_W;
+		h = 9*UsefulTh.PIXEL_H;
+		v = 2./5*UsefulTh.PIXEL_W;
 		maxLife = 60;
 		life = maxLife;
 		punchCadence = 60;
@@ -76,8 +76,8 @@ public class BigSlime extends Enemy {
 		// dimension d'un moyen slime
 		// à changer si cette dimension
 		// est modifier
-		int medSW = 8*UsefulTh.pixelW;
-		int medSH = 5*UsefulTh.pixelH;
+		int medSW = 8*UsefulTh.PIXEL_W;
+		int medSH = 5*UsefulTh.PIXEL_H;
 		room.enemies.add(new MedSlime(x+w/2-medSW/2, y+h/2-medSH/2, 1, room));
 		room.enemies.add(new MedSlime(x+w/2-medSW/2, y+h/2-medSH/2, -1, room));
 	}

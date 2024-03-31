@@ -56,7 +56,7 @@ public class PlayPainter extends JPanel {
 //		g2d.setColor(c2);
 //		g2d.fillRect(0, 0, getWidth(), (int)(getHeight()*0.2));
 		
-		play.scaleW = (double)getHeight()/UsefulTh.heightForNoScale;
+		play.scaleW = (double)getHeight()/UsefulTh.HEIGHT_FOR_NO_SCALE;
 		
 		play.room.display(g2d);
 		play.choiceP.display(g2d);

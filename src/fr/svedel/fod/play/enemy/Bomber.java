@@ -40,15 +40,15 @@ public class Bomber extends Enemy {
 	}
 	
 	private void initVar() {
-		w = UsefulTh.cubeW;
-		h = UsefulTh.cubeH*2;
-		v = 2.5/5*UsefulTh.pixelW;
+		w = UsefulTh.CUBE_W;
+		h = UsefulTh.CUBE_H*2;
+		v = 2.5/5*UsefulTh.PIXEL_W;
 		maxLife = 50;
 		life = maxLife;
 		cadence = 150;
 		punchCadence = 60;
 		bulletDamage = 40;
-		bulletV = 15./5*UsefulTh.pixelW;
+		bulletV = 15./5*UsefulTh.PIXEL_W;
 		alpha = -Math.PI/4;
 	}
 	
@@ -107,12 +107,12 @@ public class Bomber extends Enemy {
 	protected void walkFollowTarget() {
 		if (followTarget) {
 			/** distance à l'aquel il jette la bombe */;
-			int d = Math.abs((int)(bulletV*Math.cos(alpha)*(-bulletV*Math.sin(alpha)+Math.sqrt(Math.pow(bulletV*Math.sin(alpha), 2)+2*aFall*(h-4*UsefulTh.pixelH)))/aFall));
+			int d = Math.abs((int)(bulletV*Math.cos(alpha)*(-bulletV*Math.sin(alpha)+Math.sqrt(Math.pow(bulletV*Math.sin(alpha), 2)+2*aFall*(h-4*UsefulTh.PIXEL_H)))/aFall));
 			
 			if (target.x > x) direction = 1;
 			else direction = -1;
 			
-			int addX = (lookToTheRight()? -3*UsefulTh.pixelW: w);
+			int addX = (lookToTheRight()? -3*UsefulTh.PIXEL_W: w);
 			if (Math.abs(Math.sqrt((target.x-(x+addX))*(target.x-(x+addX)))-d) < v) {
 				direction = 0;
 			} else if(Math.sqrt((target.x-(x+addX))*(target.x-(x+addX))) < d) {
@@ -131,10 +131,10 @@ public class Bomber extends Enemy {
 	public void display(Graphics2D g2d) {
 		displayLife(g2d);
 		// une partie de la texture n'est pas compris dans la hit box
-		int wTex = w+3*UsefulTh.pixelW;
+		int wTex = w+3*UsefulTh.PIXEL_W;
 		int hTex = h;
 		if (iTex <= 2) {
-			UsefulTh.displayTex(textures[iTex], (int)x-3*UsefulTh.pixelW, (int)y, wTex, hTex, play.color, g2d);
+			UsefulTh.displayTex(textures[iTex], (int)x-3*UsefulTh.PIXEL_W, (int)y, wTex, hTex, play.color, g2d);
 		} else {
 			UsefulTh.displayTex(textures[iTex], (int)x, (int)y, wTex, hTex, play.color, g2d);
 		}

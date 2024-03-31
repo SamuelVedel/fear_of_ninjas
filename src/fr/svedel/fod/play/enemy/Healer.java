@@ -34,7 +34,7 @@ public class Healer extends Enemy {
 	private double tLifeSteal = 0;
 	private final int interLifeSteal = 3;
 	private final int lifeSteal = 1;
-	private final int distOfLifeSteal = 7*UsefulTh.cubeW;
+	private final int distOfLifeSteal = 7*UsefulTh.CUBE_W;
 	
 	/** allié le plus proche */
 	private Entity nearestMe = null;
@@ -50,9 +50,9 @@ public class Healer extends Enemy {
 	}
 	
 	private void initVar() {
-		w = UsefulTh.cubeW;
-		h = UsefulTh.cubeH*2;
-		v = 1./5*UsefulTh.pixelW;
+		w = UsefulTh.CUBE_W;
+		h = UsefulTh.CUBE_H*2;
+		v = 1./5*UsefulTh.PIXEL_W;
 		maxLife = 100;
 		life = maxLife;
 		cadence = 120;
@@ -185,10 +185,10 @@ public class Healer extends Enemy {
 			UsefulTh.drawSemiLine((int)x+w/2, (int)y+h/2, (int)nearestMe.x+nearestMe.w/2, (int)nearestMe.y+nearestMe.h/2, play.color.darker(), g2d);
 		}
 		
-		displayLife((int)(x+w/2-(w+2*UsefulTh.pixelW)/2), (int)(y-4*UsefulTh.pixelH-1.3*3*UsefulTh.pixelH), w+2*UsefulTh.pixelW, 3*UsefulTh.pixelH, UsefulTh.pixelW, g2d);
+		displayLife((int)(x+w/2-(w+2*UsefulTh.PIXEL_W)/2), (int)(y-4*UsefulTh.PIXEL_H-1.3*3*UsefulTh.PIXEL_H), w+2*UsefulTh.PIXEL_W, 3*UsefulTh.PIXEL_H, UsefulTh.PIXEL_W, g2d);
 		// une partie de la texture n'est pas comprise dans la hitbox
-		int wTex = w+6*UsefulTh.pixelW;
-		int hTex = h+4*UsefulTh.pixelH;
-		UsefulTh.displayTex(textures[iTex], (int)x-3*UsefulTh.pixelW, (int)y-4*UsefulTh.pixelH, wTex, hTex, play.color, g2d);
+		int wTex = w+6*UsefulTh.PIXEL_W;
+		int hTex = h+4*UsefulTh.PIXEL_H;
+		UsefulTh.displayTex(textures[iTex], (int)x-3*UsefulTh.PIXEL_W, (int)y-4*UsefulTh.PIXEL_H, wTex, hTex, play.color, g2d);
 	}
 }

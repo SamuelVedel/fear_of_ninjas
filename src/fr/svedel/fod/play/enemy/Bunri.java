@@ -32,9 +32,9 @@ public class Bunri extends Enemy {
 	}
 	
 	private void initVar() {
-		w = UsefulTh.cubeW*2;
-		h = UsefulTh.cubeH*4;
-		v = 2./5*UsefulTh.pixelW;
+		w = UsefulTh.CUBE_W*2;
+		h = UsefulTh.CUBE_H*4;
+		v = 2./5*UsefulTh.PIXEL_W;
 		maxLife = 400;
 		life = maxLife;
 		cadence = 120;
@@ -82,7 +82,7 @@ public class Bunri extends Enemy {
 	@Override
 	public void display(Graphics2D g2d) {
 		displayLife(g2d);
-		UsefulTh.displayTex(textures[iTex], (int)x-(iTex <= 2? 4*UsefulTh.pixelW : 0), (int)y, w+4*UsefulTh.pixelW, h, play.color, g2d);
+		UsefulTh.displayTex(textures[iTex], (int)x-(iTex <= 2? 4*UsefulTh.PIXEL_W : 0), (int)y, w+4*UsefulTh.PIXEL_W, h, play.color, g2d);
 	}
 
 }

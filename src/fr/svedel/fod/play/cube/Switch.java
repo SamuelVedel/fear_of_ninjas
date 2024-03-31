@@ -24,7 +24,7 @@ public class Switch extends Border {
 	}
 	
 	public Switch(int x, int y, boolean on) {
-		this(x, y, UsefulTh.cubeW, UsefulTh.cubeH, on);
+		this(x, y, UsefulTh.CUBE_W, UsefulTh.CUBE_H, on);
 	}
 	
 	@Override

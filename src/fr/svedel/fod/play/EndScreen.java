@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 import fr.svedel.fod.FodButton;
 import fr.svedel.fod.UsefulTh;
 import fr.svedel.vcomponent.VActionListener;
-import fr.svedel.vcomponent.VButton;
 import fr.svedel.vcomponent.VComponent;
 import fr.svedel.vcomponent.VPanel;
 
@@ -16,7 +15,7 @@ public class EndScreen {
 	private Play play;
 	
 	private final int widthReference = 800;
-	private final int heightReference  = UsefulTh.heightForNoScale;
+	private final int heightReference  = UsefulTh.HEIGHT_FOR_NO_SCALE;
 	private final int buttonW = 400;
 	private final int buttonH = 100;
 	private final int buttonGap = 30;
@@ -49,7 +48,7 @@ public class EndScreen {
 		for (FodButton fb : buttons) {
 			vp.add(fb);
 			fb.setUsable(false);
-			fb.getBorderWidth().setValue(2*UsefulTh.pixelW);
+			fb.getBorderWidth().setValue(2*UsefulTh.PIXEL_W);
 			fb.setAddW(10);
 			fb.getFontSize().setValue(35);
 			fb.addVActionListener(val);

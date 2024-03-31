@@ -12,7 +12,7 @@ public class BombSkill extends AddSkill {
 	
 	private Me user;
 	
-	private int bombV = 3*UsefulTh.pixelW;
+	private int bombV = 3*UsefulTh.PIXEL_W;
 	private int bombDammage = 40;
 	private final double angle = -Math.PI/4;
 	

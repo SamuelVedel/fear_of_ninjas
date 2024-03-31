@@ -41,23 +41,23 @@ public abstract class UsefulTh {
 	public static final Color BACKGROUND_COLOR = Color.DARK_GRAY.darker().darker();
 	
 	/** largreur d'un cube de base */
-	public static final int cubeW = 30;
+	public static final int CUBE_W = 30;
 	/** hauteur d'un cube de base */
-	public static final int cubeH = cubeW;
+	public static final int CUBE_H = CUBE_W;
 	/** largeur d'un pixel de base */
-	public static final int pixelW = cubeW/6; // 5
+	public static final int PIXEL_W = CUBE_W/6; // 5
 	/** hauteur d'un pixel de base */
-	public static final int pixelH = cubeH/6; // 5
+	public static final int PIXEL_H = CUBE_H/6; // 5
 	
 	/** force du poid */
-	public static final double g = 0.75/5*pixelH;
+	public static final double g = 0.75/5*PIXEL_H;
 	
 	/** hauteur d'écran pour laquelle le zoom est nul */
-	public static final int heightForNoScale = 19*cubeH;
+	public static final int HEIGHT_FOR_NO_SCALE = 19*CUBE_H;
 	
 	public static int[][] cursor = readMat("textures/cursor/cursor1.texture");
-	public static int cursorW = 3*pixelW;
-	public static int cursorH = 3*pixelH;
+	public static int cursorW = 3*PIXEL_W;
+	public static int cursorH = 3*PIXEL_H;
 	
 	/** contient toutes les textures déjà ouvertes */
 	private static HashMap<String, int[][]> textures = new HashMap<>();
@@ -441,14 +441,14 @@ public abstract class UsefulTh {
 	public static void drawSemiLine(int x1, int y1, int x2, int y2, Color c, Graphics2D g2d) {
 		double distMax = Math.sqrt(Math.pow(x1-x2, 2)+Math.pow(y1-y2, 2));
 		double dist = 0;
-		double v = 2*pixelW+0.1;
+		double v = 2*PIXEL_W+0.1;
 		double x = x1;
 		double y = y1;
 		double alpha = getAlpha(x1, y1, x2, y2);
 		
 		g2d.setColor(c);
 		while (dist < distMax) {
-			g2d.fillRect((int)(x-x%pixelW), (int)(y-y%pixelH), pixelW, pixelH);
+			g2d.fillRect((int)(x-x%PIXEL_W), (int)(y-y%PIXEL_H), PIXEL_W, PIXEL_H);
 			
 			x += v*Math.cos(alpha);
 			y += v*Math.sin(alpha);

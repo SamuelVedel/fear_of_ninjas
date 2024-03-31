@@ -19,7 +19,7 @@ public class Gate extends Cube {
 	}
 	
 	public Gate(int x, int y, Room room) {
-		this(x, y, UsefulTh.cubeW, 2*UsefulTh.cubeH, "gate.texture", room);
+		this(x, y, UsefulTh.CUBE_W, 2*UsefulTh.CUBE_H, "gate.texture", room);
 	}
 	
 	public void activate() {

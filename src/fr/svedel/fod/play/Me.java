@@ -47,8 +47,8 @@ public class Me extends Entity {
 	
 	public int lifeBarX;
 	public int lifeBarY;
-	private final int lifeBarW = 45*UsefulTh.pixelW;
-	private final int lifeBarH = 9*UsefulTh.pixelH;
+	private final int lifeBarW = 45*UsefulTh.PIXEL_W;
+	private final int lifeBarH = 9*UsefulTh.PIXEL_H;
 	
 	/**
 	 * {@code boolean} qui indique s'il faut tirer (ou pas)
@@ -76,9 +76,9 @@ public class Me extends Entity {
 	 */
 	private void initVar() {
 		clan = Entity.MY_CLAN;
-		w = UsefulTh.cubeW;
-		h = 2*UsefulTh.cubeH;
-		v = 4./5*UsefulTh.pixelW;
+		w = UsefulTh.CUBE_W;
+		h = 2*UsefulTh.CUBE_H;
+		v = 4./5*UsefulTh.PIXEL_W;
 //		vJump = -11.5;
 		maxLife = 100;
 		life = maxLife;
@@ -297,11 +297,11 @@ public class Me extends Entity {
 			double pX = x+UsefulTh.rand.nextInt(w);
 			double pY = y+UsefulTh.rand.nextInt(h);
 			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-						 *0.2*UsefulTh.pixelW;
+						 *0.2*UsefulTh.PIXEL_W;
 			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-						 *0.2*UsefulTh.pixelH;
-			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2,
-												   UsefulTh.pixelH/2, pVX, pVY));
+						 *0.2*UsefulTh.PIXEL_H;
+			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.PIXEL_W/2,
+												   UsefulTh.PIXEL_H/2, pVX, pVY));
 		}
 		
 		x = room.getMouseXInRoom()-w/2;
@@ -320,7 +320,7 @@ public class Me extends Entity {
 		lifeBarY = (int)(play.playP.getHeight()-(lifeBarH+20)*play.scaleW);
 		int lW = (int)(lifeBarW*play.scaleW);
 		int lH = (int)(lifeBarH*play.scaleW);
-		displayLife(lifeBarX, lifeBarY, lW, lH, (int)((2*UsefulTh.pixelW)*play.scaleW), g2d);
+		displayLife(lifeBarX, lifeBarY, lW, lH, (int)((2*UsefulTh.PIXEL_W)*play.scaleW), g2d);
 		
 		g2d.setColor(Color.BLACK);
 		g2d.setFont(new Font("ARIAL", Font.BOLD, (int)(25*play.scaleW)));

@@ -28,7 +28,7 @@ public class Item {
 	private Play play;
 	private Room room;
 	
-	public int w = UsefulTh.cubeW/*-2*UsefulTh.pixelW*/;
+	public int w = UsefulTh.CUBE_W/*-2*UsefulTh.pixelW*/;
 	public int h = w;
 	private double aFall = UsefulTh.g;
 	private double vY;
@@ -37,7 +37,7 @@ public class Item {
 
 	// variable pour quand il à touché le sol
 	/** accélération de quand il à touché le sol */
-	private double aY = -0.1/5*UsefulTh.pixelH;
+	private double aY = -0.1/5*UsefulTh.PIXEL_H;
 	/** hauteurs auquelles la vitesse est nulle */
 	private int minY, maxY;
 	
@@ -64,14 +64,14 @@ public class Item {
 			vY += aFall*delta;
 			
 			// collisions avec les potentiels cubes porches
-			for (int iY = (int)(y/UsefulTh.cubeH); iY < (int)(y/UsefulTh.cubeH)+(int)(h/UsefulTh.cubeH)+2; iY++) {
-				for (int iX = (int)(x/UsefulTh.cubeW); iX < (int)(x/UsefulTh.cubeW)+(int)(w/UsefulTh.cubeW)+2; iX++) {
+			for (int iY = (int)(y/UsefulTh.CUBE_H); iY < (int)(y/UsefulTh.CUBE_H)+(int)(h/UsefulTh.CUBE_H)+2; iY++) {
+				for (int iX = (int)(x/UsefulTh.CUBE_W); iX < (int)(x/UsefulTh.CUBE_W)+(int)(w/UsefulTh.CUBE_W)+2; iX++) {
 					if (room.isYInCubes(iY) && room.isXInCubes(iX) && room.cubes[iY][iX] != null) {
 						if (room.cubes[iY][iX].contact(this) == Cube.UP_CONTACT) {
 							groundTouched = true;
 							vY = 0;
 							maxY = (int) y;
-							minY = (int) y-UsefulTh.cubeH;
+							minY = (int) y-UsefulTh.CUBE_H;
 						}
 					}
 				}

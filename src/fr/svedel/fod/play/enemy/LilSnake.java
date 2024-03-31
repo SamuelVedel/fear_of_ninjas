@@ -49,9 +49,9 @@ public class LilSnake extends Enemy {
 	}
 	
 	private void initVar() {
-		w = 10*UsefulTh.pixelW;
-		h = 3*UsefulTh.pixelH;
-		v = 2./5*UsefulTh.pixelW;
+		w = 10*UsefulTh.PIXEL_W;
+		h = 3*UsefulTh.PIXEL_H;
+		v = 2./5*UsefulTh.PIXEL_W;
 		maxLife = 20;
 		life = maxLife;
 		punchCadence = 60;

@@ -57,9 +57,9 @@ public class LilSlime extends Enemy {
 	}
 	
 	private void initVar() {
-		w = 8*UsefulTh.pixelW;
-		h = 5*UsefulTh.pixelH;
-		v = 2./5*UsefulTh.pixelW;
+		w = 8*UsefulTh.PIXEL_W;
+		h = 5*UsefulTh.PIXEL_H;
+		v = 2./5*UsefulTh.PIXEL_W;
 		maxLife = 20;
 		life = maxLife;
 		punchCadence = 60;

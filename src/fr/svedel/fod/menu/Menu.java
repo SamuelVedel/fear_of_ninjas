@@ -10,7 +10,6 @@ import fr.svedel.fod.FodButton;
 import fr.svedel.fod.UsefulTh;
 import fr.svedel.fod.VFrame;
 import fr.svedel.vcomponent.VActionListener;
-import fr.svedel.vcomponent.VButton;
 import fr.svedel.vcomponent.VComponent;
 import fr.svedel.vcomponent.VPanel;
 
@@ -25,18 +24,18 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 	
 	private MenuPainter menuP = new MenuPainter(this);
 	
-	public VPanel vp = new VPanel(0, 0, 800, UsefulTh.heightForNoScale,
-								  800, UsefulTh.heightForNoScale);
+	public VPanel vp = new VPanel(0, 0, 800, UsefulTh.HEIGHT_FOR_NO_SCALE,
+								  800, UsefulTh.HEIGHT_FOR_NO_SCALE);
 	private final int buttonW = 220;
 	private final int buttonH = 60;
 	private final int buttonGap = 20;
 	private FodButton[] buttons = {
-			new FodButton(buttonGap, UsefulTh.heightForNoScale-2*(buttonH+buttonGap),
-						  buttonW, buttonH, 800, UsefulTh.heightForNoScale, "Jeux"),
+			new FodButton(buttonGap, UsefulTh.HEIGHT_FOR_NO_SCALE-2*(buttonH+buttonGap),
+						  buttonW, buttonH, 800, UsefulTh.HEIGHT_FOR_NO_SCALE, "Jeux"),
 			/*new FodButton(buttonGap, UsefulTh.heightForNoScale-2*(buttonH+buttonGap),
 			  buttonW, buttonH, 800, UsefulTh.heightForNoScale, "Option"),*/
-			new FodButton(buttonGap, UsefulTh.heightForNoScale-buttonH-buttonGap,
-						  buttonW, buttonH, 800, UsefulTh.heightForNoScale, "Sortie")
+			new FodButton(buttonGap, UsefulTh.HEIGHT_FOR_NO_SCALE-buttonH-buttonGap,
+						  buttonW, buttonH, 800, UsefulTh.HEIGHT_FOR_NO_SCALE, "Sortie")
 	};
 	
 	private boolean wantToPlay = false;
@@ -79,7 +78,7 @@ public class Menu implements KeyListener, VActionListener, MouseMotionListener {
 		
 		for (FodButton fb : buttons) {
 			vp.add(fb);
-			fb.getBorderWidth().setValue(2*UsefulTh.pixelW);
+			fb.getBorderWidth().setValue(2*UsefulTh.PIXEL_W);
 			fb.setAddW(10);
 			fb.getFontSize().setValue(35);
 			fb.addVActionListener(this);

@@ -198,69 +198,69 @@ public class Room {
 				case 0 :
 					break;
 				case 1 :
-					me.spawnX = iX*UsefulTh.cubeW;
-					me.spawnY = (iY-1)*UsefulTh.cubeH-3*UsefulTh.pixelH;
+					me.spawnX = iX*UsefulTh.CUBE_W;
+					me.spawnY = (iY-1)*UsefulTh.CUBE_H-3*UsefulTh.PIXEL_H;
 					me.x = me.spawnX;
 					me.y = me.spawnY;
 					break;
 				case 2 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD7, "cube7.texture");
+					cubes[iY][iX] = new Border(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, Cube.BORD7, "cube7.texture");
 					break;
 				case 3 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD8, "cube8.texture");
+					cubes[iY][iX] = new Border(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, Cube.BORD8, "cube8.texture");
 					break;
 				case 4 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD9, "cube9.texture");
+					cubes[iY][iX] = new Border(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, Cube.BORD9, "cube9.texture");
 					break;
 				case 5 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD4, "cube4.texture");
+					cubes[iY][iX] = new Border(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, Cube.BORD4, "cube4.texture");
 					break;
 				case 6 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube5.texture");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, "cube5.texture");
 					break;
 				case 7 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD6, "cube6.texture");
+					cubes[iY][iX] = new Border(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, Cube.BORD6, "cube6.texture");
 					break;
 				case 8 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD1, "cube1.texture");
+					cubes[iY][iX] = new Border(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, Cube.BORD1, "cube1.texture");
 					break;
 				case 9 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD2, "cube2.texture");
+					cubes[iY][iX] = new Border(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, Cube.BORD2, "cube2.texture");
 					break;
 				case 10 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD3, "cube3.texture");
+					cubes[iY][iX] = new Border(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, Cube.BORD3, "cube3.texture");
 					break;
 				case 11 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube48.texture");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, "cube48.texture");
 					break;
 				case 12 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube24.texture");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, "cube24.texture");
 					break;
 				case 13 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube26.texture");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, "cube26.texture");
 					break;
 				case 14 :
-					cubes[iY][iX] = new Cube(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, "cube68.texture");
+					cubes[iY][iX] = new Cube(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, "cube68.texture");
 					break;
 				case 15 :
-					cubes[iY][iX] = new Bump(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH);
+					cubes[iY][iX] = new Bump(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H);
 					break;
 				case 16 :
-					cubes[iY][iX] = new Border(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, Cube.BORD, "cube.texture");
+					cubes[iY][iX] = new Border(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, Cube.BORD, "cube.texture");
 					break;
 				case 17 :
-					cubes[iY][iX] = new Switch(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, true);
+					cubes[iY][iX] = new Switch(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, true);
 					break;
 				case 18 :
-					cubes[iY][iX] = new Switch(iX*UsefulTh.cubeW, iY*UsefulTh.cubeH, false);
+					cubes[iY][iX] = new Switch(iX*UsefulTh.CUBE_W, iY*UsefulTh.CUBE_H, false);
 					break;
 				case 19 :
-					cubes[iY][iX] = new Gate(iX*UsefulTh.cubeW, (iY-1)*UsefulTh.cubeH, this);
+					cubes[iY][iX] = new Gate(iX*UsefulTh.CUBE_W, (iY-1)*UsefulTh.CUBE_H, this);
 				}
 			}
 		}
-		width = plan[0].length*UsefulTh.cubeW;
-		height = plan.length*UsefulTh.cubeH;
+		width = plan[0].length*UsefulTh.CUBE_W;
+		height = plan.length*UsefulTh.CUBE_H;
 	}
 	
 	private void initCubeWithAction() {
@@ -491,8 +491,8 @@ public class Room {
 		}
 		
 		// affichages des cubes qui sont présent dans l'écran
-		for (int iY = (int)(-transY/(UsefulTh.cubeH*play.scaleW)); iY < (int)((play.playP.getHeight()-transY)/(UsefulTh.cubeH*play.scaleW))+1; iY++) {
-			for (int iX = (int)(-transX/(UsefulTh.cubeW*play.scaleW)); iX < (int)((play.playP.getWidth()-transX)/(UsefulTh.cubeW*play.scaleW))+1; iX++) {
+		for (int iY = (int)(-transY/(UsefulTh.CUBE_H*play.scaleW)); iY < (int)((play.playP.getHeight()-transY)/(UsefulTh.CUBE_H*play.scaleW))+1; iY++) {
+			for (int iX = (int)(-transX/(UsefulTh.CUBE_W*play.scaleW)); iX < (int)((play.playP.getWidth()-transX)/(UsefulTh.CUBE_W*play.scaleW))+1; iX++) {
 				if (isXInCubes(iX) && isYInCubes(iY) && cubes[iY][iX] != null) {
 					cubes[iY][iX].display(play.color, g2dbi);
 				}

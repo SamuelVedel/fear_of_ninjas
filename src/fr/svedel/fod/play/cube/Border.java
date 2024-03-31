@@ -13,7 +13,7 @@ public class Border extends Cube {
 	}
 	
 	public Border(int x, int y, int capacity, String chTex) {
-		this(x, y, UsefulTh.cubeW, UsefulTh.cubeH, capacity, chTex);
+		this(x, y, UsefulTh.CUBE_W, UsefulTh.CUBE_H, capacity, chTex);
 	}
 	
 	@Override

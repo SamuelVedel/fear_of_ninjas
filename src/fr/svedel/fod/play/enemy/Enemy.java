@@ -37,7 +37,7 @@ public abstract class Enemy extends Entity {
 	public int direction = 0;
 	protected double alpha;
 	
-	protected int viewDistance = 15*UsefulTh.cubeW;
+	protected int viewDistance = 15*UsefulTh.CUBE_W;
 	protected Entity target;
 	protected boolean canSawTarget = false;;
 	protected boolean followTarget = true;
@@ -56,9 +56,9 @@ public abstract class Enemy extends Entity {
 		for (int iX = UsefulTh.rand.nextInt(room.cubes[0].length), iY = UsefulTh.rand.nextInt(room.cubes.length);;
 				iX = UsefulTh.rand.nextInt(room.cubes[0].length), iY = UsefulTh.rand.nextInt(room.cubes.length)) {
 			if(room.cubes[iY][iX] == null
-			   && Math.sqrt(Math.pow(room.me.x+room.me.w/2-iX*UsefulTh.cubeW+w/2, 2)+Math.pow(room.me.y+room.me.h/2-iY*UsefulTh.cubeH+h/2, 2)) >= 7*UsefulTh.cubeW) {
-				x = iX*UsefulTh.cubeW;
-				y = iY*UsefulTh.cubeH;
+			   && Math.sqrt(Math.pow(room.me.x+room.me.w/2-iX*UsefulTh.CUBE_W+w/2, 2)+Math.pow(room.me.y+room.me.h/2-iY*UsefulTh.CUBE_H+h/2, 2)) >= 7*UsefulTh.CUBE_W) {
+				x = iX*UsefulTh.CUBE_W;
+				y = iY*UsefulTh.CUBE_H;
 				if (!collision()) break;
 			}
 		}
@@ -67,11 +67,11 @@ public abstract class Enemy extends Entity {
 	protected void spawnToWalk() {
 		for (int iX = 0, iY = 0;; iX = UsefulTh.rand.nextInt(room.cubes[0].length), iY = UsefulTh.rand.nextInt(room.cubes.length)) {
 			if(room.cubes[iY][iX] != null
-			   && Math.sqrt(Math.pow(room.me.x+room.me.w/2-iX*UsefulTh.cubeW+w/2, 2)+Math.pow(room.me.y+room.me.h/2-iY*UsefulTh.cubeH+h/2, 2)) >= 7*UsefulTh.cubeW) {
+			   && Math.sqrt(Math.pow(room.me.x+room.me.w/2-iX*UsefulTh.CUBE_W+w/2, 2)+Math.pow(room.me.y+room.me.h/2-iY*UsefulTh.CUBE_H+h/2, 2)) >= 7*UsefulTh.CUBE_W) {
 				Cube c = room.cubes[iY][iX];
 				if (c.isAGround()) { // c'est un sol
-					x = iX*UsefulTh.cubeW;
-					y = iY*UsefulTh.cubeH-h;
+					x = iX*UsefulTh.CUBE_W;
+					y = iY*UsefulTh.CUBE_H-h;
 					if (!collision()) break;
 				}
 			}
@@ -131,7 +131,7 @@ public abstract class Enemy extends Entity {
 		
 		// collision avec le haut et le bas
 		if (y < 0) y = 0;
-		else if (y+h > room.plan.length*UsefulTh.cubeH) y = room.plan.length*UsefulTh.cubeH-h;
+		else if (y+h > room.plan.length*UsefulTh.CUBE_H) y = room.plan.length*UsefulTh.CUBE_H-h;
 		
 		// revoie la trajectoire pour pas être bloqué si il ne voit pas la cible
 		if (!followTarget) {
@@ -183,8 +183,8 @@ public abstract class Enemy extends Entity {
 	
 	/** évite qu'un énemie fonce dans le vide */
 	protected void avoidFalling() {
-		int iX = (int)((x+(direction > 0? w : 0))/UsefulTh.cubeW);
-		int iY = (int)(y/UsefulTh.cubeH)+2;
+		int iX = (int)((x+(direction > 0? w : 0))/UsefulTh.CUBE_W);
+		int iY = (int)(y/UsefulTh.CUBE_H)+2;
 		if (room.isXInCubes(iX) && room.isYInCubes(iY) && room.cubes[iY][iX] == null) { // si il y à le vide devant
 			// regarde si il peut se laisser tombé
 			boolean willFall = true;
@@ -309,8 +309,8 @@ public abstract class Enemy extends Entity {
 	 * @return je viens de le dire enfaite !
 	 */
 	public boolean needToJump() {
-		int iX = (int)((x+(direction > 0? w : 0))/UsefulTh.cubeW);
-		int iY = (int)((y+h)/UsefulTh.cubeH);
+		int iX = (int)((x+(direction > 0? w : 0))/UsefulTh.CUBE_W);
+		int iY = (int)((y+h)/UsefulTh.CUBE_H);
 		if (room.isXInCubes(iX) && room.isYInCubes(iY)) {
 			for (int jX = (direction > 0? 0 : 1); jX < 2 && room.isXInCubes(iX+(direction > 0? jX : -jX)); jX++) {
 				for (int jY = 1; jY >= -3 && room.isYInCubes(iY+jY); jY--) {

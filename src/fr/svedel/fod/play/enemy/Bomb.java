@@ -52,19 +52,19 @@ public class Bomb extends Enemy {
 		this(room, vX, vY, damage, (Entity)shooter);
 		if (shooter.lookToTheRight()) x = shooter.x-w;
 		else x = shooter.x+shooter.w;
-		y = shooter.y+4*UsefulTh.pixelH;
+		y = shooter.y+4*UsefulTh.PIXEL_H;
 	}
 	
 	public Bomb(Room room, double vX, double vY, int damage, Me shooter) {
 		this(room, vX,vY, damage, (Entity)shooter);
 		if (shooter.lookToTheRight()) x = shooter.x-w;
 		else x = shooter.x+shooter.w;
-		y = shooter.y+4*UsefulTh.pixelH;
+		y = shooter.y+4*UsefulTh.PIXEL_H;
 	}
 	
 	public void initVar() {
-		w = 3*UsefulTh.pixelW;
-		h = 3*UsefulTh.pixelH;
+		w = 3*UsefulTh.PIXEL_W;
+		h = 3*UsefulTh.PIXEL_H;
 	}
 	
 	@Override
@@ -94,13 +94,13 @@ public class Bomb extends Enemy {
 		}
 		
 		if (crit && UsefulTh.rand.nextInt(3) == 0) {
-			double pX = x+UsefulTh.pixelH/2;
-			double pY = y-1.5*UsefulTh.pixelH;
+			double pX = x+UsefulTh.PIXEL_H/2;
+			double pY = y-1.5*UsefulTh.PIXEL_H;
 			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-				*0.2*UsefulTh.pixelW;
+				*0.2*UsefulTh.PIXEL_W;
 			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-				*0.2*UsefulTh.pixelH;
-			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
+				*0.2*UsefulTh.PIXEL_H;
+			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.PIXEL_W/2, UsefulTh.PIXEL_H/2, pVX, pVY));
 		}
 	}
 	
@@ -121,23 +121,23 @@ public class Bomb extends Enemy {
 		int nParticles = /*UsefulTh.rand.nextInt(11-5)+5*/500;
 		for (int i = 0; i < nParticles; i++) {
 			double theta = 2*Math.PI*UsefulTh.rand.nextDouble();
-			double pV = 3./5*UsefulTh.rand.nextDouble()*UsefulTh.pixelW;
+			double pV = 3./5*UsefulTh.rand.nextDouble()*UsefulTh.PIXEL_W;
 			double pVX = pV*Math.cos(theta);
 			double pVY = pV*Math.sin(theta);
-			room.particles.add(new ClassicParticle(pX, pY, (int)(UsefulTh.pixelW/1.5), (int)(UsefulTh.pixelH/1.5), pVX, pVY));
+			room.particles.add(new ClassicParticle(pX, pY, (int)(UsefulTh.PIXEL_W/1.5), (int)(UsefulTh.PIXEL_H/1.5), pVX, pVY));
 		}
 	}
 	
 	public void attack(Entity e) {
 		double d = Math.sqrt(Math.pow(e.x+e.w/2-x-w/2, 2)+Math.pow(e.y+e.h/2-y-h/2, 2));
-		if (d < 4*UsefulTh.cubeW) {
-			e.takeDammage((int)(punchDamage-d*10/UsefulTh.cubeW), shooter);
+		if (d < 4*UsefulTh.CUBE_W) {
+			e.takeDammage((int)(punchDamage-d*10/UsefulTh.CUBE_W), shooter);
 		}
 	}
 	
 	public void takeDammage(int dammage, Entity e) {}
 	
 	public void display(Graphics2D g2d) {
-		UsefulTh.displayTex(tex, (int)x, (int)y-2*UsefulTh.pixelH, w, h+2*UsefulTh.pixelH, play.color, g2d);
+		UsefulTh.displayTex(tex, (int)x, (int)y-2*UsefulTh.PIXEL_H, w, h+2*UsefulTh.PIXEL_H, play.color, g2d);
 	}
 }

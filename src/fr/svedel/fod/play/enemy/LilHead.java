@@ -47,9 +47,9 @@ public class LilHead extends Enemy {
 	
 	private void initVar() {
 		alpha = UsefulTh.getAlpha(x, y, room.me.x, room.me.y);
-		w = 5*UsefulTh.pixelW;
-		h = 5*UsefulTh.pixelH;
-		v = 2./5*UsefulTh.pixelW;
+		w = 5*UsefulTh.PIXEL_W;
+		h = 5*UsefulTh.PIXEL_H;
+		v = 2./5*UsefulTh.PIXEL_W;
 		maxLife = 10;
 		life = maxLife;
 		cadence = 60;

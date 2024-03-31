@@ -19,7 +19,7 @@ public class Bump extends Cube {
 	}
 	
 	public Bump(int x, int y) {
-		this(x, y, UsefulTh.cubeW, UsefulTh.cubeH);
+		this(x, y, UsefulTh.CUBE_W, UsefulTh.CUBE_H);
 	}
 	
 	@Override
@@ -52,7 +52,7 @@ public class Bump extends Cube {
 		if (active) {
 			UsefulTh.displayTex(tex, x, y, w, h, c2, g2d);
 		} else {
-			UsefulTh.displayTex(tex2, x, y+2*UsefulTh.pixelH, w, 4*UsefulTh.pixelH, c2, g2d);
+			UsefulTh.displayTex(tex2, x, y+2*UsefulTh.PIXEL_H, w, 4*UsefulTh.PIXEL_H, c2, g2d);
 		}
 	}
 }

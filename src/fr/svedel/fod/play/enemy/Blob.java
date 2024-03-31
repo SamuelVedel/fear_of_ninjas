@@ -32,9 +32,9 @@ public class Blob extends Enemy {
 	
 	private void initVar() {
 		alpha = UsefulTh.getAlpha(x, y, target.x, target.y);
-		w = UsefulTh.cubeW+UsefulTh.pixelW;
-		h = UsefulTh.cubeH+UsefulTh.pixelH;
-		v = 3./5*UsefulTh.pixelW;
+		w = UsefulTh.CUBE_W+UsefulTh.PIXEL_W;
+		h = UsefulTh.CUBE_H+UsefulTh.PIXEL_H;
+		v = 3./5*UsefulTh.PIXEL_W;
 		maxLife = 20;
 		life = maxLife;
 		cadence = 60;

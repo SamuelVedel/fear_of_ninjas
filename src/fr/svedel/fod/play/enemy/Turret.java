@@ -62,8 +62,8 @@ public class Turret extends Enemy {
 	}
 	
 	private void initVar() {
-		w = feetTex[0].length*UsefulTh.pixelW;
-		h = feetTex.length*UsefulTh.pixelH;
+		w = feetTex[0].length*UsefulTh.PIXEL_W;
+		h = feetTex.length*UsefulTh.PIXEL_H;
 		maxLife = 50;
 		life = maxLife;
 		cadence = 60;
@@ -75,8 +75,8 @@ public class Turret extends Enemy {
 			if(room.cubes[iY][iX] != null) {
 				Cube c = room.cubes[iY][iX];
 				if (c.isAGround()) { // c'est un sol
-					x = iX*UsefulTh.cubeW;
-					y = iY*UsefulTh.cubeH-h;
+					x = iX*UsefulTh.CUBE_W;
+					y = iY*UsefulTh.CUBE_H-h;
 					if (!collision()) break;
 				}
 			}
@@ -143,9 +143,9 @@ public class Turret extends Enemy {
 	
 	public void display(Graphics2D g2d) {
 		// affiche la vie
-		int lW = w+2*UsefulTh.pixelW;
-		int lH = 3*UsefulTh.pixelH;
-		displayLife((int)(x+w/2-lW/2), (int)(y-1.3*lH)-2*UsefulTh.pixelH, lW, lH, UsefulTh.pixelW, g2d);
+		int lW = w+2*UsefulTh.PIXEL_W;
+		int lH = 3*UsefulTh.PIXEL_H;
+		displayLife((int)(x+w/2-lW/2), (int)(y-1.3*lH)-2*UsefulTh.PIXEL_H, lW, lH, UsefulTh.PIXEL_W, g2d);
 		
 		// affiche les pieds
 		UsefulTh.displayTex(feetTex, (int)x, (int)y, w, h, play.color, g2d);
@@ -156,15 +156,15 @@ public class Turret extends Enemy {
 //			g2d2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 //		}
 		g2d2.rotate(alpha, x+w/2, y);
-		int headW = 5*UsefulTh.pixelW;
-		int headH = 4*UsefulTh.pixelW;
-		int gunW = 4*UsefulTh.pixelW;
-		int gunH = 2*UsefulTh.pixelW;
+		int headW = 5*UsefulTh.PIXEL_W;
+		int headH = 4*UsefulTh.PIXEL_W;
+		int gunW = 4*UsefulTh.PIXEL_W;
+		int gunH = 2*UsefulTh.PIXEL_W;
 		g2d2.setColor(play.color);
 		g2d2.fillRect((int)x+w/2-headW/2, (int)y-headH/2, headW, headH);
-		g2d2.fillRect((int)x+w/2+headW/2-UsefulTh.pixelW-UsefulTh.pixelW*(int)cannonIn/100, (int)y-headH/2+UsefulTh.pixelH, gunW, gunH);
+		g2d2.fillRect((int)x+w/2+headW/2-UsefulTh.PIXEL_W-UsefulTh.PIXEL_W*(int)cannonIn/100, (int)y-headH/2+UsefulTh.PIXEL_H, gunW, gunH);
 		g2d2.setColor(Color.BLACK);
-		g2d2.fillRect((int)x+w/2-headW/2+UsefulTh.pixelW, (int)y-headH/2+UsefulTh.pixelH, headW-2*UsefulTh.pixelW, headH-2*UsefulTh.pixelH);
+		g2d2.fillRect((int)x+w/2-headW/2+UsefulTh.PIXEL_W, (int)y-headH/2+UsefulTh.PIXEL_H, headW-2*UsefulTh.PIXEL_W, headH-2*UsefulTh.PIXEL_H);
 //		int headW = headTex[0].length*UsefulTh.pixelW;
 //		int headH = headTex.length*UsefulTh.pixelH;
 //		UsefulTh.displayTex(headTex, (int)(x+w/2-(headW-3*UsefulTh.pixelW)/2), (int)(y-headH/2), headW, headH, play.color, g2d2);

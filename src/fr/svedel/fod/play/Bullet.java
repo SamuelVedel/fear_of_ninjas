@@ -96,10 +96,10 @@ public class Bullet {
 		y += vY*delta;
 		
 		// gère les collisions avec les cubes
-		if (room.isXInCubes((int) (x/UsefulTh.cubeW))
-			&& room.isYInCubes((int) (y/UsefulTh.cubeH))) {
-			if (room.cubes[(int) (y/UsefulTh.cubeH)][(int) (x/UsefulTh.cubeW)] != null) {
-				room.cubes[(int) (y/UsefulTh.cubeH)][(int) (x/UsefulTh.cubeW)].contact(this);
+		if (room.isXInCubes((int) (x/UsefulTh.CUBE_W))
+			&& room.isYInCubes((int) (y/UsefulTh.CUBE_H))) {
+			if (room.cubes[(int) (y/UsefulTh.CUBE_H)][(int) (x/UsefulTh.CUBE_W)] != null) {
+				room.cubes[(int) (y/UsefulTh.CUBE_H)][(int) (x/UsefulTh.CUBE_W)].contact(this);
 			}
 		} else {
 			noMoreReasonToBe = true;
@@ -118,11 +118,11 @@ public class Bullet {
 			double pX = x;
 			double pY = y;
 			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-						 *0.2*UsefulTh.pixelW;
+						 *0.2*UsefulTh.PIXEL_W;
 			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-						 *0.2*UsefulTh.pixelH;
-			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2,
-												   UsefulTh.pixelH/2, pVX, pVY));
+						 *0.2*UsefulTh.PIXEL_H;
+			room.particles.add(new ClassicParticle(pX, pY, UsefulTh.PIXEL_W/2,
+												   UsefulTh.PIXEL_H/2, pVX, pVY));
 		}
 	}
 	
@@ -222,11 +222,11 @@ public class Bullet {
 		int nParticles = UsefulTh.rand.nextInt(11-5)+5;
 		for (int i = 0; i < nParticles; i++) {
 			double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-						 *0.2*UsefulTh.pixelW;
+						 *0.2*UsefulTh.PIXEL_W;
 			double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-						 *0.2*UsefulTh.pixelH;
-			room.particles.add(new ClassicParticle(pX, pY, (int)(UsefulTh.pixelW/1.5),
-												   (int)(UsefulTh.pixelH/1.5), pVX, pVY));
+						 *0.2*UsefulTh.PIXEL_H;
+			room.particles.add(new ClassicParticle(pX, pY, (int)(UsefulTh.PIXEL_W/1.5),
+												   (int)(UsefulTh.PIXEL_H/1.5), pVX, pVY));
 		}
 		noMoreReasonToBe = true;
 	}

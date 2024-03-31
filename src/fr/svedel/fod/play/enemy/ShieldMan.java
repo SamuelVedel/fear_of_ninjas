@@ -38,9 +38,9 @@ public class ShieldMan extends Enemy {
 	}
 	
 	private void initVar() {
-		w = UsefulTh.cubeW+2*UsefulTh.pixelW;
-		h = UsefulTh.cubeH*2;
-		v = 2./5*UsefulTh.pixelW;
+		w = UsefulTh.CUBE_W+2*UsefulTh.PIXEL_W;
+		h = UsefulTh.CUBE_H*2;
+		v = 2./5*UsefulTh.PIXEL_W;
 		maxLife = 40;
 		life = maxLife;
 		punchDamage = 20;

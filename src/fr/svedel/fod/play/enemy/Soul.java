@@ -43,9 +43,9 @@ public class Soul extends Enemy {
 	
 	private void initVar() {
 		alpha = UsefulTh.getAlpha(x, y, room.me.x, room.me.y);
-		w = UsefulTh.cubeW;
-		h = 10*UsefulTh.pixelH;
-		v = 2./5*UsefulTh.pixelW;
+		w = UsefulTh.CUBE_W;
+		h = 10*UsefulTh.PIXEL_H;
+		v = 2./5*UsefulTh.PIXEL_W;
 		maxLife = 30;
 		life = maxLife;
 		cadence = 60;
@@ -101,10 +101,10 @@ public class Soul extends Enemy {
 				double pX = x+UsefulTh.rand.nextInt(w);
 				double pY = y+UsefulTh.rand.nextInt(h);
 				double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-					*0.2*UsefulTh.pixelW;
+					*0.2*UsefulTh.PIXEL_W;
 				double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-					*0.2*UsefulTh.pixelH;
-				room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW/2, UsefulTh.pixelH/2, pVX, pVY));
+					*0.2*UsefulTh.PIXEL_H;
+				room.particles.add(new ClassicParticle(pX, pY, UsefulTh.PIXEL_W/2, UsefulTh.PIXEL_H/2, pVX, pVY));
 			}
 			
 			//téléportation
@@ -114,11 +114,11 @@ public class Soul extends Enemy {
 				x -= r*Math.cos(theta);
 				y -= r*Math.sin(theta);
 				theta = 2*Math.PI*UsefulTh.rand.nextDouble();
-				r = (UsefulTh.rand.nextInt(15-2)+2)*UsefulTh.cubeW;
+				r = (UsefulTh.rand.nextInt(15-2)+2)*UsefulTh.CUBE_W;
 				x += r*Math.cos(theta);
 				y += r*Math.sin(theta);
 				
-				if (collision() || Math.sqrt(Math.pow(x+w/2-(room.me.x+room.me.w/2), 2)+Math.pow(y+h/2-(room.me.y+room.me.h/2), 2)) < 5*UsefulTh.cubeW
+				if (collision() || Math.sqrt(Math.pow(x+w/2-(room.me.x+room.me.w/2), 2)+Math.pow(y+h/2-(room.me.y+room.me.h/2), 2)) < 5*UsefulTh.CUBE_W
 					|| x < 0 || y < 0 || x+w > room.width || y+h > room.height) {
 					boo = true;
 				} else boo = false;

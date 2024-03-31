@@ -23,7 +23,7 @@ public class MenuPainter extends JPanel {
 		g2d.setColor(UsefulTh.BACKGROUND_COLOR);
 		g2d.fillRect(0, 0, getWidth(), getHeight());
 		
-		menu.scaleW = (double)getHeight()/UsefulTh.heightForNoScale;
+		menu.scaleW = (double)getHeight()/UsefulTh.HEIGHT_FOR_NO_SCALE;
 		
 		menu.vp.adjust(getWidth(), getHeight());
 		menu.vp.display(g2d);

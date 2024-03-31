@@ -51,9 +51,9 @@ public class MedSlime extends Enemy {
 	}
 	
 	private void initVar() {
-		w = 10*UsefulTh.pixelW;
-		h = 6*UsefulTh.pixelH;
-		v = 2./5*UsefulTh.pixelW;
+		w = 10*UsefulTh.PIXEL_W;
+		h = 6*UsefulTh.PIXEL_H;
+		v = 2./5*UsefulTh.PIXEL_W;
 		maxLife = 40;
 		life = maxLife;
 		punchCadence = 60;
@@ -118,8 +118,8 @@ public class MedSlime extends Enemy {
 		 * à changer si cette dimension
 		 * est modifier
 		 */
-		int lilSW = 8*UsefulTh.pixelW;
-		int lilSH = 5*UsefulTh.pixelH;
+		int lilSW = 8*UsefulTh.PIXEL_W;
+		int lilSH = 5*UsefulTh.PIXEL_H;
 		room.enemies.add(new LilSlime(x+w/2-lilSW/2, y+h/2-lilSH/2, 1, room));
 		room.enemies.add(new LilSlime(x+w/2-lilSW/2, y+h/2-lilSH/2, -1, room));
 	}

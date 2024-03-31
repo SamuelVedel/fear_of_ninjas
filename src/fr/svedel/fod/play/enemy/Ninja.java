@@ -30,9 +30,9 @@ public class Ninja extends Enemy {
 	}
 	
 	private void initVar() {
-		w = UsefulTh.cubeW;
-		h = UsefulTh.cubeH*2;
-		v = 4.5/5*UsefulTh.pixelW;
+		w = UsefulTh.CUBE_W;
+		h = UsefulTh.CUBE_H*2;
+		v = 4.5/5*UsefulTh.PIXEL_W;
 		maxLife = 20;
 		life = maxLife;
 		punchDamage = 30;
@@ -86,6 +86,6 @@ public class Ninja extends Enemy {
 	@Override
 	public void display(Graphics2D g2d) {
 		displayLife(g2d);
-		UsefulTh.displayTex(textures[iTex], (int)x-(iTex <= 2? 2*UsefulTh.pixelW : 0), (int)y, w+2*UsefulTh.pixelW, h, play.color, g2d);
+		UsefulTh.displayTex(textures[iTex], (int)x-(iTex <= 2? 2*UsefulTh.PIXEL_W : 0), (int)y, w+2*UsefulTh.PIXEL_W, h, play.color, g2d);
 	}
 }

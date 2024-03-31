@@ -41,9 +41,9 @@ public class Summoner extends Enemy {
 	}
 	
 	private void initVar() {
-		w = UsefulTh.cubeW;
-		h = UsefulTh.cubeH*2;
-		v = 1./5*UsefulTh.pixelW;
+		w = UsefulTh.CUBE_W;
+		h = UsefulTh.CUBE_H*2;
+		v = 1./5*UsefulTh.PIXEL_W;
 		maxLife = 100;
 		life = maxLife;
 		cadence = 150;
@@ -91,11 +91,11 @@ public class Summoner extends Enemy {
 			if (currentNumOfHead < maxNumOfHead) {
 				double x2;
 				if (iTex <= 2) {
-					x2 = x-5*UsefulTh.pixelW;
+					x2 = x-5*UsefulTh.PIXEL_W;
 				} else {
 					x2 = x+w;;
 				}
-				room.enemies.add(new LilHead(x2, y+4*UsefulTh.pixelH, this, room));
+				room.enemies.add(new LilHead(x2, y+4*UsefulTh.PIXEL_H, this, room));
 				currentNumOfHead++;
 			}
 			tShoot = 0;
@@ -109,12 +109,12 @@ public class Summoner extends Enemy {
 	public void display(Graphics2D g2d) {
 		displayLife(g2d);
 		// une partie de la texture n'est pas comprise dans la hit box
-		int wTex = w+6*UsefulTh.pixelW;
-		int hTex = h+UsefulTh.pixelH;
+		int wTex = w+6*UsefulTh.PIXEL_W;
+		int hTex = h+UsefulTh.PIXEL_H;
 		if (iTex <= 2) {
-			UsefulTh.displayTex(textures[iTex], (int)x-5*UsefulTh.pixelW, (int)y-UsefulTh.pixelH, wTex, hTex, play.color, g2d);
+			UsefulTh.displayTex(textures[iTex], (int)x-5*UsefulTh.PIXEL_W, (int)y-UsefulTh.PIXEL_H, wTex, hTex, play.color, g2d);
 		} else {
-			UsefulTh.displayTex(textures[iTex], (int)x-UsefulTh.pixelW, (int)y-UsefulTh.pixelH, wTex, hTex, play.color, g2d);
+			UsefulTh.displayTex(textures[iTex], (int)x-UsefulTh.PIXEL_W, (int)y-UsefulTh.PIXEL_H, wTex, hTex, play.color, g2d);
 		}
 	}
 }

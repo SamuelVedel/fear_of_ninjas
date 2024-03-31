@@ -77,7 +77,7 @@ public abstract class Entity {
 	protected double v;
 	public double vFall = 0;
 	protected double aFall = UsefulTh.g;
-	public double vJump = -/*11.5*/12.1/5*UsefulTh.pixelH;
+	public double vJump = -/*11.5*/12.1/5*UsefulTh.PIXEL_H;
 	public int numJump = 0;
 	public int maxNumJump = 1;
 	
@@ -90,9 +90,9 @@ public abstract class Entity {
 	 */
 	protected int regen = 0;
 	
-	protected int bulletW = UsefulTh.pixelW;
-	protected int bulletH = UsefulTh.pixelH;
-	protected double bulletV = 7./5*UsefulTh.pixelW;
+	protected int bulletW = UsefulTh.PIXEL_W;
+	protected int bulletH = UsefulTh.PIXEL_H;
+	protected double bulletV = 7./5*UsefulTh.PIXEL_W;
 	protected int bulletDamage = 10;
 	/** décompte de temps qui sert pour tirer */
 	protected double tShoot;
@@ -151,15 +151,15 @@ public abstract class Entity {
 	protected boolean collision() {
 		// collision avec les bords
 		if (x < 0) x = 0;
-		else if (x+w > room.plan[0].length*UsefulTh.cubeW) {
-			x = room.plan[0].length*UsefulTh.cubeW-w;
+		else if (x+w > room.plan[0].length*UsefulTh.CUBE_W) {
+			x = room.plan[0].length*UsefulTh.CUBE_W-w;
 		}
 		
 		boolean contact = false;
 		
 		// collisions avec les potentiels cubes porches
-		for (int iY = (int)(y/UsefulTh.cubeH); iY < (int)(y/UsefulTh.cubeH)+(int)(h/UsefulTh.cubeH)+2; iY++) {
-			for (int iX = (int)(x/UsefulTh.cubeW); iX < (int)(x/UsefulTh.cubeW)+(int)(w/UsefulTh.cubeW)+2; iX++) {
+		for (int iY = (int)(y/UsefulTh.CUBE_H); iY < (int)(y/UsefulTh.CUBE_H)+(int)(h/UsefulTh.CUBE_H)+2; iY++) {
+			for (int iX = (int)(x/UsefulTh.CUBE_W); iX < (int)(x/UsefulTh.CUBE_W)+(int)(w/UsefulTh.CUBE_W)+2; iX++) {
 				if (room.isYInCubes(iY) && room.isXInCubes(iX) && room.cubes[iY][iX] != null) {
 					if (room.cubes[iY][iX].contact(this) != Cube.NO_CONTACT) {
 						contact = true;
@@ -234,11 +234,11 @@ public abstract class Entity {
 	public void addPower(Power pow) {
 		powers[pow.id]++;
 		if (pow == Power.SPEED) {
-			v += 0.8/5*UsefulTh.pixelW;
+			v += 0.8/5*UsefulTh.PIXEL_W;
 		} else if (pow == Power.CRIT) {
 			critChance += 10;
 		} else if (pow == Power.BULLET_SPEED) {
-			bulletV += 1./5*UsefulTh.pixelW;
+			bulletV += 1./5*UsefulTh.PIXEL_W;
 		} else if (pow == Power.REGEN) {
 			if (regen != 1) {
 				regen *= 0.8;
@@ -305,11 +305,11 @@ public abstract class Entity {
 				double pX = x+UsefulTh.rand.nextInt(w);
 				double pY = y+UsefulTh.rand.nextInt(h);
 				double pVX = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-							 *0.2*UsefulTh.pixelW;
+							 *0.2*UsefulTh.PIXEL_W;
 				double pVY = (UsefulTh.rand.nextBoolean()? 1 : -1)*UsefulTh.rand.nextDouble()
-							 *0.2*UsefulTh.pixelH;
-				room.particles.add(new ClassicParticle(pX, pY, UsefulTh.pixelW,
-													   UsefulTh.pixelH, pVX, pVY));
+							 *0.2*UsefulTh.PIXEL_H;
+				room.particles.add(new ClassicParticle(pX, pY, UsefulTh.PIXEL_W,
+													   UsefulTh.PIXEL_H, pVX, pVY));
 			}
 			if (canDieWithASoul && UsefulTh.rand.nextInt(10) == 0) {
 				room.enemies.add(new Soul(x, y, room));
@@ -361,7 +361,7 @@ public abstract class Entity {
 	 * @param g2d {@code Graphics2D} sur lequel il dessine
 	 */
 	protected void displayLife(Graphics2D g2d) {
-		displayLife(w+2*UsefulTh.pixelW, 3*UsefulTh.pixelH, g2d);
+		displayLife(w+2*UsefulTh.PIXEL_W, 3*UsefulTh.PIXEL_H, g2d);
 	}
 	
 	/**
@@ -375,7 +375,7 @@ public abstract class Entity {
 	 * @param g2d {@code Graphics2D} sur lequel il dessine
 	 */
 	protected void displayLife(int lW, int lH, Graphics2D g2d) {
-		displayLife((int)(x+w/2-lW/2), (int)(y-1.3*lH), lW, lH, UsefulTh.pixelW, g2d);
+		displayLife((int)(x+w/2-lW/2), (int)(y-1.3*lH), lW, lH, UsefulTh.PIXEL_W, g2d);
 	}
 	
 	/**

@@ -79,7 +79,7 @@ public class Cube {
 	 * @param chTex le chemin de la texture à partir de textures\cube\
 	 */
 	public Cube(int x, int y, String chTex) {
-		this(x, y, UsefulTh.cubeW, UsefulTh.cubeH, chTex);
+		this(x, y, UsefulTh.CUBE_W, UsefulTh.CUBE_H, chTex);
 	}
 	
 	/**

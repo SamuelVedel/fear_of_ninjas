@@ -39,11 +39,11 @@ public class DrinkingDuck extends Enemy {
 	}
 	
 	private void initVar(double x, double y) {
-		w = UsefulTh.cubeW;
-		h = UsefulTh.cubeH;
+		w = UsefulTh.CUBE_W;
+		h = UsefulTh.CUBE_H;
 		this.x = x-w/2;
 		this.y = y-h;
-		v = 2./5*UsefulTh.pixelW;
+		v = 2./5*UsefulTh.PIXEL_W;
 		life = maxLife;
 	}
 	
@@ -52,7 +52,7 @@ public class DrinkingDuck extends Enemy {
 		oldX = x;
 		oldY = y;
 		
-		if (y/UsefulTh.cubeH >= room.cubes.length) die(this);
+		if (y/UsefulTh.CUBE_H >= room.cubes.length) die(this);
 		
 		actionToWalk(delta);
 		
