@@ -31,11 +31,11 @@ dans son terminal pour compiler et lancer le jeu.
 
 Vous pouvez aussi compiler ce qu'il faut sans lancer le jeu avec la commande
 ```bash
-make compile
+make build
 ```
-Et le lancer le jeu sans rien compiler avec la commande
+Et le lancer le jeu sans recompiler avec la commande
 ```bash
-make launch
+make run
 ```
 
 Il est bien sûr aussi possible de compiler le code en utilisant un IDE.

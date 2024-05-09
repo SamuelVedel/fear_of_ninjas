@@ -9,13 +9,13 @@ JCFLAGS := -encoding iso-8859-1 -d $(OUT_DIR)/ -cp $(SRC_DIR)/
 
 .SUFFIXES: .java .class
 
-.PHONY: all clean compile launch
+.PHONY: all clean build run
 
-all: compile launch
+all: build run
 
-compile: .done
+build: .done
 
-launch:
+run:
 	java -cp $(OUT_DIR) fr.svedel.fod.MainFOD
 
 .done: $(SRCS)
