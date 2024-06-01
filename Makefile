@@ -13,6 +13,8 @@ JCFLAGS := -encoding iso-8859-1 -d $(OUT_DIR)/ -cp $(SRC_DIR)/
 
 all: build run
 
+jar: Fear_of_ninja.jar
+
 build: .done
 
 run:
@@ -22,7 +24,11 @@ run:
 	$(JC) $(JCFLAGS) $?
 	touch .done
 
+Fear_of_ninja.jar: .done
+	jar cfe Fear_of_ninja.jar fr.svedel.fod.MainFOD -C $(OUT_DIR) .
+
 clean:
 	rm -rf $(OUT_DIR)
 	rm -f .done
 	rm -f *~ $(SRC_DIR)/*/*/*/*~ $(SRC_DIR)/*/*/*/*/*~ $(SRC_DIR)/*/*/*/*/*/*~
+	rm -f Fear_of_ninja.jar
