@@ -1,7 +1,7 @@
 SRC_DIR := src
 OUT_DIR := bin
 
-VC_PATH ?= /home/saam/javalib/vcomponent.jar
+VC_PATH ?= /home/saam/javalibs/vcomponent
 
 SRCS := $(wildcard $(SRC_DIR)/*/*/*/*.java) $(wildcard $(SRC_DIR)/*/*/*/*/*.java) $(wildcard $(SRC_DIR)/*/*/*/*/*/*.java)
 #CLS := $(SRCS:$(SRC_DIR)/%.java=$(OUT_DIR)/%.class)
@@ -27,7 +27,7 @@ run:
 	touch .done
 
 Fear_of_ninja.jar: .done
-	jar cfe Fear_of_ninja.jar fr.svedel.fod.MainFOD -C $(OUT_DIR) .
+	jar -cfe Fear_of_ninja.jar fr.svedel.fod.MainFOD -C $(OUT_DIR) . -C $(VC_PATH) .
 
 clean:
 	rm -rf $(OUT_DIR)
