@@ -62,11 +62,10 @@ public class Play implements KeyListener, MouseMotionListener {
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == 27) { // ECHAP c'est pause
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) { // ECHAP c'est pause
 			if (phase == PLAY_PHASE) phase = PAUSE_PHASE;
 			else if (phase == PAUSE_PHASE) phase = PLAY_PHASE;
-		}
-		else if (e.getKeyCode() == 122) { // F11 plein ecran <--> pas plein ecran
+		} else if (e.getKeyCode() == KeyEvent.VK_F11) { // F11 plein ecran <--> pas plein ecran
 			jf.toggleFullScreen();
 		}
 	}
