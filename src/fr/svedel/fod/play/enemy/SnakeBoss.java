@@ -246,13 +246,13 @@ public class SnakeBoss extends Enemy {
 		int iY = (int)y/UsefulTh.CUBE_W;
 		switch (direction) {
 		case leftDirection :
-			return iX == 0 || room.cubes[iY][iX-1] != null;
+			return iX <= 0 || room.cubes[iY][iX-1] != null;
 		case upDirection :
-			return iY == 0 || room.cubes[iY-1][iX] != null;
+			return iY <= 0 || room.cubes[iY-1][iX] != null;
 		case rightDirection :
-			return iX == room.cubes[0].length-1 || room.cubes[iY][iX+1] != null;
+			return iX >= room.cubes[0].length-1 || room.cubes[iY][iX+1] != null;
 		default : // down
-			return iY == room.cubes.length-1 || room.cubes[iY+1][iX] != null;
+			return iY >= room.cubes.length-1 || room.cubes[iY+1][iX] != null;
 		}
 	}
 	
