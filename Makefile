@@ -22,7 +22,7 @@ jar: Fear_of_ninja.jar
 run:
 	java -cp $(VC_PATH):$(OUT_DIR) fr.svedel.fod.MainFOD
 
-$(OUT_DIR)/fr/svedel/fod/%.class: $(SRC_DIR)/fr/svedel/fod/%.java
+$(OUT_DIR)/%.class: $(SRC_DIR)/%.java
 	$(JC) $(JCFLAGS) $<
 
 .done: $(SRCS)
