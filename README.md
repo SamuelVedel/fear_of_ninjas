@@ -30,7 +30,7 @@ Ensuite pour compiler et lancer le jeu, il suffit de taper dans son terminal la 
 ```shell
 VC_PATH=<vcpath> make
 ```
-en remplacant `<vcpath>` par le chemin vers l'endroit où la libraire vcomponent à était installer.
+en remplacant `<vcpath>` par le chemin vers l'endroit où la libraire vcomponent à était installer, si le chemin est `~/javalibs/vcomponent` on peut se contenter de taper `make`.
 
 Vous pouvez aussi compiler ce qu'il faut sans lancer le jeu avec la commande
 ```shell
