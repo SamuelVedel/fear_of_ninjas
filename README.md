@@ -9,10 +9,10 @@
 ## Principe du jeu
 Dans ce jeux, le but est de parcourir le plus de niveau possible,
 pour cela à chaque niveaux il faut tuer un certain nombre de monstres
-(+2 p chaque niveaux). Entre chaque niveaux, il faut choisir entre trois améliorations,
-et tout les deux niveaux, se sont les énemies qui on une amélioration aléatoire.
+(+2 pour chaque niveaux). Entre chaque niveaux, il faut choisir entre trois améliorations.
+Tout les deux niveaux, les énemies ont une amélioration aléatoire.
 
-info importante pour ceux qui ont léditeur de niveau :
+info importante pour ceux qui ont l'éditeur de niveau :
 quand on augmente la taille du niveau sur l'éditeur
 vient un moment ou l'écran n'est plus assez grand, mais
 les barre pour scroller ne se rafraichisse pas automatiquement
@@ -25,7 +25,7 @@ Je m'éxcuse je n'ai vraiment pas réussi à éviter ce bug
 Pour compiler et lancer le jeu il est recommander d'avoir un os linux,
 ainsi que java, javac et Makfile d'installer.
 
-Pour compiler le code il faut d'abord installer la libraire vcomponent [ici](https://github.com/SamuelVedel/VComponent).
+Pour compiler le code il faut d'abord installer la librairie vcomponent [ici](https://github.com/SamuelVedel/VComponent).
 Ensuite pour compiler et lancer le jeu, il suffit de taper dans son terminal la commande
 ```shell
 VC_PATH=<vcpath> make
